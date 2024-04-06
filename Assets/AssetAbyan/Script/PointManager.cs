@@ -2,32 +2,45 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum PointsNames{
-    PoorLeft,PoorRight,Village,LeftDefence,RightDefence,
+public enum PointsNames
+{
+    PoorLeft, PoorRight, Village, LeftDefence, RightDefence,
 }
 [Serializable]
-public struct Points{
+public struct Points
+{
     public PointsNames pointsNames;
     public Transform pointA, pointB;
+    [SerializeField] private int NPCCount;
+    public void addNPC()
+    {
+        NPCCount++;
+    }
 }
 
 public class PointManager : MonoBehaviour
 {
     public static PointManager instance;
     public List<Points> points;
-    private void Awake() {
-        if(instance == null){
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-        }else{
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
-
-
-    public Points getPoint(PointsNames targetPointName){// search point that match with parameter
-        foreach(Points currentPoint in points){
-            if(currentPoint.pointsNames == targetPointName){
+    public Points getPoint(PointsNames targetPointName)
+    {// search point that match with parameter
+        foreach (Points currentPoint in points)
+        {
+            if (currentPoint.pointsNames == targetPointName)
+            {
+                Debug.Log("getPoint");
+                currentPoint.addNPC();
                 return currentPoint;
             }
         }
