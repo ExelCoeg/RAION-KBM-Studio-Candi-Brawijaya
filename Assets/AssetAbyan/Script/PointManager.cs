@@ -4,18 +4,14 @@ using UnityEngine;
 
 public enum PointsNames
 {
-    PoorLeft, PoorRight, Village, LeftDefence, RightDefence,
+    PoorLeft, PoorRight, Villager, LeftDefence, RightDefence,
 }
 [Serializable]
-public struct Points
+public class Points
 {
     public PointsNames pointsNames;
     public Transform pointA, pointB;
-    [SerializeField] private int NPCCount;
-    public void addNPC()
-    {
-        NPCCount++;
-    }
+    public int NPCCount;
 }
 
 public class PointManager : MonoBehaviour
@@ -32,6 +28,10 @@ public class PointManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        // for (int i = 0; i < points.Count; i++)
+        // {
+        //     points[i] = new Points();
+        // }
     }
     public Points getPoint(PointsNames targetPointName)
     {// search point that match with parameter
@@ -39,8 +39,6 @@ public class PointManager : MonoBehaviour
         {
             if (currentPoint.pointsNames == targetPointName)
             {
-                Debug.Log("getPoint");
-                currentPoint.addNPC();
                 return currentPoint;
             }
         }

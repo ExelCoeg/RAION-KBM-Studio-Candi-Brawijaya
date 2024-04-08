@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum Status
 {
-    Poor, Village, Archer
+    Poor, Villager, Archer
 }
 public class NPCAI : MonoBehaviour
 {
@@ -17,8 +17,8 @@ public class NPCAI : MonoBehaviour
 
     [SerializeField]private int movSpeed;
     [SerializeField]private int direction = 1;
-    [SerializeField]private float maksIdelTime;
-    [SerializeField]private int idleFrequency;
+    [SerializeField]private float maksIdleTime;
+    [SerializeField]private int idleDelay;
 
     [SerializeField]LayerMask coinLayer;
     [SerializeField]float overLapRadius;
@@ -49,18 +49,22 @@ public class NPCAI : MonoBehaviour
         NPCMovement();
     }
     private float RandomNumGen(){
-        return UnityEngine.Random.Range(0,5f - maksIdelTime);
+        return UnityEngine.Random.Range(0,5f - maksIdleTime);
     }
     //========================================================================================================================================================
-    public void ChangeStatus()// pada kode ini nantinya akan mengubah points ssuai dengan status dan akan ada kode untuk menyeimbangkan jumlah NPC pada point tertentur
-    {  
+    // pada kode ini nantinya akan mengubah points ssuai dengan status dan akan ada kode untuk menyeimbangkan jumlah NPC pada point tertentur
+
+    public void ChangeStatus(){  
         switch (status){
             case Status.Poor:
                 points = PointManager.instance.getPoint(PointsNames.PoorLeft);
+                points.NPCCount++;
+                Debug.Log(points.NPCCount);
                 SetPoint(points.pointA);
                 break;
-            case Status.Village:
-                points = PointManager.instance.getPoint(PointsNames.Village);
+            case Status.Villager:
+                points = PointManager.instance.getPoint(PointsNames.Villager);
+                points.NPCCount++;
                 SetPoint(points.pointA);
                 break;
         }
@@ -81,7 +85,7 @@ public class NPCAI : MonoBehaviour
     private void NPCMovement(){
         rb.velocity = new Vector2(movSpeed * direction, rb.velocity.y);
 
-        if (timer >= idleFrequency)
+        if (timer >= idleDelay)
         {
             Debug.Log("idle");
             StartCoroutine(NPCIdleForSec());
@@ -119,14 +123,15 @@ public class NPCAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,overLapRadius);
     }
     //========================================================================================================================================================
-    private void OnCollisionEnter2D(Collision2D objectInfo) {
-        if (objectInfo.gameObject.tag == "coin")
+    private void OnTriggerEnter2D(Collider2D objectInfo) {
+        if (objectInfo.tag == "coin")
         {
             Destroy(objectInfo.gameObject);
             SetPoint(points.pointA);
-            status = Status.Village;
+            status = Status.Villager;
             ChangeStatus();
         }
     }
+
 }
 // masalah : case jika coin diambil NPC lain. Status harusnya diupdate secara berkala (tetapi ada masalah)

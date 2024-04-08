@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218663204}
   m_Layer: 0
-  m_Name: RightPoorBPoint
+  m_Name: VillageBPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245490735}
   m_Layer: 0
-  m_Name: RightPoorAPoint
+  m_Name: VillageAPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,6 +417,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1944062020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &968953179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968953180}
+  m_Layer: 0
+  m_Name: RightPoorAPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968953180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968953179}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -35.3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1944062020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038634569
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,8 +556,8 @@ MonoBehaviour:
   isNight: 0
   movSpeed: 5
   direction: 1
-  maksIdelTime: 3
-  idleFrequency: 10
+  maksIdleTime: 3
+  idleDelay: 10
   coinLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -605,7 +636,7 @@ GameObject:
   - component: {fileID: 1523711984}
   - component: {fileID: 1523711983}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: BaseCamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,6 +979,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771891147}
   m_CullTransparentMesh: 1
+--- !u!1 &1907212547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907212548}
+  m_Layer: 0
+  m_Name: RightPoorBPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1907212548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907212547}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -20.7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1944062020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1944062018
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +1048,10 @@ MonoBehaviour:
     pointA: {fileID: 245490735}
     pointB: {fileID: 218663204}
     NPCCount: 0
+  - pointsNames: 1
+    pointA: {fileID: 968953180}
+    pointB: {fileID: 1907212548}
+    NPCCount: 0
 --- !u!4 &1944062020
 Transform:
   m_ObjectHideFlags: 0
@@ -1001,6 +1067,8 @@ Transform:
   m_Children:
   - {fileID: 8541934}
   - {fileID: 739054550}
+  - {fileID: 968953180}
+  - {fileID: 1907212548}
   - {fileID: 245490735}
   - {fileID: 218663204}
   m_Father: {fileID: 0}
@@ -1017,7 +1085,7 @@ GameObject:
   - component: {fileID: 1954798244}
   - component: {fileID: 1954798246}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,7 +1214,6 @@ GameObject:
   - component: {fileID: 2037063559}
   - component: {fileID: 2037063558}
   - component: {fileID: 2037063557}
-  - component: {fileID: 2037063560}
   m_Layer: 3
   m_Name: Circle
   m_TagString: coin
@@ -1183,7 +1250,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1250,39 +1317,12 @@ Transform:
   m_GameObject: {fileID: 2037063556}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.52, y: 0.8, z: 0}
+  m_LocalPosition: {x: -28.11, y: 0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &2037063560
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037063556}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &2050157892
 GameObject:
   m_ObjectHideFlags: 0
