@@ -3,7 +3,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     float energy;
-    [SerializeField] float maxEnergy =5f;
+    [SerializeField] float maxEnergy = 3f;
+    float energyRegen;
+    
 
     [Header("Speed & Acceleration")]
     [SerializeField] float defaultSpeed = 5f;
@@ -11,9 +13,10 @@ public class PlayerMovement : MonoBehaviour
     
     float accelStart = 1f;
     float speed;
+    float onTiredTimer = 1f;
     Rigidbody2D rb;
     Vector2 move;
-    bool isSprinting;
+    bool isSprinting, onTired;
     
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -29,21 +32,32 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         move.x = Input.GetAxis("Horizontal");
-        if(Input.GetKey(KeyCode.LeftShift)){ // kalau mencet shift, isSprinting set ke true
+        if(Input.GetKey(KeyCode.LeftShift) && !onTired){ // kalau mencet shift, isSprinting set ke true
             isSprinting = true;
         }
         else{ // kalau ga mencet shift, isSprinting set ke false
             isSprinting = false;
         }
+        
+        if(energy<=0){
+            onTired = true;
+        }
+        if(onTired){
+            onTiredTimer -= Time.deltaTime;
+            if(onTiredTimer <= 0){
+                onTired = false;
+                onTiredTimer = 1f;
+            }
+        }
         rb.velocity = move * speed * accelStart;
         if(isSprinting){ // kalau ngeshift. maka accelerate
             if(accelStart <  accelLimit) accelStart +=  Time.deltaTime;
-            if(energy >= 0) energy -= Time.deltaTime;
+            if(energy >= 0 && move.x > 0) energy -= Time.deltaTime;
             
         }
         else{ // kalau ga ngeshift, maka deccelerate
             if(accelStart > 1) accelStart -= Time.deltaTime;
-            if(energy <= maxEnergy) energy += Time.deltaTime;
+            if(energy <= maxEnergy && !onTired) energy += Time.deltaTime;
         }
     }
 }
