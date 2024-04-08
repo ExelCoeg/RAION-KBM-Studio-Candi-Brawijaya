@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    float energy;
+    [SerializeField] float maxEnergy =5f;
+
     [Header("Speed & Acceleration")]
     [SerializeField] float defaultSpeed = 5f;
     [SerializeField] float accelLimit;
@@ -17,7 +20,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start() {
         speed = defaultSpeed;
+        energy = maxEnergy;
     }
+
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -31,9 +38,12 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = move * speed * accelStart;
         if(isSprinting){ // kalau ngeshift. maka accelerate
             if(accelStart <  accelLimit) accelStart +=  Time.deltaTime;
+            if(energy >= 0) energy -= Time.deltaTime;
+            
         }
         else{ // kalau ga ngeshift, maka deccelerate
             if(accelStart > 1) accelStart -= Time.deltaTime;
+            if(energy <= maxEnergy) energy += Time.deltaTime;
         }
     }
 }
