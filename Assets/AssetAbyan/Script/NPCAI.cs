@@ -3,6 +3,7 @@ using System.Collections;
 using JetBrains.Annotations;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public enum Status
@@ -12,43 +13,47 @@ public enum Status
 public class NPCAI : MonoBehaviour
 {
     [SerializeField] Points points;
-
+    [SerializeField] GameObject bow;
+    [SerializeField] GameObject newBow;
+    [SerializeField] Collider2D objekInRange;
+ 
     [SerializeField] bool isIdle;
     [SerializeField] bool isNight;//Ketika mengejar sesuatu tidak akan berhenti untuk idle(bisa juga kalau pas malam biar NPC balik ke base tanpa ada idle random)
-    [SerializeField] bool c;
+    public bool enemyInRange;
 
     [SerializeField]private int movSpeed;
+    [SerializeField]private int defaultMovSpeed;
     [SerializeField]private int direction = 1;
     [SerializeField]private float maksIdleTime;
     [SerializeField]private int idleDelay;
     [SerializeField] float movementTimer;
-
-
 
     [SerializeField]private float hp;
     [SerializeField]private float damage;
     [SerializeField]private float miningProduct;
 
 
-    [SerializeField]LayerMask coinLayer;
+    [SerializeField]LayerMask enemyLayer;
     [SerializeField]float overLapRadius;
     [SerializeField]Status status;
     
-
-    
     private Rigidbody2D rb;
     private Transform currentPoint;//point that NPC go
+    private void Awake() {
+        
+    }
 
     private void Start()
     {
+        movSpeed = defaultMovSpeed;
         ChangeStatus(Status.Vegrant);  
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (rb.velocity.x == 0){isIdle = true; 
-        }else {isIdle = false;}
+        // if (rb.velocity.x == 0){isIdle = true; 
+        // }else {isIdle = false;}
 
         NPCDirection();
         ChangePoint();
@@ -59,9 +64,10 @@ public class NPCAI : MonoBehaviour
             case Status.Vegrant:
                 break;
             case Status.Villager:
-                minig();
+                mining();
                 break;
             case Status.Archer:
+                //Shoot();
                 break;
             case Status.Knight:
                 break;
@@ -84,9 +90,19 @@ public class NPCAI : MonoBehaviour
             case Status.Vegrant:
                 points.NPCCount--;
                 this.status = status;
-                points = PointManager.instance.getPoint(PointsNames.LeftVegrant);// nanti rencananya ada pembagian left sama rightnya
+                if (PointManager.instance.getPoint(PointsNames.LeftVegrant).NPCCount <= PointManager.instance.getPoint(PointsNames.RightVegrant).NPCCount)
+                {
+                    points = PointManager.instance.getPoint(PointsNames.LeftVegrant);// nanti rencananya ada pembagian left sama rightnya
+                }else{
+                    points = PointManager.instance.getPoint(PointsNames.RightVegrant);
+                }
                 points.NPCCount++;
+                
                 SetPoint(points.pointA);
+                if (newBow != null)
+                {
+                    Destroy(newBow);   
+                }
                 break;
             case Status.Villager:
                 points.NPCCount--;
@@ -94,10 +110,21 @@ public class NPCAI : MonoBehaviour
                 points = PointManager.instance.getPoint(PointsNames.Villager);
                 points.NPCCount++;
                 SetPoint(points.pointA);
+                if (newBow != null)
+                {
+                    Destroy(newBow);   
+                }
                 break;
             case Status.Archer:
+                points.NPCCount--;
                 this.status = status;
-                points = PointManager.instance.getPoint(PointsNames.LeftArcher);
+                points = PointManager.instance.getPoint(PointsNames.LeftArcher);//nanti rencananya bakal kalkulate
+                points.NPCCount++;
+                if (newBow == null)
+                {
+                    newBow = Instantiate(bow, transform.position, Quaternion.identity);
+                    newBow.transform.parent = transform;
+                }
                 break;
             default:
                 break;
@@ -120,8 +147,9 @@ public class NPCAI : MonoBehaviour
 
         if (movementTimer >= RandomNumGen(3,5))
         {
-            Debug.Log("idle");
-            StartCoroutine(NPCIdleForSec(0.5f,5f));
+            StartCoroutine(NPCIdleForSec(1f,3f));
+            movementTimer = 0;
+        }else if(isIdle){
             movementTimer = 0;
         }
 
@@ -135,13 +163,22 @@ public class NPCAI : MonoBehaviour
             direction = 1;
         }
     }
+    public void Idle(Boolean isIdle){
+        if (isIdle)
+        {
+            this.isIdle = true;
+            movSpeed = 0;
+        }else{
+            this.isIdle = false;
+            movSpeed = defaultMovSpeed;
+        }
+    }
     IEnumerator NPCIdleForSec(float min, float max){
         if (rb.velocity.x != 0 && !isNight)
         {
-            int movSpeed = this.movSpeed;
-            this.movSpeed = 0;
+            Idle(true);
             yield return new WaitForSeconds(RandomNumGen(min,max));
-            this.movSpeed = movSpeed;
+            Idle(false);
         }
     }
     //===============================================================-HP-=====================================================================================
@@ -153,11 +190,11 @@ public class NPCAI : MonoBehaviour
         }
     }
     //===============================================================-Villager-===============================================================================
-    public void minig(){// di update ketika kondisi kita adalah villager
+    public void mining(){// di update ketika kondisi kita adalah villager
         //panggil animasi
         if (isIdle)
         {
-            miningProduct +=Time.deltaTime;
+            miningProduct +=Time.deltaTime;// jadi nanti sistem miningnya base on time dia mining
             //panggil objek mining untuk menambah point
             //mengaktifkan mining animation
         }
@@ -167,26 +204,41 @@ public class NPCAI : MonoBehaviour
         }
     }
     //============================================================-Archer====================================================================================
-
+    public void archerSet(){
+        
+    }
+    //============================================================-Knight-====================================================================================
+    public void knightSe(){
+        
+    }
     //========================================================================================================================================================
     private void CheckSurrounding(){
-        Collider2D objectInfo = Physics2D.OverlapCircle(transform.position, overLapRadius,coinLayer);
-        if (objectInfo != null && objectInfo.tag == "coin")
-        {
-            //muncul tombol
-            //tombol bakal ngerubah status is objekInfo
-            SetPoint(objectInfo.transform);
-        }
+        // objekInRange = Physics2D.OverlapCircle(transform.position, overLapRadius,enemyLayer);
+        // //Debug.Log(objekInRange.name);
+        // if (objekInRange != null && objekInRange.tag == "enemy")
+        // {  
+        //     //Debug.Log(bow.name);
+        //     enemyInRange = true;
+        //     bow.GetComponent<Bow>().getEnemy(objekInRange);
+        // }else{
+        //     enemyInRange = false;
+        //     //bow.GetComponent<Bow>().getEnemy(null);
+        // }    
     }
-    private void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(transform.position,overLapRadius);
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.DrawWireSphere(transform.position,overLapRadius);
+    // }
     //========================================================================================================================================================
     private void OnTriggerEnter2D(Collider2D objectInfo) {// nanti ini ada opsi buat pekerjaannya
         if (objectInfo.tag == "coin")
         {
             Destroy(objectInfo.gameObject);
             ChangeStatus(Status.Villager);
+        }
+        if (objectInfo.tag == "bow")
+        {
+            Destroy(objectInfo.gameObject);
+            ChangeStatus(Status.Vegrant);
         }
     }
     //=======================================================-Animation-======================================================================================
