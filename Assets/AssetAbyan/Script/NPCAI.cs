@@ -15,7 +15,7 @@ public class NPCAI : MonoBehaviour
     [SerializeField] Points points;
     [SerializeField] GameObject bow;
     [SerializeField] GameObject newBow;
-    [SerializeField] Collider2D objekInRange;
+    [SerializeField] Collider2D objectInRange;
  
     [SerializeField] bool isIdle;
     [SerializeField] bool isNight;//Ketika mengejar sesuatu tidak akan berhenti untuk idle(bisa juga kalau pas malam biar NPC balik ke base tanpa ada idle random)
@@ -26,7 +26,9 @@ public class NPCAI : MonoBehaviour
     [SerializeField]private int direction = 1;
     [SerializeField]private float maksIdleTime;
     [SerializeField]private int idleDelay;
-    [SerializeField] float movementTimer;
+    [SerializeField]float movementTimer;
+    [SerializeField]float attackTimer;
+    [SerializeField]float attackDelay;
 
     [SerializeField]private float hp;
     [SerializeField]private float damage;
@@ -70,6 +72,7 @@ public class NPCAI : MonoBehaviour
                 //Shoot();
                 break;
             case Status.Knight:
+                KnightAttack();
                 break;
             default:
                 break;
@@ -120,11 +123,14 @@ public class NPCAI : MonoBehaviour
                 this.status = status;
                 points = PointManager.instance.getPoint(PointsNames.LeftArcher);//nanti rencananya bakal kalkulate
                 points.NPCCount++;
+                SetPoint(points.pointA);
                 if (newBow == null)
                 {
                     newBow = Instantiate(bow, transform.position, Quaternion.identity);
                     newBow.transform.parent = transform;
                 }
+                break;
+            case Status.Knight:
                 break;
             default:
                 break;
@@ -208,37 +214,43 @@ public class NPCAI : MonoBehaviour
         
     }
     //============================================================-Knight-====================================================================================
-    public void knightSe(){
+    public void knightSet(){
         
+    }
+    public void KnightAttack(){
+        attackTimer = Time.deltaTime;
+        if (enemyInRange && attackTimer >= attackDelay)
+        {
+            Destroy(objectInRange.gameObject);
+        }else if(attackTimer >= attackDelay){
+            attackTimer = attackDelay;
+        }
     }
     //========================================================================================================================================================
     private void CheckSurrounding(){
-        // objekInRange = Physics2D.OverlapCircle(transform.position, overLapRadius,enemyLayer);
-        // //Debug.Log(objekInRange.name);
-        // if (objekInRange != null && objekInRange.tag == "enemy")
-        // {  
-        //     //Debug.Log(bow.name);
-        //     enemyInRange = true;
-        //     bow.GetComponent<Bow>().getEnemy(objekInRange);
-        // }else{
-        //     enemyInRange = false;
-        //     //bow.GetComponent<Bow>().getEnemy(null);
-        // }    
+        objectInRange = Physics2D.OverlapCircle(transform.position, overLapRadius,enemyLayer);
+        //Debug.Log(objectInRange.name);
+        if (objectInRange != null && objectInRange.tag == "Enemy")
+        {  
+            enemyInRange = true;
+        }else{
+            enemyInRange = false;
+        }    
     }
-    // private void OnDrawGizmos() {
-    //     Gizmos.DrawWireSphere(transform.position,overLapRadius);
-    // }
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(transform.position,overLapRadius);
+    }
     //========================================================================================================================================================
     private void OnTriggerEnter2D(Collider2D objectInfo) {// nanti ini ada opsi buat pekerjaannya
-        if (objectInfo.tag == "coin")
+        if (objectInfo.tag == "Coin")
         {
             Destroy(objectInfo.gameObject);
             ChangeStatus(Status.Villager);
         }
-        if (objectInfo.tag == "bow")
+        if (objectInfo.tag == "Bow")
         {
             Destroy(objectInfo.gameObject);
-            ChangeStatus(Status.Vegrant);
+            ChangeStatus(Status.Archer);
         }
     }
     //=======================================================-Animation-======================================================================================

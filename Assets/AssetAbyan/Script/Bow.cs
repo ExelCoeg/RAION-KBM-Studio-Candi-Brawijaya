@@ -81,7 +81,7 @@ public class Bow : MonoBehaviour
     }
     private void CheckSurrounding(){
         objectInRange = Physics2D.OverlapCircle(transform.position, overLapRadius,enemyLayer);
-        if (objectInRange != null && objectInRange.tag == "enemy")
+        if (objectInRange != null && objectInRange.tag == "Enemy")
         {  
             parent.GetComponent<NPCAI>().Idle(true);
             enemy = objectInRange.transform;

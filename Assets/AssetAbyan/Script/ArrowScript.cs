@@ -24,11 +24,11 @@ public class ArrowScript : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision){
        // Debug.Log(collision.name);
-        if (collision.gameObject.CompareTag("enemy")){
+        if (collision.gameObject.CompareTag("Enemy")){
             Destroy(collision.gameObject);//nanti bakal manggil method yang ada collisionnya
-        }else if (collision.gameObject.CompareTag("ground"))
+        }else if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("ground");
+            Debug.Log("Ground");
             isHit = true;
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;
