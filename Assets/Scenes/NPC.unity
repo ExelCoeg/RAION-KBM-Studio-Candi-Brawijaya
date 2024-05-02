@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 656934137}
   m_Layer: 3
   m_Name: Circle (1)
-  m_TagString: enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 1954798246}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,7 +1416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5883591800352899757, guid: 35561ff904633904697f80074e6760c2, type: 3}
       propertyPath: m_TagString
-      value: coin
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8265700558363417400, guid: 35561ff904633904697f80074e6760c2, type: 3}
       propertyPath: m_LocalPosition.x
