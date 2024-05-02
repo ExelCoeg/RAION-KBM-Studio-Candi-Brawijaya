@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - coin
+  - enemy
+  - ground
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -12,11 +15,11 @@ TagManager:
   - Collectible
   - Water
   - UI
+  - Arrow
   - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Enemy
+  - NPC
   - 
   - 
   - 

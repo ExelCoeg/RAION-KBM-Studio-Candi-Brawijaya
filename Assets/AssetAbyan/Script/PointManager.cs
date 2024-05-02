@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PointsNames
 {
-    PoorLeft, PoorRight, Villager, LeftDefence, RightDefence,
+    LeftVegrant, RightVegrant, Villager, LeftArcher, RightArcher, Knight
 }
 [Serializable]
 public class Points
@@ -28,10 +28,6 @@ public class PointManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        // for (int i = 0; i < points.Count; i++)
-        // {
-        //     points[i] = new Points();
-        // }
     }
     public Points getPoint(PointsNames targetPointName)
     {// search point that match with parameter
