@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6405476749089240341}
   m_Layer: 3
   m_Name: Circle
-  m_TagString: bow
+  m_TagString: Bow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
