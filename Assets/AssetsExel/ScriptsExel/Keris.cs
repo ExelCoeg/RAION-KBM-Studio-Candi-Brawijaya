@@ -1,14 +1,16 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Keris : MonoBehaviour
 {
     [SerializeField] GameObject petir;
-    public int lifeEssence = 0;
-    bool petirAvailable = true;
-    public float petirCooldown;
-    float petirCooldownMax = 15f;
-    Vector3 mousePos;
+    private int lifeEssence = 0;
+    private bool petirAvailable = true;
+    private float petirCooldown;
+    [SerializeField] float petirCooldownMax = 15f;
+    public float petirOffset = 2f;
+    [SerializeField] Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +21,12 @@ public class Keris : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         petirCooldown -= Time.deltaTime;
         // petirAvailable = lifeEssence >= 10 && petirCooldown <= 0;
         if(Input.GetKeyDown(KeyCode.Space) && petirAvailable){
             // panggil fungsi petir
-            Petir(new Vector3(mousePos.x,0.5f));
+            Petir(new Vector3(mousePos.x + petirOffset, 0.5f));
             ResetPetirCooldown();
         }
     }
@@ -37,11 +38,15 @@ public class Keris : MonoBehaviour
 
     public void Petir(Vector3 pos){ 
         print("Keris summoning thunderstorm");
-        petir = Instantiate(petir, pos, Quaternion.identity);
+        GameObject petirClone = Instantiate(petir, pos, Quaternion.identity);
         
     }
     public void ResetPetirCooldown(){
         petirCooldown = petirCooldownMax;
+    }
+
+    public void AddLifeEssence(int amount){
+        lifeEssence += amount;
     }
 }
 

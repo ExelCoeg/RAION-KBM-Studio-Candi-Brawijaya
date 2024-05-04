@@ -4,7 +4,6 @@ public class PlayerMovement : MonoBehaviour
 {
     float energy;
     [SerializeField] float maxEnergy = 3f;
-    float energyRegen;
     
 
     [Header("Speed & Acceleration")]
@@ -25,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
         speed = defaultSpeed;
         energy = maxEnergy;
     }
-
-    
 
     // Update is called once per frame
     void Update()
