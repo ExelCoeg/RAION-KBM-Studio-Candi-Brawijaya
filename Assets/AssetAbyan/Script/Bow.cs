@@ -15,7 +15,7 @@ public class Bow : MonoBehaviour
     public Transform enemy;
 
     [SerializeField] Collider2D objectInRange;
-
+    [SerializeField] Animator animator;
     [SerializeField]LayerMask enemyLayer;
     [SerializeField]float overLapRadius;
     [SerializeField]Status status;
@@ -23,19 +23,20 @@ public class Bow : MonoBehaviour
     public Boolean enemyInRange;
 
     public float timer;
-    public float angel;
+    public float angle;
     public float vo;
     // Start is called before the first frame update
     void Start()
     {
         arrowRb = arrow.GetComponent<Rigidbody2D>();
         parent = transform.parent.gameObject;
+        animator = parent.GetComponent<NPCAI>().animator;
     }
 
     void Update()
     {
         //enemyInRange = parent.GetComponent<NPCAI>().enemyInRange;
-        bowRotation();
+        BowRotation();
         CheckSurrounding();
         //Debug.Log(enemy.transform.position);
         if (enemyInRange)
@@ -53,15 +54,16 @@ public class Bow : MonoBehaviour
         GameObject newArrow = Instantiate(arrow, shotPoint.position, transform.rotation);
         newArrow.GetComponent<Rigidbody2D>().velocity = transform.right * vo;
     }
-    public void bowRotation()
+    public void BowRotation()
     {
-        float angle = calculateAngle();
+        angle = CalculateAngle();
         if (!float.IsNaN(angle))//cek apakah angle Nan atau tidak(dapat menjadi NaN ketika target berada di luar jarak)
         {
             transform.eulerAngles = new Vector3(0, 0, angle);
+            animator.SetFloat("aimingDegree", angle);
         }
     }
-    public float calculateAngle()
+    public float CalculateAngle()
     {
         if (enemyInRange && enemy != null)
         {
@@ -84,10 +86,12 @@ public class Bow : MonoBehaviour
         if (objectInRange != null && objectInRange.tag == "Enemy")
         {  
             parent.GetComponent<NPCAI>().Idle(true);
+            
             enemy = objectInRange.transform;
             enemyInRange = true;
-        }else{
+        }else if (enemyInRange){
             parent.GetComponent<NPCAI>().Idle(false);
+            
             enemy = null;
             enemyInRange = false;
         }    
