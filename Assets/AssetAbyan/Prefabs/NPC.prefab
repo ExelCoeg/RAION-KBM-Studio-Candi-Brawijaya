@@ -221,9 +221,10 @@ MonoBehaviour:
   maxIdleTime: 2
   miningTimer: 0
   miningTimeToCoin: 2
-  inRangeCheck: {fileID: 2873917422663615908}
-  overLapDetected: 0
+  overLapKnightDetected: 0
   overLapInRange: 0.5
+  inRangeCheck: {fileID: 2873917422663615908}
+  overLapDetected: -33
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512

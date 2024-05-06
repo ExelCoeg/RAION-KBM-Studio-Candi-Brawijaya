@@ -45,11 +45,17 @@ public class NPCAI : MonoBehaviour
     [Header("Villager")]
     [SerializeField] private float miningTimer;
     [SerializeField] private float miningTimeToCoin;
+
+    [Header("Scan Surrounding")]
+    [SerializeField] public float overLapKnightDetected;
+    [SerializeField] float overLapInRange;
+
     [Header("Scan Surrounding")]
     [SerializeField] private Transform inRangeCheck;//posisi untuk Scan surrounding
-    [SerializeField] float overLapDetected;
-    [SerializeField] float overLapInRange;
+    [SerializeField] public float overLapDetected;
     [SerializeField] LayerMask enemyLayer;
+
+
 
     private Rigidbody2D rb;
     private Transform currentPoint;//point that NPC go
@@ -62,9 +68,9 @@ public class NPCAI : MonoBehaviour
     }
 
     private void Update(){
+        CheckSurrounding();
         NPCDirection();
         ChangePoint();
-        CheckSurrounding();
         setAnimationParameter();
         flip();
 
@@ -145,6 +151,8 @@ public class NPCAI : MonoBehaviour
                 if (newBow == null){
                     newBow = Instantiate(bow, transform.position, Quaternion.identity);
                     newBow.transform.parent = transform;
+                    newBow.transform.localScale = bow.transform.localScale;
+                    newBow.GetComponent<Bow>().parent = gameObject;
                 }
                 SetIdle(3,5,1,2);
                 statusInt = 2;
@@ -160,6 +168,7 @@ public class NPCAI : MonoBehaviour
                     Destroy(newBow);
                 }
                 SetIdle(3,5,1,2);
+                overLapDetected = overLapKnightDetected;
                 statusInt = 3;
                 break;
             default:
@@ -199,10 +208,10 @@ public class NPCAI : MonoBehaviour
     private void NPCDirection(){
         if (currentPoint != null){
             if (transform.position.x > currentPoint.position.x){
-            direction = -1;
+                direction = -1;
             }
             else{
-            direction = 1;
+                direction = 1;
             }
         }
         
@@ -243,6 +252,9 @@ public class NPCAI : MonoBehaviour
 
     }
     //============================================================-Knight-====================================================================================
+    public void KnightSet(){
+        
+    }
     public void KnightAttack(){
 
     }
@@ -253,6 +265,7 @@ public class NPCAI : MonoBehaviour
 
         if (objectDetected != null && objectDetected.tag == "Enemy"){
             SetPoint(objectDetected.transform);
+            Debug.Log(currentPoint.name);
             enemyDetected = true;
         }else if(enemyDetected){
             currentPoint = points.pointA;
