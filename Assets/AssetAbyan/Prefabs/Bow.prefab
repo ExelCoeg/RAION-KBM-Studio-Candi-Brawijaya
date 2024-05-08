@@ -129,18 +129,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063594de5e27a714f906950099007d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPoint: {fileID: 5243834962209428449}
+  shootPoint: {fileID: 5243834962209428449}
   arrow: {fileID: 8256952756275982944, guid: 203a7acb5962c6d4ca5a307e204d2318, type: 3}
   parent: {fileID: 0}
   arrowRb: {fileID: 0}
   enemy: {fileID: 0}
   objectInRange: {fileID: 0}
+  animator: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  overLapRadius: 20
+  overLapRadius: 30
   status: 0
   enemyInRange: 0
   timer: 0
-  angel: 0
+  angle: 0
   vo: 40
