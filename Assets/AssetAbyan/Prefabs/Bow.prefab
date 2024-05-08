@@ -139,7 +139,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  overLapRadius: 15
+  overLapRadius: 30
   status: 0
   enemyInRange: 0
   timer: 0

@@ -35,7 +35,7 @@ public class Bow : MonoBehaviour
 
     void Update()
     {
-        CalculatePower();
+        //CalculatePower();
         //enemyInRange = parent.GetComponent<NPCAI>().enemyInRange;
         BowRotation();
         CheckSurrounding();

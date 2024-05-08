@@ -1,12 +1,6 @@
 using System;
 using System.Collections;
-using System.Data.Common;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager.Requests;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 //problem 
 //Villager ketika tidak di lokasi mining maka belum ada Idlenya
@@ -16,6 +10,9 @@ public enum Status
 }
 public class NPCAI : MonoBehaviour
 {
+
+    private NPCManager npcManager;
+    private PointManager pointManager;
     [Header("Status Info")]
     [SerializeField] Status status;
     [SerializeField] int statusInt;
@@ -61,14 +58,17 @@ public class NPCAI : MonoBehaviour
     private Transform currentPoint;//point that NPC go
 
     private void Start(){
+        npcManager = NPCManager.instance;
+        pointManager = PointManager.instance;
+        npcManager.NPCCount(status,1);
         rb = GetComponent<Rigidbody2D>();
-        ChangeStatus(Status.Vegrant);
+        VegrantSet();
+        // ChangeStatus(Status.Vegrant);
         movSpeed = defaultMovSpeed;
         isMining = false;
     }
 
     private void Update(){
-        CheckSurrounding();
         NPCDirection();
         ChangePoint();
         setAnimationParameter();
@@ -81,9 +81,12 @@ public class NPCAI : MonoBehaviour
                 Mining();
                 break;
             case Status.Archer:
+                CheckEnemyDetected();
                 //Shoot();
                 break;
             case Status.Knight:
+                CheckEnemyDetected();
+                CheckEnemyInRange();
                 KnightAttack();
                 break;
             default:
@@ -93,88 +96,25 @@ public class NPCAI : MonoBehaviour
     private void FixedUpdate(){
         NPCMovement();
     }
-    private float RandomNumGen(float min, float max){return UnityEngine.Random.Range(min, max);
-    }
+    private float RandomNumGen(float min, float max){return UnityEngine.Random.Range(min, max);}
     //========================================================================================================================================================
     // pada kode ini nantinya akan mengubah points ssuai dengan status dan akan ada kode untuk menyeimbangkan jumlah NPC pada point tertentur
 
     public Points SetPlace(PointsNames left, PointsNames right){
-        if (PointManager.instance.getPoint(left).NPCCount <= PointManager.instance.getPoint(right).NPCCount){
-            return PointManager.instance.getPoint(left);// nanti rencananya ada pembagian left sama rightnya
+        if (pointManager.getPoint(left).NPCCount <= pointManager.getPoint(right).NPCCount){
+            return pointManager.getPoint(left);// nanti rencananya ada pembagian left sama rightnya
         }else{
-            return PointManager.instance.getPoint(right);
+            return pointManager.getPoint(right);
         }
     }
 
-    public void SetIdle(float minDelay,float maxDelay,float minTime,float maxTime){
-        minIdleDelay = minDelay;
-        maxIdleDelay = maxDelay;
-        minIdleTime = minTime;
-        maxIdleTime = maxTime;
+    public void SetIdle(float[] idleSet){
+        minIdleDelay = idleSet[0];
+        maxIdleDelay = idleSet[1];
+        minIdleTime = idleSet[2];
+        maxIdleTime = idleSet[3];
     }
 
-    public void ChangeStatus(Status status){
-        switch (status){
-            case Status.Vegrant:
-                animator.Play("VegrantIdle");
-                points.NPCCount--;
-                this.status = status;
-                points = SetPlace(PointsNames.LeftVegrant,PointsNames.RightVegrant);
-                points.NPCCount++;
-                SetPoint(points.pointA);
-                if (newBow != null){
-                    Destroy(newBow);
-                }
-                SetIdle(3,5,1,2);
-                statusInt = 0;
-                break;
-            case Status.Villager:
-                animator.Play("VillagerIdle");
-                points.NPCCount--;
-                this.status = status;
-                points = PointManager.instance.getPoint(PointsNames.Villager);
-                points.NPCCount++;
-                SetPoint(points.pointA);
-                if (newBow != null){
-                    Destroy(newBow);
-                }
-                SetIdle(1,2,5,10);
-                statusInt = 1;
-                break;
-            case Status.Archer:
-                animator.Play("ArcherIdle");
-                points.NPCCount--;
-                this.status = status;
-                points = PointManager.instance.getPoint(PointsNames.LeftArcher);//nanti rencananya bakal kalkulate
-                points.NPCCount++;
-                SetPoint(points.pointA);
-                if (newBow == null){
-                    newBow = Instantiate(bow, transform.position, Quaternion.identity);
-                    newBow.transform.parent = transform;
-                    newBow.transform.localScale = bow.transform.localScale;
-                    newBow.GetComponent<Bow>().parent = gameObject;
-                }
-                SetIdle(3,5,1,2);
-                statusInt = 2;
-                break;
-            case Status.Knight:
-                animator.Play("KnightIdle");
-                points.NPCCount--;
-                this.status = status;
-                points = PointManager.instance.getPoint(PointsNames.Knight);//nanti rencananya bakal kalkulate
-                points.NPCCount++;
-                SetPoint(points.pointA);
-                if (newBow != null){
-                    Destroy(newBow);
-                }
-                SetIdle(3,5,1,2);
-                overLapDetected = overLapKnightDetected;
-                statusInt = 3;
-                break;
-            default:
-                break;
-        }
-    }
     public void ChangePoint(){
         if (currentPoint == points.pointA && math.abs(currentPoint.position.x - rb.position.x) <= 0.5){
             SetPoint(points.pointB);
@@ -185,6 +125,111 @@ public class NPCAI : MonoBehaviour
     }
     public void SetPoint(Transform transform){
         currentPoint = transform;//current point adalah poin dari tujuan NPC
+    }
+    public void DefaultCondition(){
+        enemyDetected = false;
+        enemyInRange = false;
+        isMining = false;
+        Idle(false);
+    }
+    //===============================================================-Vegrant-===============================================================================
+    public void VegrantSet(){
+        points.NPCCount--;
+        npcManager.NPCCount(status,-1);
+        this.status = Status.Vegrant;
+        statusInt = 0;
+        points = SetPlace(PointsNames.LeftVegrant, PointsNames.RightVegrant);
+        points.NPCCount++;
+        npcManager.NPCCount(status,1);
+        SetPoint(points.pointA);
+        if (newBow != null)
+        {
+            Destroy(newBow);
+        }
+        animator.Play("VegrantIdle");
+        DefaultCondition();
+    }
+    public void VegrantAdjust(){
+        SetIdle(npcManager.vegrantIdleSet);
+        overLapDetected = npcManager.vegrantDetection;
+    }
+    
+    //===============================================================-Villager-===============================================================================
+    public void VillagerSet(){
+        points.NPCCount--;
+        npcManager.NPCCount(status,-1);
+        this.status = Status.Villager;
+        statusInt = 1;
+        points = pointManager.getPoint(PointsNames.Villager);
+        points.NPCCount++;
+        npcManager.NPCCount(status,1);
+        SetPoint(points.pointA);
+        if (newBow != null)
+        {
+            Destroy(newBow);
+        }
+
+        animator.Play("VillagerIdle");
+        SetIdle(npcManager.villagerIdleSet);
+        overLapDetected = 5;
+        DefaultCondition();
+    }
+    public void Mining(){// di update ketika kondisi kita adalah villager
+        //panggil animasi
+        if (isIdle){
+            miningTimer += Time.deltaTime;// jadi nanti sistem miningnya base on time dia mining
+            isMining = true;
+        }else{
+            isMining = false;
+        }
+        if (miningTimer >= miningTimeToCoin){//waktu untuk menghasilkan 1 koin 
+            Debug.Log("! Coin Collected");
+            miningTimer = 0;
+        }
+    }
+    //============================================================-Archer====================================================================================
+    public void ArcherSet(){
+        points.NPCCount--;
+        npcManager.NPCCount(status,-1);
+        this.status = Status.Archer;
+        statusInt = 2;
+        points = pointManager.getPoint(PointsNames.LeftArcher);//nanti rencananya bakal kalkulate
+        points.NPCCount++;
+        npcManager.NPCCount(status,1);
+        SetPoint(points.pointA);
+
+        animator.Play("ArcherIdle");
+        if (newBow == null){
+            newBow = Instantiate(bow, transform.position, Quaternion.identity);
+            newBow.transform.parent = transform;
+            newBow.transform.localScale = bow.transform.localScale;
+            newBow.GetComponent<Bow>().parent = gameObject;
+        }
+        SetIdle(npcManager.archerIdleSet);
+        DefaultCondition();
+    }
+    //============================================================-Knight-====================================================================================
+    public void KnightSet(){
+        points.NPCCount--;
+        npcManager.NPCCount(status,-1);
+        this.status = Status.Knight;
+        statusInt = 3;
+        points = pointManager.getPoint(PointsNames.Knight);//nanti rencananya bakal kalkulate
+        points.NPCCount++;
+        npcManager.NPCCount(status,1);
+        SetPoint(points.pointA);
+        if (newBow != null)
+        {
+            Destroy(newBow);
+        }
+        animator.Play("KnightIdle");
+        SetIdle(npcManager.knigtIdleSet);
+        overLapDetected = overLapKnightDetected;
+        overLapDetected = 20;
+        DefaultCondition();
+    }
+    public void KnightAttack(){
+
     }
     //============================================================-Movement-============================================================================================
     private void NPCMovement(){
@@ -233,35 +278,9 @@ public class NPCAI : MonoBehaviour
             Idle(false);
         }
     }
-    //===============================================================-Villager-===============================================================================
-    public void Mining(){// di update ketika kondisi kita adalah villager
-        //panggil animasi
-        if (isIdle){
-            miningTimer += Time.deltaTime;// jadi nanti sistem miningnya base on time dia mining
-            isMining = true;
-        }else{
-            isMining = false;
-        }
-        if (miningTimer >= miningTimeToCoin){//waktu untuk menghasilkan 1 koin 
-            Debug.Log("! Coin Collected");
-            miningTimer = 0;
-        }
-    }
-    //============================================================-Archer====================================================================================
-    public void ArcherSet(){
-
-    }
-    //============================================================-Knight-====================================================================================
-    public void KnightSet(){
-        
-    }
-    public void KnightAttack(){
-
-    }
     //========================================================================================================================================================
-    private void CheckSurrounding(){
+    private void CheckEnemyDetected(){
         objectDetected = Physics2D.OverlapCircle(transform.position, overLapDetected, enemyLayer);
-        objectInRange = Physics2D.OverlapCircle(inRangeCheck.position, overLapInRange, enemyLayer);
 
         if (objectDetected != null && objectDetected.tag == "Enemy"){
             SetPoint(objectDetected.transform);
@@ -271,6 +290,10 @@ public class NPCAI : MonoBehaviour
             currentPoint = points.pointA;
             enemyDetected = false;
         }
+
+    }
+    private void CheckEnemyInRange(){
+        objectInRange = Physics2D.OverlapCircle(inRangeCheck.position, overLapInRange, enemyLayer);
 
         if (objectInRange != null && objectInRange.tag == "Enemy"){
             Idle(true);
@@ -289,15 +312,16 @@ public class NPCAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D objectInfo){// nanti ini ada opsi buat pekerjaannya
         if (objectInfo.tag == "Coin"){
             Destroy(objectInfo.gameObject);
-            ChangeStatus(Status.Villager);
+            VillagerSet();
         }
         if (objectInfo.tag == "Bow"){
             Destroy(objectInfo.gameObject);
-            ChangeStatus(Status.Archer);
+            ArcherSet();
         }
         if (objectInfo.tag == "Sword"){
             Destroy(objectInfo.gameObject);
-            ChangeStatus(Status.Knight);
+            KnightSet();
+            
         }
     }
     //=======================================================-Animatio  ==============================================================
