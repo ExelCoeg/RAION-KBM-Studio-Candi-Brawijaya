@@ -224,7 +224,7 @@ MonoBehaviour:
   overLapKnightDetected: 0
   overLapInRange: 0.5
   inRangeCheck: {fileID: 2873917422663615908}
-  overLapDetected: -33
+  overLapDetected: -4.84
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512

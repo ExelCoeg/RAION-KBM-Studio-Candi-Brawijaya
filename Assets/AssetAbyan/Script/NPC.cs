@@ -1,0 +1,111 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEngine;
+
+public abstract class NPC : MonoBehaviour
+{
+    [Header("need to set")]
+    [SerializeField] public Animator animator;
+    [Header("Doesnt need to set")]
+    [Header("--Object Reference")]
+    protected NPCManager npcManager;
+    protected PointManager pointManager;
+    [SerializeField]protected Rigidbody2D rb;
+    protected Transform currentPoint;
+    [SerializeField] protected Points points;
+
+    [Header("--Condition")]
+    [SerializeField] protected bool isIdle;//pada NPC kondisi Idle bisa berbeda tergantung job masing masing
+    [Header("--Condition")]
+    protected float movementTimer;//timer untuk Idle
+    [SerializeField] protected float defaultMovSpeed;//Default Movement(supaya tidak perlu membuat temp)
+    [SerializeField] protected float movSpeed;//MovSpeed saat ini
+    [SerializeField] protected int direction;//Target
+    [SerializeField] private float minIdleDelay;//nilai minimal jeda Sebelum Idle
+    [SerializeField] private float maxIdleDelay;//nilai maksimal jeda Sebelum Idle
+    [SerializeField] private float minIdleTime;//waktu mininal NPC Idle
+    [SerializeField] private float maxIdleTime;//waktu maksimal NPC Idle
+
+    //========================================================================================================================================================
+    public void ChangePoint(){
+        if (currentPoint == points.pointA && math.abs(currentPoint.position.x - rb.position.x) <= 0.5){
+            SetPoint(points.pointB);
+        }
+        else if (currentPoint == points.pointB && math.abs(currentPoint.position.x - rb.position.x) <= 0.5){
+            SetPoint(points.pointA);
+        }
+    }
+    public Points SetPlace(PointsNames left, PointsNames right){
+        if (pointManager.getPoint(left).NPCCount <= pointManager.getPoint(right).NPCCount){
+            return pointManager.getPoint(left);// nanti rencananya ada pembagian left sama rightnya
+        }else{
+            return pointManager.getPoint(right);
+        }
+    }
+    public void SetPoint(Transform transform){
+        currentPoint = transform;//current point adalah poin dari tujuan NPC
+    }
+    public void SetIdle(float[] idleSet){
+        minIdleDelay = idleSet[0];
+        maxIdleDelay = idleSet[1];
+        minIdleTime = idleSet[2];
+        maxIdleTime = idleSet[3];
+    }
+    //========================================================================================================================================================
+    protected float RandomNumGen(float min, float max){return UnityEngine.Random.Range(min, max);}
+    //========================================================================================================================================================
+    protected void NPCMovement(){
+        rb.velocity = new Vector2(movSpeed * direction, rb.velocity.y);
+    }
+    protected void RandomIdle(){
+        if (points.pointA.position.x < transform.position.x || points.pointB.position.x > transform.position.x){
+            movementTimer += Time.deltaTime;
+            if (movementTimer >= RandomNumGen(minIdleDelay, maxIdleDelay))
+            {
+                StartCoroutine(NPCIdleForSec(RandomNumGen(minIdleTime, maxIdleTime)));
+                movementTimer = 0;
+            }
+            else if (isIdle)
+            {
+                movementTimer = 0;
+            }
+        }
+    }
+    protected void NPCDirection(){
+        if (currentPoint != null){
+            if (transform.position.x > currentPoint.position.x){
+                direction = -1;
+            }
+            else{
+                direction = 1;
+            }
+        }
+    }
+    public void Idle(Boolean isIdle){
+        if (isIdle){
+            this.isIdle = true;
+            movSpeed = 0;
+        }
+        else{
+            this.isIdle = false;
+            movSpeed = defaultMovSpeed;
+        }
+    }
+    IEnumerator NPCIdleForSec(float idleTime){
+        if (rb.velocity.x != 0){
+            Idle(true);
+            yield return new WaitForSeconds(idleTime);
+            Idle(false);
+        }
+    }
+    //========================================================================================================================================================
+    protected void flip(){
+        Vector3 scale = transform.localScale;
+        if (direction == -1 || direction == 1){
+            scale.x = direction;
+        }
+        transform.localScale = scale;
+    }
+}

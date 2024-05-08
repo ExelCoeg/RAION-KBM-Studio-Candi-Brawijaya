@@ -242,7 +242,7 @@ public class NPCAI : MonoBehaviour
         }
 
         movementTimer += Time.deltaTime;
-        if (movementTimer >= RandomNumGen(minIdleDelay, maxIdleDelay)){
+        if (movementTimer >= RandomNumGen(npcManager.villagerIdleSet[0], maxIdleDelay)){
             StartCoroutine(NPCIdleForSec(RandomNumGen(minIdleTime, maxIdleTime)));
             movementTimer = 0;
         }else if (isIdle){
