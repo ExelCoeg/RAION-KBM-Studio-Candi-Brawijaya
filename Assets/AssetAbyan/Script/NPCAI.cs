@@ -4,10 +4,6 @@ using Unity.Mathematics;
 using UnityEngine;
 //problem 
 //Villager ketika tidak di lokasi mining maka belum ada Idlenya
-public enum Status
-{
-    Vegrant, Villager, Archer, Knight
-}
 public class NPCAI : MonoBehaviour
 {
 
@@ -60,7 +56,7 @@ public class NPCAI : MonoBehaviour
     private void Start(){
         npcManager = NPCManager.instance;
         pointManager = PointManager.instance;
-        npcManager.NPCCount(status,1);
+        //npcManager.NPCCount(status,1);
         rb = GetComponent<Rigidbody2D>();
         VegrantSet();
         // ChangeStatus(Status.Vegrant);
@@ -135,12 +131,12 @@ public class NPCAI : MonoBehaviour
     //===============================================================-Vegrant-===============================================================================
     public void VegrantSet(){
         points.NPCCount--;
-        npcManager.NPCCount(status,-1);
+        //npcManager.NPCCount(status,-1);
         this.status = Status.Vegrant;
         statusInt = 0;
         points = SetPlace(PointsNames.LeftVegrant, PointsNames.RightVegrant);
         points.NPCCount++;
-        npcManager.NPCCount(status,1);
+        //npcManager.NPCCount(status,1);
         SetPoint(points.pointA);
         if (newBow != null)
         {
@@ -157,12 +153,12 @@ public class NPCAI : MonoBehaviour
     //===============================================================-Villager-===============================================================================
     public void VillagerSet(){
         points.NPCCount--;
-        npcManager.NPCCount(status,-1);
+        //npcManager.NPCCount(status,-1);
         this.status = Status.Villager;
         statusInt = 1;
         points = pointManager.getPoint(PointsNames.Villager);
         points.NPCCount++;
-        npcManager.NPCCount(status,1);
+        //npcManager.NPCCount(status,1);
         SetPoint(points.pointA);
         if (newBow != null)
         {
@@ -190,12 +186,12 @@ public class NPCAI : MonoBehaviour
     //============================================================-Archer====================================================================================
     public void ArcherSet(){
         points.NPCCount--;
-        npcManager.NPCCount(status,-1);
+        //npcManager.NPCCount(status,-1);
         this.status = Status.Archer;
         statusInt = 2;
         points = pointManager.getPoint(PointsNames.LeftArcher);//nanti rencananya bakal kalkulate
         points.NPCCount++;
-        npcManager.NPCCount(status,1);
+        //npcManager.NPCCount(status,1);
         SetPoint(points.pointA);
 
         animator.Play("ArcherIdle");
@@ -211,19 +207,19 @@ public class NPCAI : MonoBehaviour
     //============================================================-Knight-====================================================================================
     public void KnightSet(){
         points.NPCCount--;
-        npcManager.NPCCount(status,-1);
+        //npcManager.NPCCount(status,-1);
         this.status = Status.Knight;
         statusInt = 3;
         points = pointManager.getPoint(PointsNames.Knight);//nanti rencananya bakal kalkulate
         points.NPCCount++;
-        npcManager.NPCCount(status,1);
+        //npcManager.NPCCount(status,1);
         SetPoint(points.pointA);
         if (newBow != null)
         {
             Destroy(newBow);
         }
         animator.Play("KnightIdle");
-        SetIdle(npcManager.knigtIdleSet);
+        SetIdle(npcManager.knightIdleSet);
         overLapDetected = overLapKnightDetected;
         overLapDetected = 20;
         DefaultCondition();
