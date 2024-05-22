@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class NPCHealth : MonoBehaviour,IDamagable
 {
     [SerializeField] int maxHealth = 100;
-    public int health;
+    public int health {get;set;}
     private void Start() {
         health = maxHealth;
     }
