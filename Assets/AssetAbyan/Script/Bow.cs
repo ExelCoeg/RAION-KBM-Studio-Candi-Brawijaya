@@ -1,21 +1,18 @@
 using System;
-using System.Reflection;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Bow : MonoBehaviour
 {
 
-    public Transform shotPoint;
+    public Transform shootPoint;
     public GameObject arrow;
     public GameObject parent;
     public Rigidbody2D arrowRb;
     public Transform enemy;
 
     [SerializeField] Collider2D objectInRange;
-
+    [SerializeField] Animator animator;
     [SerializeField]LayerMask enemyLayer;
     [SerializeField]float overLapRadius;
     [SerializeField]Status status;
@@ -23,19 +20,24 @@ public class Bow : MonoBehaviour
     public Boolean enemyInRange;
 
     public float timer;
-    public float angel;
+    public float angle;
     public float vo;
     // Start is called before the first frame update
+    private void Awake() {
+        arrowRb = arrow.GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
-        arrowRb = arrow.GetComponent<Rigidbody2D>();
-        parent = transform.parent.gameObject;
+        //parent = GetComponentInParent<GameObject>();
+        animator = parent.GetComponent<NPCAI>().animator;
+        ChangeDistance(overLapRadius);
     }
 
     void Update()
     {
+        //CalculatePower();
         //enemyInRange = parent.GetComponent<NPCAI>().enemyInRange;
-        bowRotation();
+        BowRotation();
         CheckSurrounding();
         //Debug.Log(enemy.transform.position);
         if (enemyInRange)
@@ -50,18 +52,19 @@ public class Bow : MonoBehaviour
     }
     public void Shoot()
     {
-        GameObject newArrow = Instantiate(arrow, shotPoint.position, transform.rotation);
+        GameObject newArrow = Instantiate(arrow, shootPoint.position, transform.rotation);
         newArrow.GetComponent<Rigidbody2D>().velocity = transform.right * vo;
     }
-    public void bowRotation()
+    public void BowRotation()
     {
-        float angle = calculateAngle();
+        angle = CalculateAngle();
         if (!float.IsNaN(angle))//cek apakah angle Nan atau tidak(dapat menjadi NaN ketika target berada di luar jarak)
         {
             transform.eulerAngles = new Vector3(0, 0, angle);
+            animator.SetFloat("aimingDegree", angle);
         }
     }
-    public float calculateAngle()
+    public float CalculateAngle()
     {
         if (enemyInRange && enemy != null)
         {
@@ -79,15 +82,27 @@ public class Bow : MonoBehaviour
         }
         return 0;
     }
+    public float CalculatePower(){
+        //overLapRadius = ((vo*vo) * Mathf.Sin(90))/(10 * arrowRb.gravityScale);
+        return Mathf.Sqrt(overLapRadius * 10f * arrowRb.gravityScale);
+    }
+    public void ChangeDistance(float distance){
+        overLapRadius = distance;
+        vo = CalculatePower();
+        overLapRadius -=2;//dikurangi untuk memastikan musuh berada pada jarak tembak
+        parent.GetComponent<NPCAI>().overLapDetected = overLapRadius;
+    }
     private void CheckSurrounding(){
         objectInRange = Physics2D.OverlapCircle(transform.position, overLapRadius,enemyLayer);
         if (objectInRange != null && objectInRange.tag == "Enemy")
         {  
             parent.GetComponent<NPCAI>().Idle(true);
+
             enemy = objectInRange.transform;
             enemyInRange = true;
-        }else{
+        }else if (enemyInRange){
             parent.GetComponent<NPCAI>().Idle(false);
+            
             enemy = null;
             enemyInRange = false;
         }    
