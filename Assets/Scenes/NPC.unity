@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movSpeed: 3
-  vegrant: {fileID: 1638109377}
+  vegrant: {fileID: 6631533174165759714, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
   vegrantHealth: 100
   vegrantCount: 0
   vegrantDetection: 10
@@ -1244,11 +1244,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1638109377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6631533174165759714, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
-  m_PrefabInstance: {fileID: 712360723772065499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1874979836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1611,6 +1606,10 @@ PrefabInstance:
     - target: {fileID: 1221931644676017320, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026002348347175585, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
+      propertyPath: m_FlipY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6631533174165759714, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
       propertyPath: m_Name

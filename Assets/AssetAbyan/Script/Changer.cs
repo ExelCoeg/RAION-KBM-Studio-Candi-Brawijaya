@@ -1,6 +1,4 @@
-
 using UnityEngine;
-
 public class Changer : MonoBehaviour
 {
     [SerializeField] Status status;
@@ -18,7 +16,7 @@ public class Changer : MonoBehaviour
     {
         CheckEnemyInRange();
     }
-     private void CheckEnemyInRange(){
+    private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position,detection,NPCLayer);
 
         if (objectInRange != null && objectInRange.tag == "NPC"){
