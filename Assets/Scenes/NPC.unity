@@ -917,83 +917,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1534610168
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1534610170}
-  - component: {fileID: 1534610169}
-  m_Layer: 10
-  m_Name: NPCManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1534610169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534610168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5584b76f8ae67d4e8fcea159749c597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vegrantCount: 0
-  vegrantDetection: 115.4
-  vegrantIdleSet:
-  - 5
-  - 6
-  - 1
-  - 2
-  villagerCount: 0
-  villagerDetection: 0
-  villagerIdleSet:
-  - 1
-  - 2
-  - 5
-  - 6
-  villagerMiningTimeToCoin: 0
-  archerCount: 0
-  archerDetection: 0
-  archerIdleSet:
-  - 5
-  - 6
-  - 1
-  - 2
-  archerDamage: 0
-  archerShootFrequency: 0
-  knightCount: 0
-  knightDetection: 0
-  knigtIdleSet:
-  - 5
-  - 6
-  - 1
-  - 2
-  knightDamage: 0
-  KnightAttackFrequency: 0
---- !u!4 &1534610170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534610168}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7, y: 0.39, z: -0.134916}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1601315717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44512c662d062964eacd160e4111f182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   rb: {fileID: 1638109380}
   points:
     pointsNames: 2
@@ -1248,6 +1172,16 @@ MonoBehaviour:
   defaultMovSpeed: 3
   movSpeed: 3
   direction: 0
+  minIdleDelay: 0
+  maxIdleDelay: 0
+  minIdleTime: 0
+  maxIdleTime: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  objectInRange: {fileID: 0}
+  playerDetected: 0
+  vegrantDetection: 0
 --- !u!70 &1638109379
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1670,6 +1604,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &8328428566510868612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.134916
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249867245342479050, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: m_Name
+      value: NPCManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1677,7 +1668,7 @@ SceneRoots:
   - {fileID: 1601315721}
   - {fileID: 1954798245}
   - {fileID: 1523711984}
-  - {fileID: 1534610170}
+  - {fileID: 8328428566510868612}
   - {fileID: 1944062020}
   - {fileID: 36789763}
   - {fileID: 357203533}
