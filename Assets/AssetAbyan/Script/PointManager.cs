@@ -40,4 +40,5 @@ public class PointManager : MonoBehaviour
         }
         return points[0];
     }
+    //Sistem ketika Malam
 }
