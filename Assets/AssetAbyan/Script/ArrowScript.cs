@@ -1,17 +1,18 @@
 // Animates the position in an arc between sunrise and sunset.
 
 using UnityEngine;
-using System.Collections;
 using System;
 
 public class ArrowScript : MonoBehaviour
 {
     Rigidbody2D rb;
+    public float vo;
+    public float damage;
     public Boolean isHit;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right * vo;
         Invoke("Destroy",5f);
     }
 
@@ -20,15 +21,16 @@ public class ArrowScript : MonoBehaviour
         if (!isHit){
             float angle = Mathf.Atan2(rb.velocity.y,rb.velocity.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //Debug.Log(transform.rotation.eulerAngles.z);
         }
     }
     public void OnTriggerEnter2D(Collider2D collision){
        // Debug.Log(collision.name);
         if (collision.gameObject.CompareTag("Enemy")){
-            //Destroy(collision.gameObject);//nanti bakal manggil method yang ada collisionnya
+            Destroy(collision.gameObject);//nanti bakal manggil method yang ada collisionnya
         }else if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Ground");
+            //Debug.Log("Ground");
             isHit = true;
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;

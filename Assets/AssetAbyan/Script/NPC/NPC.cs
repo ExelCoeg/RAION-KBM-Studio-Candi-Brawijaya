@@ -1,26 +1,23 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
 public abstract class NPC : MonoBehaviour
 {
-    [Header("need to set")]
+    public Status status;
     [SerializeField] public Animator animator;
-    [Header("Doesnt need to set")]
-    [Header("--Object Reference")]
     protected NPCManager npcManager;
     protected PointManager pointManager;
     [SerializeField]protected Rigidbody2D rb;
-    protected Transform currentPoint;
+    [SerializeField]protected Transform currentPoint;
     [SerializeField] protected Points points;
 
-    [Header("--Condition")]
+    [Header("Condition")]
     [SerializeField] protected bool isIdle;//pada NPC kondisi Idle bisa berbeda tergantung job masing masing
-    [Header("--Condition")]
+    [SerializeField] protected bool isNight;
+    [Header("Atribut")]
     protected float movementTimer;//timer untuk Idle
-    [SerializeField] protected float defaultMovSpeed;//Default Movement(supaya tidak perlu membuat temp)
     [SerializeField] protected float movSpeed;//MovSpeed saat ini
     [SerializeField] protected int direction;//Target
     [SerializeField] private float minIdleDelay;//nilai minimal jeda Sebelum Idle
@@ -44,6 +41,9 @@ public abstract class NPC : MonoBehaviour
             return pointManager.getPoint(right);
         }
     }
+    public Points SetPlace(PointsNames point){
+        return pointManager.getPoint(point);
+    }
     public void SetPoint(Transform transform){
         currentPoint = transform;//current point adalah poin dari tujuan NPC
     }
@@ -60,7 +60,7 @@ public abstract class NPC : MonoBehaviour
         rb.velocity = new Vector2(movSpeed * direction, rb.velocity.y);
     }
     protected void RandomIdle(){
-        if (points.pointA.position.x < transform.position.x || points.pointB.position.x > transform.position.x){
+        if (points.pointA.position.x < transform.position.x && points.pointB.position.x > transform.position.x){
             movementTimer += Time.deltaTime;
             if (movementTimer >= RandomNumGen(minIdleDelay, maxIdleDelay))
             {
@@ -90,7 +90,7 @@ public abstract class NPC : MonoBehaviour
         }
         else{
             this.isIdle = false;
-            movSpeed = defaultMovSpeed;
+            movSpeed = npcManager.movSpeed;
         }
     }
     IEnumerator NPCIdleForSec(float idleTime){
@@ -101,6 +101,7 @@ public abstract class NPC : MonoBehaviour
         }
     }
     //========================================================================================================================================================
+    public abstract void ChangeStatus(Status status);
     protected void flip(){
         Vector3 scale = transform.localScale;
         if (direction == -1 || direction == 1){
