@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class VegrantScript : NPC
@@ -17,14 +14,15 @@ public class VegrantScript : NPC
     {
         npcManager = NPCManager.instance;
         pointManager = PointManager.instance;
-        points = SetPlace(PointsNames.LeftVegrant,PointsNames.RightVegrant);
+        points = SetPlace(PointsNames.LeftVegrant, PointsNames.RightVegrant);
         SetPoint(points.pointA);
         SetIdle(npcManager.vegrantIdleSet);
-        movSpeed = defaultMovSpeed;
+        movSpeed = npcManager.movSpeed;
         isIdle = false;
         points.NPCCount++;
         npcManager.vegrantCount++;
         playerDetected = false;
+        status = Status.Vegrant;
     }
 
     // Update is called once per frame
@@ -35,10 +33,11 @@ public class VegrantScript : NPC
         ChangePoint();
         flip();
         CheckEnemyInRange();
+        RandomIdle();
+        setAnimationParameter();
     }
     private void FixedUpdate() {
         NPCMovement();
-        RandomIdle();
     }
     private void SetNPCAtribut(){
         SetIdle(npcManager.vegrantIdleSet);
@@ -46,14 +45,13 @@ public class VegrantScript : NPC
     }
     private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position, vegrantDetection, playerLayer);
-        Transform temp = null;
 
-        if (objectInRange != null && objectInRange.tag == "Player" && !playerDetected){
-            temp = currentPoint;
+        if (objectInRange != null && objectInRange.tag == "Player"){
+            Idle(false);
             SetPoint(objectInRange.gameObject.transform);
             playerDetected = true;
         }else if(playerDetected){
-            SetPoint(temp);
+            SetPoint(points.pointA);
             playerDetected = false;
         }
     }
@@ -61,7 +59,13 @@ public class VegrantScript : NPC
     {
         Gizmos.DrawWireSphere(transform.position, vegrantDetection);
     }
-    private void OnDestroy() {
-        npcManager.vegrantCount--;
+
+    public override void ChangeStatus(Status status){
+       npcManager.InstanceNPC(status, transform.position);
+       npcManager.vegrantCount--;
+       Destroy(gameObject);
+    }
+    private void setAnimationParameter(){
+        animator.SetFloat("movSpeed", Mathf.Abs(movSpeed));
     }
 }
