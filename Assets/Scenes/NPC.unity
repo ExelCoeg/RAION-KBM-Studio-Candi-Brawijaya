@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7514228}
   - component: {fileID: 7514227}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Changer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ MonoBehaviour:
   - 6
   - 1
   - 2
-  villager: {fileID: 4358370332998016396, guid: 8936eecf4a305d341bb146a100ec2c94, type: 3}
+  villager: {fileID: 1370986650272124093, guid: d796e09801897f74b98ccbc974ef9a54, type: 3}
   villagerHealth: 100
   villagerCount: 0
   villagerDetection: 10
