@@ -6,6 +6,9 @@ public enum PointsNames
 {
     LeftVegrant, RightVegrant, Villager, LeftArcher, RightArcher, Knight
 }
+public enum EnemyPointNames{
+    Left,Right
+}
 [Serializable]
 public class Points
 {
@@ -13,11 +16,19 @@ public class Points
     public Transform pointA, pointB;
     public int NPCCount;
 }
+[Serializable]
+public class EnemyPoints{
+    public EnemyPointNames enemyPointNames;
+    public Transform pointA, pointB;
+    public int enemyCount;
+}
+
 
 public class PointManager : MonoBehaviour
 {
     public static PointManager instance;
     public List<Points> points;
+    public List<EnemyPoints> enemyPoints;
     private void Awake()
     {
         if (instance == null)
@@ -29,7 +40,7 @@ public class PointManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public Points getPoint(PointsNames targetPointName)
+    public Points GetPoint(PointsNames targetPointName)
     {// search point that match with parameter
         foreach (Points currentPoint in points)
         {
@@ -39,6 +50,16 @@ public class PointManager : MonoBehaviour
             }
         }
         return points[0];
+    }
+    public EnemyPoints GetEnemyPoints(EnemyPointNames targetPointName) {
+        foreach (EnemyPoints currentPoint in enemyPoints)
+        {
+            if (currentPoint.enemyPointNames == targetPointName)
+            {
+                return currentPoint;
+            }
+        }
+        return enemyPoints[0];
     }
     //Sistem ketika Malam
 }

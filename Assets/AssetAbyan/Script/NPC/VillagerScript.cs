@@ -52,6 +52,7 @@ public class VillagerScript : NPC
 
     public override void ChangeStatus(Status status){
        npcManager.InstanceNPC(status, transform.position);
+       points.NPCCount--;
        npcManager.villagerCount--;
        Destroy(gameObject);
     }

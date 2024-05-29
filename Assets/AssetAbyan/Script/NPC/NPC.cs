@@ -35,14 +35,14 @@ public abstract class NPC : MonoBehaviour
         }
     }
     public Points SetPlace(PointsNames left, PointsNames right){
-        if (pointManager.getPoint(left).NPCCount <= pointManager.getPoint(right).NPCCount){
-            return pointManager.getPoint(left);// nanti rencananya ada pembagian left sama rightnya
+        if (pointManager.GetPoint(left).NPCCount <= pointManager.GetPoint(right).NPCCount){
+            return pointManager.GetPoint(left);// nanti rencananya ada pembagian left sama rightnya
         }else{
-            return pointManager.getPoint(right);
+            return pointManager.GetPoint(right);
         }
     }
     public Points SetPlace(PointsNames point){
-        return pointManager.getPoint(point);
+        return pointManager.GetPoint(point);
     }
     public void SetPoint(Transform transform){
         currentPoint = transform;//current point adalah poin dari tujuan NPC

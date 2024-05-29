@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class Changer : MonoBehaviour
 {
     [SerializeField] Status status;

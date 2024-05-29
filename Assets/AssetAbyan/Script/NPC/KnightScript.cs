@@ -60,11 +60,11 @@ public class KngihtScript : NPC
     public void KnightAttack(){
         attackTimer += Time.deltaTime;
         if(enemyInRangeAttack){
-            if (attackTimer > npcManager.knightAttackSpeed)
-            {
+            // if (attackTimer > npcManager.knightAttackSpeed)
+            // {
                 animator.Play("KnightAttack");
                 attackTimer = 0;
-            }
+            // }
         }else if(attackTimer > npcManager.knightAttackSpeed){
             attackTimer = npcManager.knightAttackSpeed;
         }
@@ -97,6 +97,7 @@ public class KngihtScript : NPC
 
     public override void ChangeStatus(Status status){
        npcManager.InstanceNPC(status, transform.position);
+       points.NPCCount--;
        npcManager.knightCount--;
        Destroy(gameObject);
     }
