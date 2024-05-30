@@ -75,7 +75,6 @@ public class VillagerScript : NPC
         }
         if (miningTimer >= npcManager.villagerMiningTimeToCoin)
         {
-            Debug.Log("! Coin Collected");
             coin++;
             miningTimer = 0;
         }

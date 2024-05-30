@@ -22,8 +22,8 @@ public class NPCManager : MonoBehaviour
     public float villagerHealth;
     public int villagerCount = 0;
     public float villagerDetection = 0;
-    public float[] villagerIdleSet = new float[4];
     public float villagerMiningTimeToCoin = 0;
+    public float[] villagerIdleSet = new float[4];
     [Header("Archer")]
     public GameObject archer;
     public float archerHealth;
