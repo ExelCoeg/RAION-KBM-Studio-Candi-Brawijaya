@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "RAION-KBM-Studio-Candi-Brawijaya.sln"
+    "dotnet.defaultSolution": "RAION-KBM-Studio--Candi-Brawijaya-.sln"
 }

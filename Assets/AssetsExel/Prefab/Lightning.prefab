@@ -122,3 +122,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  offsetCircleX: 2
+  offsetCircleY: 2
+  petirRadius: 5

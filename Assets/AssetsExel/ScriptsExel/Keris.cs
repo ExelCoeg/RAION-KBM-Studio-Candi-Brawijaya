@@ -8,7 +8,7 @@ public class Keris : MonoBehaviour
     private int lifeEssence = 0;
     private bool petirAvailable = true;
     private float petirCooldown;
-    [SerializeField] float petirCooldownMax = 15f;
+    [SerializeField] float petirCooldownMax = 5f;
     public float petirOffset = 2f;
     [SerializeField] Vector3 mousePos;
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class Keris : MonoBehaviour
         mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         petirCooldown -= Time.deltaTime;
         // petirAvailable = lifeEssence >= 10 && petirCooldown <= 0;
+        petirAvailable = petirCooldown <= 0;
         if(Input.GetKeyDown(KeyCode.Space) && petirAvailable){
             // panggil fungsi petir
             Petir(new Vector3(mousePos.x + petirOffset, 0.5f));

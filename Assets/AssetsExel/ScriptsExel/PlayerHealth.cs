@@ -1,7 +1,7 @@
 using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamagable{
     [SerializeField] int maxHealth = 100;
-    public int health;
+    public int health {get;set;}
     private void Start() {
         health = maxHealth;
     }

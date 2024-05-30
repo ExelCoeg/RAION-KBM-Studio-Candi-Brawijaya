@@ -28,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(move.x < 0){
+            transform.eulerAngles = Vector2.up * 180;
+        }
+        else{
+            transform.eulerAngles = Vector2.zero;
+        }
         move.x = Input.GetAxis("Horizontal");
         if(Input.GetKey(KeyCode.LeftShift) && !onTired){ // kalau mencet shift, isSprinting set ke true
             isSprinting = true;
@@ -56,5 +63,6 @@ public class PlayerMovement : MonoBehaviour
             if(accelStart > 1) accelStart -= Time.deltaTime;
             if(energy <= maxEnergy && !onTired) energy += Time.deltaTime;
         }
+        
     }
 }
