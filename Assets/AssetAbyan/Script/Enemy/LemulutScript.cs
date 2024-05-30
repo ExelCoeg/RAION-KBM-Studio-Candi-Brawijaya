@@ -86,10 +86,10 @@ public class LemulutScript : Enemy
             damageAbleDetected =false;
         }
         if (objectInRange != null && (objectInRange.tag == "NPC" || objectInRange.tag == "Player")){
-            SetPoint(objectInRange.gameObject.transform);
+            Idle(true);
             damageAbleInRange = true;
         } else if(damageAbleDetected){
-            SetPoint(enemyPoints.pointA);
+            Idle(false);
             damageAbleInRange =false;
         }
     }

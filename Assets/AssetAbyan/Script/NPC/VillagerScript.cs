@@ -1,4 +1,6 @@
 using System;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class VillagerScript : NPC
@@ -11,6 +13,7 @@ public class VillagerScript : NPC
     [Header("Villager")]
     [SerializeField] float miningTimer;
     [SerializeField] Boolean isMining;
+    [SerializeField] int coin;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -61,6 +64,11 @@ public class VillagerScript : NPC
         if (!isNight)
         {
             isMining = isIdle;
+        }else{
+            isMining = false;//tidak dapat minig jika malam hari
+        }
+        if (isMining)
+        {
             miningTimer += Time.deltaTime;
         }else{
             isMining = false;
@@ -68,9 +76,19 @@ public class VillagerScript : NPC
         if (miningTimer >= npcManager.villagerMiningTimeToCoin)
         {
             Debug.Log("! Coin Collected");
+            coin++;
             miningTimer = 0;
         }
     }
+    public int CoinPeek(){
+        return coin;
+    }
+    public int getCoin(){
+        int coinTemp = coin;
+        coin =0;
+        return coinTemp;
+    }
+
     //=======================================================================================================================
     private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position, villagerDetection, playerLayer);

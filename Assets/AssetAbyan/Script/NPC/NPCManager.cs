@@ -38,6 +38,7 @@ public class NPCManager : MonoBehaviour
     public int knightCount = 0;
     public float knightDetection = 0;
     public float knightRangeAttack = 0;
+    public float knightOffSiteRange = 0;//jarak knight tidak mengejar enemy
     public float[] knightIdleSet = new float[4];
     public float knightDamage = 0;
     public float knightAttackSpeed = 0;
@@ -67,5 +68,8 @@ public class NPCManager : MonoBehaviour
             default:
                 break;
         }
+    }
+    public int getTax(){
+        return villagerCount + archerCount + knightCount;
     }
 }

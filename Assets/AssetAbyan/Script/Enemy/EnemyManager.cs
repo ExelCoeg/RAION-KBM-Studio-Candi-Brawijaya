@@ -36,6 +36,7 @@ public class EnemyManager : MonoBehaviour
     public float widaraAttackSpeed = 0;
     public float widaraHealth;
     public float widaraDetection = 0;
+    public float widaraRangeAttack = 0;
     public float[] widaraIdleSet = new float[4];//0&1 = lama dia jalan ; 2&3 = lama dia 
 
     private void Awake() {
