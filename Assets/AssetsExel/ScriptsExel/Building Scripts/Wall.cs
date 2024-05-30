@@ -13,11 +13,12 @@ public class Wall : MonoBehaviour, IDamagable
     {
         health -= damage;
     }
-    private void Start() {
-        health = maxHealth;
-    }
+    // private void Start() {
+    //     health = maxHealth;
+    // }
     void Update()
     {
+        
         health = testHealth;
         if(health <= 0){
             GetComponent<SpriteRenderer>().sprite = wallStage[3];
