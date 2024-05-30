@@ -62,6 +62,7 @@ public class VegrantScript : NPC
 
     public override void ChangeStatus(Status status){
        npcManager.InstanceNPC(status, transform.position);
+       points.NPCCount--;
        npcManager.vegrantCount--;
        Destroy(gameObject);
     }

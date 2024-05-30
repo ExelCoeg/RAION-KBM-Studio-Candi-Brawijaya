@@ -64,6 +64,7 @@ public class ArcherScript : NPC
 
     public override void ChangeStatus(Status status){
        npcManager.InstanceNPC(status, transform.position);
+       points.NPCCount--;
        npcManager.archerCount--;
        Destroy(gameObject);
     }

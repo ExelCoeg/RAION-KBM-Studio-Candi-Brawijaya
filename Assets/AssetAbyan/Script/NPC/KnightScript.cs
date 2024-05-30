@@ -9,6 +9,7 @@ public class KngihtScript : NPC
     [SerializeField] Collider2D objectInRange;
 
     [SerializeField] Boolean enemyDetected;//nanti bakal dipindahin ke player
+    [SerializeField] float offSideTimer;
     [SerializeField] float knightDetection;
     
     [Header("Knight")]
@@ -33,6 +34,7 @@ public class KngihtScript : NPC
         points.NPCCount++;
         npcManager.knightCount++;
         enemyDetected = false;
+        offSideTimer = 0;
         status = Status.Knight;
     }
 
@@ -70,19 +72,34 @@ public class KngihtScript : NPC
         }
     }
     private void CheckEnemyInRange(){
-        objectInRange = Physics2D.OverlapCircle(transform.position, knightDetection, enemyLayer);
+        if (!(points.pointA.position.x < transform.position.x && points.pointB.position.x> transform.position.x)){
+            if (!enemyInRangeAttack){
+                offSideTimer += Time.deltaTime; 
+            }
+        }else if(offSideTimer > 2){
+            offSideTimer = 0;
+        }
+        if (offSideTimer < 2)
+        {
+            objectInRange = Physics2D.OverlapCircle(transform.position, knightDetection, enemyLayer); 
+        }else{
+            objectInRange = null;
+        }
         objectInRangeAttack = Physics2D.OverlapCircle(attackPoint.position, knightRangeAttack, enemyLayer);
 
         if (objectInRange != null && objectInRange.tag == "Enemy"){
             SetPoint(objectInRange.gameObject.transform);
             enemyDetected = true;
+            if(!enemyInRangeAttack){
+                Idle(false);
+            }
         }else if(enemyDetected){
             SetPoint(points.pointA);
             enemyDetected = false;
         }
+        
         if (objectInRangeAttack != null && objectInRangeAttack.tag == "Enemy"){
             Idle(true);
-            Debug.Log(isIdle);
             enemyInRangeAttack = true;
         }else if(enemyInRangeAttack){
             enemyInRangeAttack = false; 
@@ -97,6 +114,7 @@ public class KngihtScript : NPC
 
     public override void ChangeStatus(Status status){
        npcManager.InstanceNPC(status, transform.position);
+       points.NPCCount--;
        npcManager.knightCount--;
        Destroy(gameObject);
     }
