@@ -13,9 +13,7 @@ public class Wall : MonoBehaviour, IDamagable
     {
         health -= damage;
     }
-    // private void Start() {
-    //     health = maxHealth;
-    // }
+  
     void Update()
     {
         
