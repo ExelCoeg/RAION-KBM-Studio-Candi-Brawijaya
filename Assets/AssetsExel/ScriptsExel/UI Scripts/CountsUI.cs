@@ -1,7 +1,7 @@
 
 using UnityEngine;
 using TMPro;
-public class Counts : MonoBehaviour
+public class CountsUI : MonoBehaviour
 {
     public TextMeshProUGUI knightCountText;
     public TextMeshProUGUI archerCountText;
