@@ -33,6 +33,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float damage;
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected int direction;//Target
+    [Header("IdleSet")]
     [SerializeField] protected float minIdleDelay;//nilai minimal jeda Sebelum Idle
     [SerializeField] protected float maxIdleDelay;//nilai maksimal jeda Sebelum Idle
     [SerializeField] protected float minIdleTime;//waktu mininal NPC Idle
