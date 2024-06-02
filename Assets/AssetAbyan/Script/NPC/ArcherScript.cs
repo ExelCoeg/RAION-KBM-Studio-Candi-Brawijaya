@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class ArcherScript : NPC
@@ -29,7 +30,7 @@ public class ArcherScript : NPC
         points = SetPlace(PointsNames.LeftArcher,PointsNames.RightArcher);
         SetPoint(points.pointA);
         SetIdle(npcManager.archerIdleSet);
-        movSpeed = npcManager.movSpeed;
+        movSpeed = npcManager.ArcherMovSpeed;
         isIdle = false;
         points.NPCCount++;
         npcManager.archerCount++;
@@ -60,6 +61,16 @@ public class ArcherScript : NPC
         SetIdle(npcManager.archerIdleSet);
         archerDetection = npcManager.archerDetection - 2;
         vo = CalculatePower(npcManager.archerDetection);
+    }
+    public override void Idle(Boolean isIdle){
+        if (isIdle){
+            this.isIdle = true;
+            movSpeed = 0;
+        }
+        else{
+            this.isIdle = false;
+            movSpeed = npcManager.ArcherMovSpeed;
+        }
     }
 
     public override void ChangeStatus(Status status){
@@ -111,9 +122,9 @@ public class ArcherScript : NPC
     //=======================================================================================================================
     private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position, archerDetection, enemyLayer);
+        Debug.Log(objectInRange);
 
-        if (objectInRange != null && objectInRange.tag == "Enemy"){
-            //Debug.Log("detected");
+        if (objectInRange != null && npcManager.archerDamageAble.Contains(objectInRange.tag)){
             Idle(true);
             SetPoint(objectInRange.gameObject.transform);
             enemy = objectInRange.transform;

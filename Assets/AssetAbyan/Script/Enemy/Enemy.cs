@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public abstract class Enemy : MonoBehaviour
 {
     public EnemyStatus enemyStatus;
     protected EnemyManager enemyManager;
     [SerializeField] public Animator animator;
-    [SerializeField]protected Rigidbody2D rb;
+    [SerializeField] protected Rigidbody2D rb;
     [Header("Position")]
     protected PointManager pointManager;
     [SerializeField] protected Transform currentPoint;
@@ -40,28 +41,38 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float maxIdleTime;//waktu maksimal NPC Idle
 
     //========================================================================================================================================================
-    public void ChangePoint(){
-        if (currentPoint == enemyPoints.pointA && math.abs(currentPoint.position.x - rb.position.x) <= 0.5){
+    public void ChangePoint()
+    {
+        if (currentPoint == enemyPoints.pointA && math.abs(currentPoint.position.x - rb.position.x) <= 0.5)
+        {
             SetPoint(enemyPoints.pointB);
         }
-        else if (currentPoint == enemyPoints.pointB && math.abs(currentPoint.position.x - rb.position.x) <= 0.5){
+        else if (currentPoint == enemyPoints.pointB && math.abs(currentPoint.position.x - rb.position.x) <= 0.5)
+        {
             SetPoint(enemyPoints.pointA);
         }
     }
-    public EnemyPoints SetPlace(EnemyPointNames left, EnemyPointNames right){
-        if (pointManager.GetEnemyPoints(left).enemyCount <= pointManager.GetEnemyPoints(right).enemyCount){
+    public EnemyPoints SetPlace(EnemyPointNames left, EnemyPointNames right)
+    {
+        if (pointManager.GetEnemyPoints(left).enemyCount <= pointManager.GetEnemyPoints(right).enemyCount)
+        {
             return pointManager.GetEnemyPoints(left);// nanti rencananya ada pembagian left sama rightnya
-        }else{
+        }
+        else
+        {
             return pointManager.GetEnemyPoints(right);
         }
     }
-    public EnemyPoints SetPlace(EnemyPointNames enemyPointsint){
+    public EnemyPoints SetPlace(EnemyPointNames enemyPointsint)
+    {
         return pointManager.GetEnemyPoints(enemyPointsint);
     }
-    public void SetPoint(Transform transform){
+    public void SetPoint(Transform transform)
+    {
         currentPoint = transform;//current point adalah poin dari tujuan NPC
     }
-    public void SetIdle(float[] idleSet){
+    public void SetIdle(float[] idleSet)
+    {
         minIdleDelay = idleSet[0];
         maxIdleDelay = idleSet[1];
         minIdleTime = idleSet[2];
@@ -69,14 +80,28 @@ public abstract class Enemy : MonoBehaviour
     }
     //========================================================================================================================================================
     public abstract void EnemyAttack();
+
+    public virtual void Attack()
+    {
+        if(objectInRange != null){
+            IDamagable damagable = objectInRange.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                objectInRange.GetComponent<IDamagable>().TakeDamage(20);
+            }
+        }
+    }
     //========================================================================================================================================================
-    protected float RandomNumGen(float min, float max){return UnityEngine.Random.Range(min, max);}
+    protected float RandomNumGen(float min, float max) { return UnityEngine.Random.Range(min, max); }
     //========================================================================================================================================================
-    protected void EnemyMovement(){
+    protected void EnemyMovement()
+    {
         rb.velocity = new Vector2(movSpeed * direction, rb.velocity.y);
     }
-    protected void RandomIdle(){
-        if (enemyPoints.pointA.position.x < transform.position.x && enemyPoints.pointB.position.x > transform.position.x){
+    protected void RandomIdle()
+    {
+        if (enemyPoints.pointA.position.x < transform.position.x && enemyPoints.pointB.position.x > transform.position.x)
+        {
             movementTimer += Time.deltaTime;
             if (movementTimer >= RandomNumGen(minIdleDelay, maxIdleDelay))
             {
@@ -89,33 +114,46 @@ public abstract class Enemy : MonoBehaviour
             }
         }
     }
-    protected void EnemyDirection(){
-        if (currentPoint != null){
-            if (transform.position.x > currentPoint.position.x){
+    protected void EnemyDirection()
+    {
+        if (currentPoint != null)
+        {
+            if (transform.position.x > currentPoint.position.x + 1)
+            {
                 direction = -1;
             }
-            else{
+            else if (transform.position.x < currentPoint.position.x - 1)
+            {
                 direction = 1;
             }
         }
     }
-    
+
     public abstract void Idle(Boolean isIdle);
-    
-    IEnumerator EnemyIdleForSec(float idleTime){
-        if (rb.velocity.x != 0){
+
+    IEnumerator EnemyIdleForSec(float idleTime)
+    {
+        if (rb.velocity.x != 0)
+        {
             Idle(true);
             yield return new WaitForSeconds(idleTime);
             Idle(false);
         }
     }
     //========================================================================================================================================================
+    public virtual void Destroy()
+    {
+        Destroy(this);
+    }
+    //========================================================================================================================================================
     protected abstract void CheckSurrounding();
     //========================================================================================================================================================
 
-    protected void flip(){
+    protected void flip()
+    {
         Vector3 scale = transform.localScale;
-        if (direction == -1 || direction == 1){
+        if (direction == -1 || direction == 1)
+        {
             scale.x = direction;
         }
         transform.localScale = scale;

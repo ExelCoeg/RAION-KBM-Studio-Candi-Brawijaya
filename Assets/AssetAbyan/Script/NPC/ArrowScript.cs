@@ -25,9 +25,9 @@ public class ArrowScript : MonoBehaviour
         }
     }
     public void OnTriggerEnter2D(Collider2D collision){
-       // Debug.Log(collision.name);
         if (collision.gameObject.CompareTag("Enemy")){
-            Destroy(collision.gameObject);//nanti bakal manggil method yang ada collisionnya
+            Destroy(collision.gameObject);
+            //collision.gameObject.GetComponent<IDamagable>().TakeDamage((int)damage);
         }else if (collision.gameObject.CompareTag("Ground"))
         {
             //Debug.Log("Ground");

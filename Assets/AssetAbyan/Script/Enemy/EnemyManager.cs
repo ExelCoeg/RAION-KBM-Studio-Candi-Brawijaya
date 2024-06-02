@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum EnemyStatus
@@ -17,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     public float lemulutHealth;
     public float lemulutDetection = 0;
     public float lemulutRangeAttack = 0;
+    public String[] lelumutDamageAble;
     public float[] lemulutIdleSet = new float[4];//0&1 = lama dia jalan ; 2&3 = lama dia 
     [Header("Gelapari")]
     public GameObject gelapari;
@@ -27,6 +29,7 @@ public class EnemyManager : MonoBehaviour
     public float gelapariHealth;
     public float gelapariDetection = 0;
     public float gelapariRangeAttack = 0;
+    public String[] gelapariDamageAble;
     public float[] gelapariIdleSet = new float[4];//0&1 = lama dia jalan ; 2&3 = lama dia 
     [Header("Widara")]
     public GameObject widara;
@@ -37,6 +40,7 @@ public class EnemyManager : MonoBehaviour
     public float widaraHealth;
     public float widaraDetection = 0;
     public float widaraRangeAttack = 0;
+    public String[] widaraDamageAble;
     public float[] widaraIdleSet = new float[4];//0&1 = lama dia jalan ; 2&3 = lama dia 
 
     private void Awake() {

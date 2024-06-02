@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PointsNames
 {
-    LeftVegrant, RightVegrant, Villager, LeftArcher, RightArcher, Knight
+    LeftVagrant, RightVagrant, Villager, LeftArcher, RightArcher, Knight
 }
 public enum EnemyPointNames{
     Left,Right
@@ -26,6 +26,8 @@ public class EnemyPoints{
 
 public class PointManager : MonoBehaviour
 {
+    public GameObject player;
+    public float knightOffsidePoint;
     public static PointManager instance;
     public List<Points> points;
     public List<EnemyPoints> enemyPoints;
@@ -39,6 +41,10 @@ public class PointManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void Update() {
+        GetPoint(PointsNames.Knight).pointA.position = new Vector3(player.transform.position.x - knightOffsidePoint, player.transform.position.y,player.transform.position.z);
+        GetPoint(PointsNames.Knight).pointB.position = new Vector3(player.transform.position.x + knightOffsidePoint, player.transform.position.y,player.transform.position.z);
     }
     public Points GetPoint(PointsNames targetPointName)
     {// search point that match with parameter
@@ -62,4 +68,5 @@ public class PointManager : MonoBehaviour
         return enemyPoints[0];
     }
     //Sistem ketika Malam
+    //sistem eemy
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-public class PlayerHealth : MonoBehaviour, IDamagable{
+public class EnemyHealth : MonoBehaviour, IDamagable{
     [SerializeField] int maxHealth = 100;
     public int health {get;set;}
     private void Start() {
@@ -8,10 +8,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
     private void Update() {
         if(health <= 0){
             print("Player dead");
+            this.GetComponent<Enemy>().Destroy();
         }
     }
     public void TakeDamage(int damage){
-        print("Player taking damage");
+        maxHealth -= damage;
+        print(this.name + " taking damage");
     }
 
 }

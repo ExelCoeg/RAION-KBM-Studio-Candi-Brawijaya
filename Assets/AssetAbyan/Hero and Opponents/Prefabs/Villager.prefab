@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2780742438245371564}
   - component: {fileID: 4972642852804212147}
   - component: {fileID: 809348924099596331}
+  - component: {fileID: 950415615056822190}
   m_Layer: 10
   m_Name: Villager
-  m_TagString: NPC
+  m_TagString: Villager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,8 +186,22 @@ MonoBehaviour:
   objectInRange: {fileID: 0}
   villagerDetection: 0
   playerDetected: 0
-  miningTimer: 0
   isMining: 0
+  miningTimer: 0
+  coin: 0
+--- !u!114 &950415615056822190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370986650272124093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45dc63e3dc785e9428bfaf9d2fcb40a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &2746015681305124331
 GameObject:
   m_ObjectHideFlags: 0

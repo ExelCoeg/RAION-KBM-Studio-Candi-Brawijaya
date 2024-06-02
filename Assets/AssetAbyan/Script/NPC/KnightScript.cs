@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using UnityEditor;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class KngihtScript : NPC
         points = SetPlace(PointsNames.Knight);
         SetPoint(points.pointA);
         SetIdle(npcManager.knightIdleSet);
-        movSpeed = npcManager.movSpeed;
+        movSpeed = npcManager.kngihtMovSpeed;
         isIdle = false;
         points.NPCCount++;
         npcManager.knightCount++;
@@ -59,6 +60,16 @@ public class KngihtScript : NPC
         knightRangeAttack = npcManager.knightRangeAttack;
         KnightAttackSpeed = npcManager.knightAttackSpeed;
     }
+    public override void Idle(Boolean isIdle){
+        if (isIdle){
+            this.isIdle = true;
+            movSpeed = 0;
+        }
+        else{
+            this.isIdle = false;
+            movSpeed = npcManager.kngihtMovSpeed;
+        }
+    }
     public void KnightAttack(){
         attackTimer += Time.deltaTime;
         if(enemyInRangeAttack){
@@ -72,6 +83,7 @@ public class KngihtScript : NPC
         }
     }
     private void CheckEnemyInRange(){
+        objectInRangeAttack = Physics2D.OverlapCircle(attackPoint.position, knightRangeAttack, enemyLayer);
         if (!(points.pointA.position.x < transform.position.x && points.pointB.position.x> transform.position.x)){
             if (!enemyInRangeAttack){
                 offSideTimer += Time.deltaTime; 
@@ -85,9 +97,8 @@ public class KngihtScript : NPC
         }else{
             objectInRange = null;
         }
-        objectInRangeAttack = Physics2D.OverlapCircle(attackPoint.position, knightRangeAttack, enemyLayer);
 
-        if (objectInRange != null && objectInRange.tag == "Enemy"){
+        if (objectInRange != null && npcManager.knightDamageAble.Contains(objectInRange.tag)){
             SetPoint(objectInRange.gameObject.transform);
             enemyDetected = true;
             if(!enemyInRangeAttack){
@@ -98,7 +109,7 @@ public class KngihtScript : NPC
             enemyDetected = false;
         }
         
-        if (objectInRangeAttack != null && objectInRangeAttack.tag == "Enemy"){
+        if (objectInRangeAttack != null && npcManager.knightDamageAble.Contains(objectInRangeAttack.tag)){
             Idle(true);
             enemyInRangeAttack = true;
         }else if(enemyInRangeAttack){

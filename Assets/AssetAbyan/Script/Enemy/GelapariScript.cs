@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -77,14 +78,14 @@ public class GelaspariScript : Enemy
         objectDetected = Physics2D.OverlapCircle(transform.position, rangeDetection, damageAbleLayer);
         objectInRange = Physics2D.OverlapCircle(attackPoint.position, rangeAttack, damageAbleLayer);
 
-        if (objectDetected != null && (objectDetected.tag == "NPC" || objectDetected.tag == "Player")){
+        if (objectDetected != null && enemyManager.gelapariDamageAble.Contains(objectDetected.tag)){
             SetPoint(objectDetected.gameObject.transform);
             damageAbleDetected = true;
         } else if(damageAbleDetected){
             SetPoint(enemyPoints.pointA);
             damageAbleDetected =false;
         }
-        if (objectInRange != null && (objectInRange.tag == "NPC" || objectInRange.tag == "Player")){
+        if (objectInRange != null && enemyManager.gelapariDamageAble.Contains(objectInRange.tag)){
             Idle(true);
             damageAbleInRange = true;
         } else if(damageAbleDetected){
@@ -92,6 +93,13 @@ public class GelaspariScript : Enemy
             damageAbleInRange =false;
         }
     }
+    //========================================================================================================================================================
+    public override void Destroy(){
+        enemyManager.gelapariCount--;
+        enemyPoints.enemyCount--;
+        base.Destroy();
+    }
+    //========================================================================================================================================================
     public void OnDrawGizmos(){
         Gizmos.DrawWireSphere(transform.position, rangeDetection);
         Gizmos.DrawWireSphere(attackPoint.position, rangeAttack);

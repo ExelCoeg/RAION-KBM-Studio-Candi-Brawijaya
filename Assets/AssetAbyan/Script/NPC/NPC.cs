@@ -75,24 +75,15 @@ public abstract class NPC : MonoBehaviour
     }
     protected void NPCDirection(){
         if (currentPoint != null){
-            if (transform.position.x > currentPoint.position.x){
+            if (transform.position.x > currentPoint.position.x + 1){
                 direction = -1;
             }
-            else{
+            else if (transform.position.x < currentPoint.position.x - 1){
                 direction = 1;
             }
         }
     }
-    public void Idle(Boolean isIdle){
-        if (isIdle){
-            this.isIdle = true;
-            movSpeed = 0;
-        }
-        else{
-            this.isIdle = false;
-            movSpeed = npcManager.movSpeed;
-        }
-    }
+    public abstract void Idle(Boolean isIdle);
     IEnumerator NPCIdleForSec(float idleTime){
         if (rb.velocity.x != 0){
             Idle(true);

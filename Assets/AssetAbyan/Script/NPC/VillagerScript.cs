@@ -8,11 +8,11 @@ public class VillagerScript : NPC
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Collider2D objectInRange;
     [SerializeField] float villagerDetection;
-
+    [Header("Condition")]
     [SerializeField] Boolean playerDetected;
+    [SerializeField] Boolean isMining;
     [Header("Villager")]
     [SerializeField] float miningTimer;
-    [SerializeField] Boolean isMining;
     [SerializeField] int coin;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -24,7 +24,7 @@ public class VillagerScript : NPC
         points = SetPlace(PointsNames.Villager);
         SetPoint(points.pointA);
         SetIdle(npcManager.villagerIdleSet);
-        movSpeed = npcManager.movSpeed;
+        movSpeed = npcManager.villagerMovSpeed;
         isIdle = false;
         points.NPCCount++;
         npcManager.villagerCount++;
@@ -51,6 +51,16 @@ public class VillagerScript : NPC
     private void SetNPCAtribut(){
         SetIdle(npcManager.villagerIdleSet);
         villagerDetection = npcManager.villagerDetection;
+    }
+    public override void Idle(Boolean isIdle){
+        if (isIdle){
+            this.isIdle = true;
+            movSpeed = 0;
+        }
+        else{
+            this.isIdle = false;
+            movSpeed = npcManager.villagerMovSpeed;
+        }
     }
 
     public override void ChangeStatus(Status status){
@@ -84,10 +94,9 @@ public class VillagerScript : NPC
     }
     public int getCoin(){
         int coinTemp = coin;
-        coin =0;
+        coin = 0;
         return coinTemp;
     }
-
     //=======================================================================================================================
     private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position, villagerDetection, playerLayer);

@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class VegrantScript : NPC
+public class VagrantScript : NPC
 {
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Collider2D objectInRange;
     [SerializeField] Boolean playerDetected;
-    [SerializeField] float vegrantDetection;
+    [SerializeField] float vagrantDetection;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -14,15 +14,15 @@ public class VegrantScript : NPC
     {
         npcManager = NPCManager.instance;
         pointManager = PointManager.instance;
-        points = SetPlace(PointsNames.LeftVegrant, PointsNames.RightVegrant);
+        points = SetPlace(PointsNames.LeftVagrant, PointsNames.RightVagrant);
         SetPoint(points.pointA);
-        SetIdle(npcManager.vegrantIdleSet);
-        movSpeed = npcManager.movSpeed;
+        SetIdle(npcManager.vagrantIdleSet);
+        movSpeed = npcManager.vagrantMovSpeed;
         isIdle = false;
         points.NPCCount++;
-        npcManager.vegrantCount++;
+        npcManager.vagrantCount++;
         playerDetected = false;
-        status = Status.Vegrant;
+        status = Status.Vagrant;
     }
 
     // Update is called once per frame
@@ -40,11 +40,21 @@ public class VegrantScript : NPC
         NPCMovement();
     }
     private void SetNPCAtribut(){
-        SetIdle(npcManager.vegrantIdleSet);
-        vegrantDetection = npcManager.vegrantDetection;
+        SetIdle(npcManager.vagrantIdleSet);
+        vagrantDetection = npcManager.vagrantDetection;
+    }
+    public override void Idle(Boolean isIdle){
+        if (isIdle){
+            this.isIdle = true;
+            movSpeed = 0;
+        }
+        else{
+            this.isIdle = false;
+            movSpeed = npcManager.vagrantMovSpeed;
+        }
     }
     private void CheckEnemyInRange(){
-        objectInRange = Physics2D.OverlapCircle(transform.position, vegrantDetection, playerLayer);
+        objectInRange = Physics2D.OverlapCircle(transform.position, vagrantDetection, playerLayer);
 
         if (objectInRange != null && objectInRange.tag == "Player"){
             Idle(false);
@@ -57,13 +67,13 @@ public class VegrantScript : NPC
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, vegrantDetection);
+        Gizmos.DrawWireSphere(transform.position, vagrantDetection);
     }
 
     public override void ChangeStatus(Status status){
        npcManager.InstanceNPC(status, transform.position);
        points.NPCCount--;
-       npcManager.vegrantCount--;
+       npcManager.vagrantCount--;
        Destroy(gameObject);
     }
     private void setAnimationParameter(){

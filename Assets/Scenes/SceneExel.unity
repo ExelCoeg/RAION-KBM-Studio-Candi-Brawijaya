@@ -177,6 +177,7 @@ MonoBehaviour:
     pointA: {fileID: 918337283}
     pointB: {fileID: 919189679}
     NPCCount: 0
+  enemyPoints: []
 --- !u!4 &51215736
 Transform:
   m_ObjectHideFlags: 0
@@ -787,12 +788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807e3ec2665b67944a0849e87d215526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 0
-  objectInRange: {fileID: 0}
-  detection: 4.04
-  NPCLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!4 &715762178
 Transform:
   m_ObjectHideFlags: 0
@@ -883,7 +878,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 1.5, y: 1.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1683,6 +1678,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35561ff904633904697f80074e6760c2, type: 3}
+--- !u!1 &813562678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4338999731577520389, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
+  m_PrefabInstance: {fileID: 1847012365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &918337282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 1
-  workerStationUI: {fileID: 0}
+  workerStationUI: {fileID: 813562678}
 --- !u!1 &1678979678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,49 +2281,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5584b76f8ae67d4e8fcea159749c597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movSpeed: 3
-  vegrant: {fileID: 6631533174165759714, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
-  vegrantHealth: 100
-  vegrantCount: 0
-  vegrantDetection: 10
-  vegrantIdleSet:
-  - 5
-  - 6
-  - 1
-  - 2
+  vagrant: {fileID: 0}
+  vagrantCount: 0
+  vagrantMovSpeed: 3
+  vagrantHealth: 0
+  vagrantDetection: 0
+  vagrantDamageAble: []
+  vagrantIdleSet:
+  - 0
+  - 0
+  - 0
+  - 0
   villager: {fileID: 1370986650272124093, guid: d796e09801897f74b98ccbc974ef9a54, type: 3}
-  villagerHealth: 100
   villagerCount: 0
+  villagerMovSpeed: 3
+  villagerHealth: 100
   villagerDetection: 10
+  villagerMiningTimeToCoin: 2
+  villagerDamageAble: []
   villagerIdleSet:
   - 1
   - 2
   - 5
   - 6
-  villagerMiningTimeToCoin: 2
   archer: {fileID: 6569092053781098253, guid: 23fbfabde552a184b9bd3ccd9a720be5, type: 3}
-  archerHealth: 100
   archerCount: 0
+  ArcherMovSpeed: 3
+  archerHealth: 100
   archerDetection: 10
+  archerDamage: 0
+  archerDamageAble: []
+  archerAttackSpeed: 2
   archerIdleSet:
   - 5
   - 6
   - 1
   - 2
-  archerDamage: 0
-  archerAttackSpeed: 2
   knight: {fileID: 9004437589879368943, guid: 41958e2a9f522aa4ca886dc71ddc483a, type: 3}
-  knightHealth: 500
   knightCount: 0
+  kngihtMovSpeed: 3
+  knightHealth: 500
   knightDetection: 10
   knightRangeAttack: 0.4
+  knightOffSiteRange: 0
+  knightDamage: 0
+  knightAttackSpeed: 2
+  knightDamageAble: []
   knightIdleSet:
   - 5
   - 6
   - 1
   - 2
-  knightDamage: 0
-  knightAttackSpeed: 2
 --- !u!4 &1678979681
 Transform:
   m_ObjectHideFlags: 0
@@ -2945,7 +2953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718704594873509480, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.593
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 718704594873509480, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: m_LocalPosition.z

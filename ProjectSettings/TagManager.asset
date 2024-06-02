@@ -8,9 +8,16 @@ TagManager:
   - Ground
   - Enemy
   - Coin
-  - Bow
-  - Sword
   - WorkerStationUI
+  - Wall
+  - ArcherTower
+  - Villager
+  - Vagrant
+  - Archer
+  - Knight
+  - Widara
+  - Lemulut
+  - Gelapari
   layers:
   - Default
   - TransparentFX
@@ -23,7 +30,7 @@ TagManager:
   - Ground
   - Enemy
   - NPC
-  - 
+  - Building
   - 
   - 
   - 
