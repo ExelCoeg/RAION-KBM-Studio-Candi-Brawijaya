@@ -2,9 +2,11 @@
 
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class ArrowScript : MonoBehaviour
 {
+    private NPCManager npcManager;
     Rigidbody2D rb;
     public float vo;
     public float damage;
@@ -14,6 +16,7 @@ public class ArrowScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * vo;
         Invoke("Destroy",5f);
+        npcManager = NPCManager.instance;
     }
 
     void Update()
@@ -25,12 +28,10 @@ public class ArrowScript : MonoBehaviour
         }
     }
     public void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.CompareTag("Enemy")){
-            Destroy(collision.gameObject);
-            //collision.gameObject.GetComponent<IDamagable>().TakeDamage((int)damage);
+        if (npcManager.archerDamageAble.Contains(collision.gameObject.tag)){
+            collision.gameObject.GetComponent<IDamagable>().TakeDamage((int)damage);
         }else if (collision.gameObject.CompareTag("Ground"))
         {
-            //Debug.Log("Ground");
             isHit = true;
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;

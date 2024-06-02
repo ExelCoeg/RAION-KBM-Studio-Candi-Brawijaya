@@ -8,6 +8,7 @@ public class KngihtScript : NPC
 {
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] Collider2D objectInRange;
+    [SerializeField] NPCHealth npcHealth;
 
     [SerializeField] Boolean enemyDetected;//nanti bakal dipindahin ke player
     [SerializeField] float offSideTimer;
@@ -37,6 +38,8 @@ public class KngihtScript : NPC
         enemyDetected = false;
         offSideTimer = 0;
         status = Status.Knight;
+
+        npcHealth = this.GetComponent<NPCHealth>();
     }
 
     // Update is called once per frame
@@ -59,6 +62,11 @@ public class KngihtScript : NPC
         knightDetection = npcManager.knightDetection;
         knightRangeAttack = npcManager.knightRangeAttack;
         KnightAttackSpeed = npcManager.knightAttackSpeed;
+
+        if (npcHealth != null) {}
+        {
+            npcHealth.maxHealth = (int)npcManager.knightHealth;   
+        }
     }
     public override void Idle(Boolean isIdle){
         if (isIdle){
@@ -80,6 +88,16 @@ public class KngihtScript : NPC
             }
         }else if(attackTimer > npcManager.knightAttackSpeed){
             attackTimer = npcManager.knightAttackSpeed;
+        }
+    }
+    public override void Attack()
+    {
+        if(objectInRangeAttack != null){
+            IDamagable damagable = objectInRangeAttack.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage((int)npcManager.knightDamage);
+            }
         }
     }
     private void CheckEnemyInRange(){

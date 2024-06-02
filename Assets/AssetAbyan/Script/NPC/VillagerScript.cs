@@ -7,6 +7,7 @@ public class VillagerScript : NPC
 {
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Collider2D objectInRange;
+    [SerializeField] NPCHealth npcHealth;
     [SerializeField] float villagerDetection;
     [Header("Condition")]
     [SerializeField] Boolean playerDetected;
@@ -43,6 +44,8 @@ public class VillagerScript : NPC
         RandomIdle();
         setAnimationParameter();
         VillagerMining();
+
+        npcHealth = this.GetComponent<NPCHealth>();
     }
     private void FixedUpdate() {
         NPCMovement();
@@ -68,6 +71,11 @@ public class VillagerScript : NPC
        points.NPCCount--;
        npcManager.villagerCount--;
        Destroy(gameObject);
+
+       if (npcHealth != null) {}
+        {
+            npcHealth.maxHealth = (int)npcManager.villagerHealth;   
+        }
     }
     //=======================================================================================================================
     public void VillagerMining(){

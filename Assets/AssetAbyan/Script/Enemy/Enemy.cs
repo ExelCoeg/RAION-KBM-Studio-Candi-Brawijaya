@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     protected EnemyManager enemyManager;
     [SerializeField] public Animator animator;
     [SerializeField] protected Rigidbody2D rb;
+    protected EnemyHealth enemyHealth;
     [Header("Position")]
     protected PointManager pointManager;
     [SerializeField] protected Transform currentPoint;
@@ -81,16 +82,7 @@ public abstract class Enemy : MonoBehaviour
     //========================================================================================================================================================
     public abstract void EnemyAttack();
 
-    public virtual void Attack()
-    {
-        if(objectInRange != null){
-            IDamagable damagable = objectInRange.GetComponent<IDamagable>();
-            if (damagable != null)
-            {
-                objectInRange.GetComponent<IDamagable>().TakeDamage(20);
-            }
-        }
-    }
+    public virtual void Attack(){}
     //========================================================================================================================================================
     protected float RandomNumGen(float min, float max) { return UnityEngine.Random.Range(min, max); }
     //========================================================================================================================================================
@@ -143,7 +135,7 @@ public abstract class Enemy : MonoBehaviour
     //========================================================================================================================================================
     public virtual void Destroy()
     {
-        Destroy(this);
+        Destroy(this.gameObject);
     }
     //========================================================================================================================================================
     protected abstract void CheckSurrounding();

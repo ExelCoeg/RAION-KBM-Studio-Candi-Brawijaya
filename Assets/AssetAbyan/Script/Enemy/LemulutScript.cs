@@ -30,6 +30,7 @@ public class LemulutScript : Enemy
         damageAbleInRange = false;
 
         enemyStatus = EnemyStatus.Lemulut;
+        enemyHealth = this.GetComponent<EnemyHealth>();
     }
     private void Update() {
         SetEnemyAtribut();
@@ -49,6 +50,11 @@ public class LemulutScript : Enemy
         SetIdle(enemyManager.lemulutIdleSet);
         rangeDetection = enemyManager.lemulutDetection;
         rangeAttack = enemyManager.lemulutRangeAttack;
+
+        if (enemyHealth != null) {}
+        {
+            enemyHealth.maxHealth = (int)enemyManager.lemulutHealth;   
+        }
     }
     //========================================================================================================================================================
     public override void Idle(Boolean isIdle) {
@@ -74,6 +80,16 @@ public class LemulutScript : Enemy
             attackTimer = enemyManager.lemulutAttackSpeed;
         }
     }
+    public override void Attack()
+    {
+        if(objectInRange != null){
+            IDamagable damagable = objectInRange.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage((int)enemyManager.lemulutDamage);
+            }
+        }
+    }
     //========================================================================================================================================================
     protected override void CheckSurrounding(){
         objectDetected = Physics2D.OverlapCircle(transform.position, rangeDetection, damageAbleLayer);
@@ -89,7 +105,7 @@ public class LemulutScript : Enemy
         if (objectInRange != null && enemyManager.lelumutDamageAble.Contains(objectInRange.tag)){
             Idle(true);
             damageAbleInRange = true;
-        } else if(damageAbleDetected){
+        } else if(damageAbleInRange){
             Idle(false);
             damageAbleInRange =false;
         }

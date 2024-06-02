@@ -92,6 +92,8 @@ public abstract class NPC : MonoBehaviour
         }
     }
     //========================================================================================================================================================
+    public virtual void Attack() {}
+    //========================================================================================================================================================
     public abstract void ChangeStatus(Status status);
     protected void flip(){
         Vector3 scale = transform.localScale;

@@ -1,6 +1,6 @@
 using UnityEngine;
 public class NPCHealth : MonoBehaviour, IDamagable{
-    [SerializeField] int maxHealth = 100;
+    public int maxHealth = 100;
     public int health {get;set;}
     private void Start() {
         health = maxHealth;
@@ -8,11 +8,11 @@ public class NPCHealth : MonoBehaviour, IDamagable{
     private void Update() {
         if(health <= 0){
             print("Player dead");
-            
+            this.GetComponent<NPC>().ChangeStatus(Status.Vagrant);
         }
     }
     public void TakeDamage(int damage){
-        maxHealth -= damage;
+        health -= damage;
         print(this.name + " taking damage");
     }
 

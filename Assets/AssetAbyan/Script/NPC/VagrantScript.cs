@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class VagrantScript : NPC
@@ -7,7 +8,9 @@ public class VagrantScript : NPC
     [SerializeField] Collider2D objectInRange;
     [SerializeField] Boolean playerDetected;
     [SerializeField] float vagrantDetection;
-    private void Awake() {
+    [SerializeField] float offSideTimer;
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
     }
     void Start()
@@ -36,14 +39,16 @@ public class VagrantScript : NPC
         RandomIdle();
         setAnimationParameter();
     }
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         NPCMovement();
     }
-    private void SetNPCAtribut(){
+    private void SetNPCAtribut()
+    {
         SetIdle(npcManager.vagrantIdleSet);
         vagrantDetection = npcManager.vagrantDetection;
     }
-    public override void Idle(Boolean isIdle){
+     public override void Idle(Boolean isIdle){
         if (isIdle){
             this.isIdle = true;
             movSpeed = 0;
@@ -53,14 +58,26 @@ public class VagrantScript : NPC
             movSpeed = npcManager.vagrantMovSpeed;
         }
     }
-    private void CheckEnemyInRange(){
+    private void CheckEnemyInRange()
+    {
         objectInRange = Physics2D.OverlapCircle(transform.position, vagrantDetection, playerLayer);
 
-        if (objectInRange != null && objectInRange.tag == "Player"){
-            Idle(false);
-            SetPoint(objectInRange.gameObject.transform);
-            playerDetected = true;
-        }else if(playerDetected){
+        if (objectInRange != null && objectInRange.tag == "Player")
+        {
+            float distance = Mathf.Abs(objectInRange.transform.position.x - transform.position.x);
+            if (distance <= 1f)
+            {
+                Idle(true);
+            }
+            else
+            {
+                Idle(false);
+                SetPoint(objectInRange.gameObject.transform);
+                playerDetected = true;
+            }
+        }
+        else if (playerDetected)
+        {
             SetPoint(points.pointA);
             playerDetected = false;
         }
@@ -70,11 +87,12 @@ public class VagrantScript : NPC
         Gizmos.DrawWireSphere(transform.position, vagrantDetection);
     }
 
-    public override void ChangeStatus(Status status){
-       npcManager.InstanceNPC(status, transform.position);
-       points.NPCCount--;
-       npcManager.vagrantCount--;
-       Destroy(gameObject);
+    public override void ChangeStatus(Status status)
+    {
+        npcManager.InstanceNPC(status, transform.position);
+        points.NPCCount--;
+        npcManager.vagrantCount--;
+        Destroy(gameObject);
     }
     private void setAnimationParameter(){
         animator.SetFloat("movSpeed", Mathf.Abs(movSpeed));

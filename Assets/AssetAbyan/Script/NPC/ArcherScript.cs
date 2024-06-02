@@ -6,6 +6,7 @@ public class ArcherScript : NPC
 {
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] Collider2D objectInRange;
+    [SerializeField] NPCHealth npcHealth;
     [SerializeField] float  archerDetection;
 
     [SerializeField] Boolean enemyDetected;
@@ -36,6 +37,9 @@ public class ArcherScript : NPC
         npcManager.archerCount++;
         enemyDetected = false;
         status = Status.Archer;
+
+
+        npcHealth = this.GetComponent<NPCHealth>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,11 @@ public class ArcherScript : NPC
         SetIdle(npcManager.archerIdleSet);
         archerDetection = npcManager.archerDetection - 2;
         vo = CalculatePower(npcManager.archerDetection);
+
+        if (npcHealth != null) {}
+        {
+            npcHealth.maxHealth = (int)npcManager.archerHealth;   
+        }
     }
     public override void Idle(Boolean isIdle){
         if (isIdle){

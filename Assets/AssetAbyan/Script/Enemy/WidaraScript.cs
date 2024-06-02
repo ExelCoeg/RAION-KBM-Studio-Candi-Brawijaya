@@ -30,6 +30,7 @@ public class WidaraScript : Enemy
         damageAbleInRange = false;
 
         enemyStatus = EnemyStatus.Widara;
+        enemyHealth = this.GetComponent<EnemyHealth>();
     }
     private void Update() {
         SetEnemyAtribut();
@@ -50,6 +51,11 @@ public class WidaraScript : Enemy
         SetIdle(enemyManager.widaraIdleSet);
         rangeDetection = enemyManager.widaraDetection;
         rangeAttack = enemyManager.widaraRangeAttack;
+
+        if (enemyHealth != null) {}
+        {
+            enemyHealth.maxHealth = (int)enemyManager.widaraHealth;   
+        }
     }
     //========================================================================================================================================================
     
@@ -83,6 +89,16 @@ public class WidaraScript : Enemy
             attackTimer = enemyManager.widaraAttackSpeed;
         }
     }
+    public override void Attack()
+    {
+        if(objectInRange != null){
+            IDamagable damagable = objectInRange.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage((int)enemyManager.widaraDamage);
+            }
+        }
+    }
     //========================================================================================================================================================
     protected override void CheckSurrounding(){
         objectDetected = Physics2D.OverlapCircle(transform.position, rangeDetection, damageAbleLayer);
@@ -98,7 +114,7 @@ public class WidaraScript : Enemy
         if (objectInRange != null && enemyManager.widaraDamageAble.Contains(objectInRange.tag)){
             Idle(true);
             damageAbleInRange = true;
-        } else if(damageAbleDetected){
+        } else if(damageAbleInRange){
             Idle(false);
             damageAbleInRange =false;
         }

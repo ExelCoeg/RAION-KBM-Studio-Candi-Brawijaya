@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using JetBrains.Annotations;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine.UIElements;
 
 public class GelaspariScript : Enemy
 {
+    
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -29,6 +31,10 @@ public class GelaspariScript : Enemy
         damageAbleInRange = false;
 
         enemyStatus = EnemyStatus.Gelapari;
+        enemyHealth = this.GetComponent<EnemyHealth>();
+        enemyHealth.maxHealth = (int)enemyManager.gelapariHealth; 
+        enemyHealth.heal();
+
     }
     private void Update() {
         SetEnemyAtribut();
@@ -48,10 +54,16 @@ public class GelaspariScript : Enemy
         SetIdle(enemyManager.gelapariIdleSet);
         rangeDetection = enemyManager.gelapariDetection;
         rangeAttack = enemyManager.gelapariRangeAttack;
+
+        if (enemyHealth != null) {}
+        {
+            enemyHealth.maxHealth = (int)enemyManager.gelapariHealth;   
+        }
     }
     //========================================================================================================================================================
     public override void Idle(Boolean isIdle) {
         if (isIdle){
+            Debug.Log("aoidfsujha;odsfkjjhna;osdihjf : " + isIdle);
             this.isIdle = true;
             movSpeed = 0;
         }
@@ -73,7 +85,17 @@ public class GelaspariScript : Enemy
             attackTimer = enemyManager.gelapariAttackSpeed;
         }
     }
-    //========================================================================================================================================================
+    public override void Attack()
+    {
+        if(objectInRange != null){
+            IDamagable damagable = objectInRange.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.TakeDamage((int)enemyManager.gelapariDamage);
+            }
+        }
+    }
+    //======================================================================================================================================================
     protected override void CheckSurrounding(){
         objectDetected = Physics2D.OverlapCircle(transform.position, rangeDetection, damageAbleLayer);
         objectInRange = Physics2D.OverlapCircle(attackPoint.position, rangeAttack, damageAbleLayer);
@@ -88,7 +110,7 @@ public class GelaspariScript : Enemy
         if (objectInRange != null && enemyManager.gelapariDamageAble.Contains(objectInRange.tag)){
             Idle(true);
             damageAbleInRange = true;
-        } else if(damageAbleDetected){
+        } else if(damageAbleInRange){
             Idle(false);
             damageAbleInRange =false;
         }
