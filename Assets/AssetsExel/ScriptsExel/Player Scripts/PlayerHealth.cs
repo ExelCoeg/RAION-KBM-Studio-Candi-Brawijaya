@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
         health = maxHealth;
     }
     private void Update() {
-        if(health <= 0){
+        if(health <= 1){
             print("Player dead");
         }
     }
@@ -14,5 +14,6 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
         print("Player taking damage");
 
     }
+    
 
 }
