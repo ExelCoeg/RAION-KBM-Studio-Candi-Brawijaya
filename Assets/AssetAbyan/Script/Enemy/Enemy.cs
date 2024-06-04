@@ -62,7 +62,7 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             return pointManager.GetEnemyPoints(right);
-        }
+        } 
     }
     public EnemyPoints SetPlace(EnemyPointNames enemyPointsint)
     {

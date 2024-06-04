@@ -52,7 +52,7 @@ public class EnemyManager : MonoBehaviour
     private void Start(){
         //InstanceNPC(Status.Vegrant, transform.position);
     }
-    public void InstanceNPC(EnemyStatus enemyStatus,Vector3 position){
+    public void InstanceEnemy(EnemyStatus enemyStatus,Vector3 position){
         switch (enemyStatus){
             case EnemyStatus.Lemulut:
                 Instantiate(lemulut, position, Quaternion.identity);
