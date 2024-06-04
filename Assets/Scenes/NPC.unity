@@ -372,7 +372,6 @@ MonoBehaviour:
   - Player
   - Archer
   - Knight
-  - Vagrant
   - Villager
   lemulutIdleSet:
   - 4
@@ -405,7 +404,8 @@ MonoBehaviour:
   widaraHealth: 100
   widaraDetection: 4
   widaraRangeAttack: 4
-  widaraDamageAble: []
+  widaraDamageAble:
+  - Athamerta
   widaraIdleSet:
   - 5
   - 5
@@ -828,11 +828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718704594873509480, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.05
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 718704594873509480, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.08
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 718704594873509480, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1780,7 +1780,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 100, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
