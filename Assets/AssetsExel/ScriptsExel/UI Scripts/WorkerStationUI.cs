@@ -9,6 +9,7 @@ public class WorkerStationUI : MonoBehaviour
     public TextMeshProUGUI knightAttackSpeedText;
     public TextMeshProUGUI knightDamageText;
     public TextMeshProUGUI villagerMiningTimeToCoinText;
+    public bool closeInput;
 
     private void Update() {
         archerAttackSpeedText.text = "ATKSPD " + NPCManager.instance.archerAttackSpeed.ToString();
