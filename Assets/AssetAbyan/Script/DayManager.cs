@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class DayManager : MonoBehaviour
 {   
+    
     public static DayManager instance;
-
-    [SerializeField] float clock;
-    [SerializeField] int totalDayTime;
-    [SerializeField] int nightIime;
+    [SerializeField] public int dayCount;
+    [Header("TIME")]
+    [SerializeField] public float clock;
+    [SerializeField] public int dayTime;
+    [SerializeField] public int nightIime;
     public bool isNight;
 
 
@@ -24,21 +27,21 @@ public class DayManager : MonoBehaviour
     }
     void Start()
     {
-        
+        SpawnManager.instance.WavesSet(dayCount);
     }
-
     // Update is called once per frame
     void Update()
     {
         clock += Time.deltaTime;
-        if (clock > totalDayTime){
+        if (clock > dayTime + nightIime){
             clock = 0;
+            dayCount++;
+            SpawnManager.instance.WavesSet(dayCount);
         }
         setNight();
-
     }
     public void setNight(){
-        if (clock > nightIime)
+        if (clock > dayTime)
         {
             isNight = true;
         }else if(isNight){

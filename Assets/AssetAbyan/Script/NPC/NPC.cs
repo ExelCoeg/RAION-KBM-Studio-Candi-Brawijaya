@@ -5,8 +5,9 @@ using UnityEngine;
 
 public abstract class NPC : MonoBehaviour
 {
+    [Tooltip("Status Untuk NPC")]
     public Status status;
-    [SerializeField] public Animator animator;
+    [SerializeField] public Animator animator;  
     protected NPCManager npcManager;
     protected PointManager pointManager;
     [SerializeField]protected Rigidbody2D rb;
