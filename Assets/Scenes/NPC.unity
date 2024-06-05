@@ -827,9 +827,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0f9c15709198147bad18fe65dd70f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayCount: 0
   clock: 0
-  totalDayTime: 300
-  nightIime: 0
+  dayTime: 2
+  nightIime: 2
   isNight: 0
 --- !u!4 &1287801934
 Transform:
@@ -1119,9 +1120,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
-  leftSpawnPoint: {fileID: 0}
-  rightSpawnPoint: {fileID: 0}
-  clock: 0
+  dayManager: {fileID: 0}
+  leftSpawnPoint: {fileID: 1181234726}
+  rightSpawnPoint: {fileID: 1347098902}
+  lemulutWaveData: 01000000
+  gelapariWaveData: 0000000001000000
+  widaraWaveData: 0000000001000000
+  lemulutCount: 0
+  gelapariCount: 0
+  widaraCount: 0
+  lemulutSpawnTime: 0
+  gelapariSpawnTime: 0
+  widaraSpawnTime: 0
 --- !u!4 &1719378975
 Transform:
   m_ObjectHideFlags: 0
