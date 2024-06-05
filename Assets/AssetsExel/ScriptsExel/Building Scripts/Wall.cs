@@ -1,56 +1,43 @@
 
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Wall : MonoBehaviour, IDamagable
+public class Wall : Building
 {
-    public int maxHealth;
-    public int testHealth;
-    public int health {get; set;}
-    public Sprite[] wallStage;
-    
-    [SerializeField] GameObject EIcon;
-    bool built = false;
-    public void Start()
-    {
-        health = 0;
-    }
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-    }
-  
+
     void Update()
     {
-        Collider2D player = Physics2D.OverlapCircle(new Vector2(transform.position.x,transform.position.y -2f), 3f, LayerMask.GetMask("Player"));
-        if(!built){
-            if(player != null){
-                EIcon.SetActive(true);
-                if(Input.GetKeyDown(KeyCode.F)){
-                    health = maxHealth;
-                    built = true;
-                    GetComponent<BoxCollider2D>().enabled = true;
-                    EIcon.SetActive(false);
-                }
-            }
-            else if(player == null){
-                EIcon.SetActive(false);
-            }
-        }
-        if(health <= 0){
-            GetComponent<SpriteRenderer>().sprite = wallStage[3];
+        ChangeBuildingSprite();
+    }
+    public override void ChangeBuildingSprite(){
+        if(currentHealth <= 0){
+            GetComponent<SpriteRenderer>().sprite = spriteStages[3];
             GetComponent<BoxCollider2D>().enabled = false;
         }
-        else if(health <= 40){
-            GetComponent<SpriteRenderer>().sprite = wallStage[2];
+        else if(currentHealth <= 40){
+            GetComponent<SpriteRenderer>().sprite = spriteStages[2];
         }
-        else if(health <= 60){
-            GetComponent<SpriteRenderer>().sprite = wallStage[1];
+        else if(currentHealth <= 60){
+            GetComponent<SpriteRenderer>().sprite = spriteStages[1];
         }
-        else if(health <= 100){
-            GetComponent<SpriteRenderer>().sprite = wallStage[0];
+        else if(currentHealth <= 100){
+            GetComponent<SpriteRenderer>().sprite = spriteStages[0];
         }
-    
+    }
+
+    public override void Upgrade(){
+        currentLevel++;
+        if(currentLevel.Equals(1)){
+            maxHealth = 200;
+            currentHealth = maxHealth;
+        }
+        else if(currentLevel.Equals(2)){
+            maxHealth = 300;
+            currentHealth = maxHealth;
+        }
+        else if(currentLevel.Equals(3)){
+            maxHealth = 400;
+            currentHealth = maxHealth;
+        }
     }
     public void OnDrawGizmos(){
         Gizmos.color = Color.red;

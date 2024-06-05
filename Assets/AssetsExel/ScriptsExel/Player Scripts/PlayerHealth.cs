@@ -1,12 +1,16 @@
 using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamagable{
     [SerializeField] int maxHealth = 100;
-    public int health {get;set;}
+    public int _health {get;set;}
+    public int _maxHealth {get;set;}
+
+    public int currentHealth;
     private void Start() {
-        health = maxHealth;
+        _maxHealth = maxHealth;
+        currentHealth = _maxHealth;
     }
     private void Update() {
-        if(health <= 0){
+        if(currentHealth <= 0){
             print("Player dead");
         }
     }

@@ -145,13 +145,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  testHealth: 0
-  wallStage:
+  currentHealth: 0
+  currentLevel: 0
+  upgradeCost: 0
+  spriteStages:
   - {fileID: 21300000, guid: 63b77f3cff9044b48be2b01c9960fc51, type: 3}
   - {fileID: 21300000, guid: 65c87c92e1df2ae4e87e16c59cf847fc, type: 3}
   - {fileID: 21300000, guid: a98126d8e460a384a950bbe58a9542e5, type: 3}
   - {fileID: 21300000, guid: c72b01d6deeab2740aa6d9ab3d17d427, type: 3}
-  EIcon: {fileID: 8622966848003400830}
+  FIcon: {fileID: 8622966848003400830}
 --- !u!1 &8622966848003400830
 GameObject:
   m_ObjectHideFlags: 0
