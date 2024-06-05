@@ -1,23 +1,26 @@
 using UnityEngine;
 public class EnemyHealth : MonoBehaviour, IDamagable{
+
+    public int _maxHealth {get;set;}
+    public int _health {get;set;}
     public int maxHealth = 100;
-    public int health2;
-    [SerializeField] public int health {get;set;}
+    public int currentHealth;
     private void Start() {
-        health = maxHealth;
+        _maxHealth = maxHealth;
+        currentHealth = _maxHealth;
+
     }
     private void Update() {
-        health2 = health;
-        if(health <= 0){
+        if(currentHealth <= 0){
             print("Player dead");
-            this.GetComponent<Enemy>().Destroy();
+            GetComponent<Enemy>().Destroy();
         }
     }
     public void heal(){
-        health = maxHealth;
+        currentHealth = maxHealth;
     }
     public void TakeDamage(int damage){
-        health -= damage;
+        currentHealth -= damage;
         print(this.name + " taking damage");
     }
 
