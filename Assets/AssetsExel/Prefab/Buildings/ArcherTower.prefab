@@ -231,6 +231,9 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   currentLevel: 0
-  upgradeCost: 0
-  spriteStages: []
+  upgradeCosts: 0a000000140000001e000000
+  spriteStages:
+  - {fileID: 21300000, guid: b3268b41267c8ca4180f8284ad921137, type: 3}
+  - {fileID: 21300000, guid: d5c24416b2fae314491a63a8feb2d00a, type: 3}
+  - {fileID: 21300000, guid: f34828f0385ff3944996c2a43a0d85d4, type: 3}
   FIcon: {fileID: 6969619759369191171}

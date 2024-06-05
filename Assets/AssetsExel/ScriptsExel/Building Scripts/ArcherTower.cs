@@ -6,8 +6,9 @@ public class ArcherTower : Building
 
     GameObject archer;
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
         FillTowerWithArcher();
     }
 
@@ -49,20 +50,24 @@ public class ArcherTower : Building
 
     public override void Upgrade()
     {
-        currentLevel++;
-        if(currentLevel.Equals(1)){
-            maxHealth = 200;
-            currentHealth = maxHealth;
+        
+        if(currentLevel < 3){
+            currentLevel++;
+            if(currentLevel.Equals(1)){
+                maxHealth = 200;
+                currentHealth = maxHealth;
+            }
+            else if(currentLevel.Equals(2)){
+                maxHealth = 300;
+                currentHealth = maxHealth;
+            }
+            else if(currentLevel.Equals(3)){
+                maxHealth = 400;
+                currentHealth = maxHealth;
+            }
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Coin>().coinCount -= upgradeCosts[currentLevel-1];
         }
-        else if(currentLevel.Equals(2)){
-            maxHealth = 300;
-            currentHealth = maxHealth;
-        }
-        else if(currentLevel.Equals(3)){
-            maxHealth = 400;
-            currentHealth = maxHealth;
-        }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Coin>().coinCount -= upgradeCosts[currentLevel-1];
+        
     }
     public void OnDrawGizmos(){
         Gizmos.color = Color.red;
