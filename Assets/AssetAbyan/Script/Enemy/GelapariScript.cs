@@ -16,7 +16,7 @@ public class GelaspariScript : Enemy
     private void Start() {
         enemyManager = EnemyManager.instance;
         pointManager = PointManager.instance;
-        enemyPoints = SetPlace(EnemyPointNames.Right, EnemyPointNames.Left);
+        enemyPoints = SetPlace(EnemyPointNames.Right, EnemyPointNames.Left);//nanti ini bakala dipake spawner 
         SetPoint(enemyPoints.pointA);
         SetIdle(enemyManager.gelapariIdleSet);
         movSpeed = enemyManager.gelapariMovSpeed;

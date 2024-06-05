@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2475428902389283915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551173112944464469}
+  - component: {fileID: 4571460755860284247}
+  m_Layer: 10
+  m_Name: NPCManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1551173112944464469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475428902389283915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.7, y: 0.39, z: -0.134916}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4571460755860284247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475428902389283915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5584b76f8ae67d4e8fcea159749c597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vagrant: {fileID: 6631533174165759714, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
+  vagrantCount: 0
+  vagrantMovSpeed: 3
+  vagrantHealth: 0
+  vagrantDetection: 3
+  vagrantDamageAble: []
+  vagrantIdleSet:
+  - 5
+  - 6
+  - 1
+  - 2
+  villager: {fileID: 1370986650272124093, guid: d796e09801897f74b98ccbc974ef9a54, type: 3}
+  villagerCount: 0
+  villagerMovSpeed: 3
+  villagerHealth: 100
+  villagerDetection: 10
+  villagerMiningTimeToCoin: 2
+  villagerDamageAble: []
+  villagerIdleSet:
+  - 1
+  - 2
+  - 5
+  - 6
+  archer: {fileID: 6569092053781098253, guid: 23fbfabde552a184b9bd3ccd9a720be5, type: 3}
+  archerCount: 0
+  ArcherMovSpeed: 3
+  archerHealth: 100
+  archerDetection: 10
+  archerDamage: 50
+  archerDamageAble:
+  - Widara
+  - Lemulut
+  - Gelapari
+  archerAttackSpeed: 2
+  archerIdleSet:
+  - 5
+  - 6
+  - 1
+  - 2
+  knight: {fileID: 9004437589879368943, guid: 41958e2a9f522aa4ca886dc71ddc483a, type: 3}
+  knightCount: 0
+  kngihtMovSpeed: 3
+  knightHealth: 500
+  knightDetection: 10
+  knightRangeAttack: 0.2
+  knightOffSiteRange: 1
+  knightDamage: 20
+  knightAttackSpeed: 1.92
+  knightDamageAble:
+  - Lemulut
+  - Gelapari
+  knightIdleSet:
+  - 5
+  - 6
+  - 1
+  - 2
