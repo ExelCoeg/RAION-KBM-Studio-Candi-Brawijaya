@@ -58,6 +58,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grass
+    uniqueID: 3796280659
+    locked: 0
   - name: ForeGround
     uniqueID: 3436853547
     locked: 0
