@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpawnManager : MonoBehaviour
 
@@ -25,6 +26,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] int lemulutSpawnTime;
     [SerializeField] int gelapariSpawnTime;
     [SerializeField] int widaraSpawnTime;
+
+    [SerializeField] int tempLemulutSpawnTime;
+    [SerializeField] int tempGelapariSpawnTime;
+    [SerializeField] int tempWidaraSpawnTime;
     private void Awake()
     {
         if (instance == null)
@@ -49,11 +54,36 @@ public class SpawnManager : MonoBehaviour
     }
 
     public void WavesSet(int waveCount)//start from 0
-    {   
-        if (lemulutWaveData.Length >= waveCount ){ lemulutCount = lemulutWaveData[waveCount];}else lemulutCount = 0;
-        if (gelapariWaveData.Length >= waveCount){gelapariCount = gelapariWaveData[waveCount];}else gelapariCount = 0;
-        if (widaraWaveData.Length >= waveCount){widaraCount = widaraWaveData[waveCount];}else widaraCount = 0;
-          
+    {
+        tempLemulutSpawnTime = 0;
+        tempGelapariSpawnTime = 0;
+        tempWidaraSpawnTime = 0;
+        print("SETWAVE " + waveCount);
+        if (lemulutWaveData.Length - 1>= waveCount)
+        {
+            lemulutCount = lemulutWaveData[waveCount];
+        }
+        else
+        {
+            lemulutCount = 0;
+        }
+        if (gelapariWaveData.Length - 1>= waveCount)
+        {
+            gelapariCount = gelapariWaveData[waveCount];
+        }
+        else
+        {
+            gelapariCount = 0;
+        }
+        if (widaraWaveData.Length - 1 >= waveCount)
+        {
+            widaraCount = widaraWaveData[waveCount];
+        }
+        else
+        {
+            widaraCount = 0;
+        }
+
         if (lemulutCount > 0)
         {
             lemulutSpawnTime = DayManager.instance.dayTime / lemulutCount;
@@ -85,21 +115,21 @@ public class SpawnManager : MonoBehaviour
 
     public void enemySpawn()
     {
-        if (lemulutCount > 0 && dayManager.clock > lemulutSpawnTime)
+        if (lemulutCount > 0 && dayManager.clock > tempLemulutSpawnTime)
         {
-            lemulutSpawnTime += lemulutSpawnTime;
+            tempLemulutSpawnTime += lemulutSpawnTime;
             SpawnLemulut();
             lemulutCount--;
         }
-        if (gelapariCount > 0 && dayManager.clock > gelapariSpawnTime)
+        if (gelapariCount > 0 && dayManager.clock > tempGelapariSpawnTime)
         {
-            gelapariSpawnTime += gelapariSpawnTime;
+            tempGelapariSpawnTime += gelapariSpawnTime;
             SpawnGelapari();
             gelapariCount--;
         }
-        if (widaraCount > 0 && dayManager.clock > widaraSpawnTime)
+        if (widaraCount > 0 && dayManager.clock > tempWidaraSpawnTime)
         {
-            widaraSpawnTime += widaraSpawnTime;
+            tempWidaraSpawnTime += widaraSpawnTime;
             SpawnWidara();
             widaraCount--;
         }
