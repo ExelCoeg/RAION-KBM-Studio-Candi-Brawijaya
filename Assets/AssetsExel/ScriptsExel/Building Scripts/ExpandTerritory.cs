@@ -3,20 +3,23 @@ using UnityEngine;
 
 public class ExpandTerritory : MonoBehaviour
 {   
+   
     public void Expand(){
         // panggil fungsi 
-        if(gameObject.transform.position.x >= TerritoryManager.instance.pointBx){
-            GameObject nearestDeadTreeB = TerritoryManager.instance.GetNearestDeadTreeWithExpandTerritoryFromPointB();
-            // print(nearestDeadTreeB.transform.position.x);
-            TerritoryManager.instance.territoryPoints.pointB.position = new Vector2(nearestDeadTreeB.transform.position.x, //
-            TerritoryManager.instance.territoryPoints.pointB.position.y);
+        if(TerritoryManager.instance.onPointB){
+            GameObject nearestBorderB = TerritoryManager.instance.GetBorderFromPointB();
+            print("nearestBorderB: " + nearestBorderB.transform.position);
+            TerritoryManager.instance.territoryPoints.pointB.position = new Vector2(nearestBorderB.transform.position.x, transform.position.y-2f);
+            enabled = false;
         }
-        else if(gameObject.transform.position.x <= TerritoryManager.instance.pointAx){
-            GameObject nearestDeadTreeA = TerritoryManager.instance.GetNearestDeadTreeWithExpandTerritoryFromPointA();
-            // print(nearestDeadTreeA.transform.position.x);
-            TerritoryManager.instance.territoryPoints.pointA.position = new Vector2(nearestDeadTreeA.transform.position.y , //
-            TerritoryManager.instance.territoryPoints.pointA.position.y);
+        else if(TerritoryManager.instance.onPointA){
+            GameObject nearestBorderA = TerritoryManager.instance.GetBorderFromPointA();
+            print("nearestBorderA: "  + nearestBorderA.transform.position);
+            TerritoryManager.instance.territoryPoints.pointA.position = new Vector2(nearestBorderA.transform.position.x,  transform.position.y-2f);
+            enabled = false;
         }
-        enabled = false;
     }
 }
+
+        
+        

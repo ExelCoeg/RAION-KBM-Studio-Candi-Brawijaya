@@ -46,37 +46,30 @@ public class Keris : MonoBehaviour
             Petir(new Vector3(mousePos.x + petirOffset, 0.5f));
             ResetPetirCooldown();
         }
-        CheckForDeadTree();
-        
+        Expand();
     }
 
-    public void CheckForDeadTree(){
+    public void Expand(){
     
-        Collider2D nearestDeadTree = Physics2D.OverlapCircle(transform.position, 2f, LayerMask.GetMask("DeadTree"));
-        if(nearestDeadTree != null){
-            if(nearestDeadTree.gameObject.TryGetComponent<ExpandTerritory>(out ExpandTerritory expandTerritory)){
-                // print("Dead Tree Found with ExpandTerritory Script");
-                if(Input.GetKey(KeyCode.F)){
-                    // expand muncul bar untuk expand (WORLD SPACE UI)
+        
+        if(Input.GetKey(KeyCode.F)){
+            // expand muncul bar untuk expand (WORLD SPACE UI)
                     
-                    expandBar.gameObject.SetActive(true);
+            expandBar.gameObject.SetActive(true);
 
-                    holdTime += Time.deltaTime;
-                    expandBar.value = holdTime/requiredHoldTime;
+            holdTime += Time.deltaTime;
+            expandBar.value = holdTime/requiredHoldTime;
 
-                    if(holdTime >= requiredHoldTime){
-                        expandTerritory.Expand();
-                        expandBar.gameObject.SetActive(false);
-                    }
-                }
-                else{
-                    holdTime = 0;
-                    expandBar.gameObject.SetActive(false);
-                }
+            if(holdTime >= requiredHoldTime){
+                TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
+                expandBar.gameObject.SetActive(false);
             }
         }
+        else{
+            holdTime = 0;
+            expandBar.gameObject.SetActive(false);
+        }
     }
-
     
     public void Petir(Vector3 pos){ 
         GameObject petirClone = Instantiate(petir, pos, Quaternion.identity);

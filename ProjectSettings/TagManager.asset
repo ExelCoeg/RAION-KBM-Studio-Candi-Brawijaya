@@ -19,6 +19,7 @@ TagManager:
   - Lemulut
   - Gelapari
   - Tree
+  - GrassBorder
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Enemy
   - NPC
   - Building
-  - DeadTree
+  - 
   - 
   - 
   - 
