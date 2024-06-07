@@ -18,6 +18,8 @@ TagManager:
   - Widara
   - Lemulut
   - Gelapari
+  - Grass
+  - GrassBorder
   layers:
   - Default
   - TransparentFX

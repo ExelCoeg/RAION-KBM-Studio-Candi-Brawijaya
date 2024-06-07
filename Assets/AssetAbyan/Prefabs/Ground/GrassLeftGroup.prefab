@@ -430,11 +430,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1418880037384801583}
   - component: {fileID: 4046262896174852302}
-  - component: {fileID: 1658143500513054912}
   - component: {fileID: 9198580088666911480}
+  - component: {fileID: 504240202923106837}
   m_Layer: 8
   m_Name: GrassLeftGroup
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,20 +483,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1658143500513054912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5657979518340983916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca8ac3c9b4ba9345bc97231ea2c6fdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextGrass: {fileID: 0}
-  offsite: -3
 --- !u!61 &9198580088666911480
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -542,6 +528,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &504240202923106837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657979518340983916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f6d2d7ea6a5844c99b180f7688cc36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextGrass: {fileID: 0}
+  offsite: -3
 --- !u!1 &6010148452735276456
 GameObject:
   m_ObjectHideFlags: 0
