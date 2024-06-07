@@ -18,6 +18,7 @@ TagManager:
   - Widara
   - Lemulut
   - Gelapari
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Enemy
   - NPC
   - Building
-  - 
+  - DeadTree
   - 
   - 
   - 

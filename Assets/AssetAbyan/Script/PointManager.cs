@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PointsNames
 {
-    LeftVagrant, RightVagrant, Villager, LeftArcher, RightArcher, Knight
+    LeftVagrant, RightVagrant, Villager, LeftArcher, RightArcher, Knight, Territory
 }
 public enum EnemyPointNames{
     Left,Right

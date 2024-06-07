@@ -1,44 +1,84 @@
 
-using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Keris : MonoBehaviour
 {
-    [SerializeField] GameObject petir;
-    private int lifeEssence = 0;
+    [Header("Life Essence")]
+    public int lifeEssence = 0;
+
+    [Header("Petir Attributes")]
     private bool petirAvailable = true;
+    [SerializeField] int petirCost = 10;
     private float petirCooldown;
     [SerializeField] float petirCooldownMax = 5f;
     public float petirOffset = 2f;
+    [Header("Expand Attributes")]
+    [SerializeField] float holdTime = 0f;
+
+    [SerializeField] float requiredHoldTime = 3f;
+
     [SerializeField] Vector3 mousePos;
+
+    [SerializeField] GameObject petir;
+    [SerializeField] Slider expandBar;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         ResetPetirCooldown();
-        
     }
+   
 
     // Update is called once per frame
     void Update()
     {
         mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+
+        // print("B: " + (transform.position.x <= TerritoryManager.instance.pointBx));
+        // print("A: " + (transform.position.x >= TerritoryManager.instance.pointAx));
         petirCooldown -= Time.deltaTime;
-        // petirAvailable = lifeEssence >= 10 && petirCooldown <= 0;
-        petirAvailable = petirCooldown <= 0;
+        petirAvailable = lifeEssence >= petirCost && petirCooldown <= 0;
+
         if(Input.GetKeyDown(KeyCode.Space) && petirAvailable){
             // panggil fungsi petir
             Petir(new Vector3(mousePos.x + petirOffset, 0.5f));
             ResetPetirCooldown();
         }
+        CheckForDeadTree();
+        
     }
 
-    public void Expand(){
-        // parameter : territory yang akan diperluas
-        print("Keris expanding territory");
+    public void CheckForDeadTree(){
+    
+        Collider2D nearestDeadTree = Physics2D.OverlapCircle(transform.position, 2f, LayerMask.GetMask("DeadTree"));
+        if(nearestDeadTree != null){
+            if(nearestDeadTree.gameObject.TryGetComponent<ExpandTerritory>(out ExpandTerritory expandTerritory)){
+                // print("Dead Tree Found with ExpandTerritory Script");
+                if(Input.GetKey(KeyCode.F)){
+                    // expand muncul bar untuk expand (WORLD SPACE UI)
+                    
+                    expandBar.gameObject.SetActive(true);
+
+                    holdTime += Time.deltaTime;
+                    expandBar.value = holdTime/requiredHoldTime;
+
+                    if(holdTime >= requiredHoldTime){
+                        expandTerritory.Expand();
+                        expandBar.gameObject.SetActive(false);
+                    }
+                }
+                else{
+                    holdTime = 0;
+                    expandBar.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
+    
     public void Petir(Vector3 pos){ 
-        print("Keris summoning thunderstorm");
         GameObject petirClone = Instantiate(petir, pos, Quaternion.identity);
         
     }
@@ -46,8 +86,6 @@ public class Keris : MonoBehaviour
         petirCooldown = petirCooldownMax;
     }
 
-    public void AddLifeEssence(int amount){
-        lifeEssence += amount;
-    }
+
 }
 
