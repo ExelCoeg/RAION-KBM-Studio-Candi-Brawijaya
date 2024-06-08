@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float energy;
-    [SerializeField] float maxEnergy = 3f;
+    public float energy;
+    public float maxEnergy = 3f;
     
 
     [Header("Speed & Acceleration")]
