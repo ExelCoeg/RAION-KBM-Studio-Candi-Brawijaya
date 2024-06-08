@@ -16,7 +16,7 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
     public int upgradeCost = 1;
     public int recoverBuildingCost = 1;
     bool built;
-    bool canBuild = true;
+    bool canBuild = false;
     [Header("Building Sprites & Icon")]
     public Sprite[] spriteStages;
     [SerializeField] GameObject FIcon;
@@ -29,7 +29,12 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
         upgradeCost = currentLevel * upgradeCostMultiplier;
         Interact();
         ChangeBuildingSprite();
-
+        if(!canBuild && !built){
+            print("test");
+            if(transform.position.x >= TerritoryManager.instance.pointAx && transform.position.x <= TerritoryManager.instance.pointBx){
+                canBuild = true;
+            }
+        }
     }
     public void TakeDamage(int damage){
         currentHealth -= damage;
@@ -48,7 +53,7 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
     public void Interact()
     {   
         Collider2D player = Physics2D.OverlapCircle(new Vector2(transform.position.x,transform.position.y -2f), 3f, LayerMask.GetMask("Player"));
-        if(player!=null) {
+        if(player!=null && (canBuild || built)) {
             FIcon.SetActive(true);
             if(built) buildingInfo.SetActive(true);
             else buildingInfo.SetActive(false);
@@ -88,6 +93,7 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
             GameObject.FindGameObjectWithTag("Player").GetComponent<Coin>().coinCount -= upgradeCost;
         }
     }
+    
     public abstract void ChangeBuildingSprite();
 
 }

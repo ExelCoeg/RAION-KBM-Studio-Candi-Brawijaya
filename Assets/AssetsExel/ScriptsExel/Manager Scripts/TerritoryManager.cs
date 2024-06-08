@@ -20,12 +20,12 @@ public class TerritoryManager : MonoBehaviour
         else{
             Destroy(this);
         }
-        pointAx = territoryPoints.pointA.position.x;
-        pointBx = territoryPoints.pointB.position.x;
     }
     private void Update() {
         raycastPointA = territoryPoints.pointA.position;
         raycastPointB = territoryPoints.pointB.position;
+        pointAx = territoryPoints.pointA.position.x;
+        pointBx = territoryPoints.pointB.position.x;
 
         Collider2D hitA =  Physics2D.OverlapCircle(territoryPoints.pointA.position,5f,LayerMask.GetMask("Player"));
         Collider2D hitB =  Physics2D.OverlapCircle(territoryPoints.pointB.position,5f,LayerMask.GetMask("Player"));
@@ -76,9 +76,5 @@ public class TerritoryManager : MonoBehaviour
     
        
     }
-    // private void OnDrawGizmos() {
-    //     Gizmos.DrawRay(raycastPointB, Vector2.right);
-    //     Gizmos.DrawWireSphere(territoryPoints.pointA.position, 5f);
-    //     Gizmos.DrawWireSphere(territoryPoints.pointB.position, 5f);
-    // }
+
 }

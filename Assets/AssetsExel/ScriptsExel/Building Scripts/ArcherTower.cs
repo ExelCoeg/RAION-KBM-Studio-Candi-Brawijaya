@@ -12,6 +12,7 @@ public class ArcherTower : Building
     {
         base.Update();
         FillTowerWithArcher();
+        
     }
     
     public void FillTowerWithArcher(){
