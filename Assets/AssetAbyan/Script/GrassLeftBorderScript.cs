@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class GrassLeftBorderScript : GrassScript
@@ -14,7 +12,7 @@ public class GrassLeftBorderScript : GrassScript
         gameObject.GetComponent<Animator>().Play("GrassLeftChangeEnd");
     }
     [ContextMenu("call Expand Teritory")]
-    public void CallEndAnim(){
+    public override void CallEndAnim(){
         gameObject.GetComponent<Animator>().Play("GrassLeftBorderChange");
     }
     public void destroyBorder(){

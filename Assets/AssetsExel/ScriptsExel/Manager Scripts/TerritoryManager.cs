@@ -24,12 +24,12 @@ public class TerritoryManager : MonoBehaviour
         pointBx = territoryPoints.pointB.position.x;
     }
     private void Update() {
-        raycastPointA = new Vector2(territoryPoints.pointA.position.x ,territoryPoints.pointA.position.y- 2f);
-        raycastPointB = new Vector2(territoryPoints.pointB.position.x ,territoryPoints.pointB.position.y- 2f );
+        raycastPointA = territoryPoints.pointA.position;
+        raycastPointB = territoryPoints.pointB.position;
 
         Collider2D hitA =  Physics2D.OverlapCircle(territoryPoints.pointA.position,5f,LayerMask.GetMask("Player"));
         Collider2D hitB =  Physics2D.OverlapCircle(territoryPoints.pointB.position,5f,LayerMask.GetMask("Player"));
-
+       
         if(hitA != null) 
         {
             onPointA = true;
@@ -51,25 +51,34 @@ public class TerritoryManager : MonoBehaviour
         } 
     }
     public GameObject GetBorderFromPointA(){
-        RaycastHit2D hit = Physics2D.Raycast(raycastPointA, Vector2.left);
-        if(hit.collider.gameObject.TryGetComponent<ExpandTerritory>(out ExpandTerritory expandTerritory)){
-            return expandTerritory.gameObject;
+        GameObject grassBorder;
+        RaycastHit2D hit = Physics2D.Raycast(raycastPointA, Vector2.left,100,LayerMask.GetMask("GrassBorder"));
+        if(hit.collider.CompareTag("GrassBorder")){
+            grassBorder = hit.collider.gameObject;
         }
-        
-        return null;
+        else{
+            grassBorder = null;
+        }
+        return grassBorder;
     }
     
-    public GameObject GetBorderFromPointB(){
-         RaycastHit2D hit = Physics2D.Raycast(raycastPointB, Vector2.right);
-        if(hit.collider.gameObject.TryGetComponent<ExpandTerritory>(out ExpandTerritory expandTerritory)){
-            return expandTerritory.gameObject;
+    public GameObject GetBorderFromPointB(){    
+        GameObject grassBorder;
+         RaycastHit2D hit = Physics2D.Raycast(raycastPointB, Vector2.right, 100,LayerMask.GetMask("GrassBorder"));
+        //  print(hit.collider.gameObject.name);
+        if(hit.collider.CompareTag("GrassBorder")){
+            grassBorder = hit.collider.gameObject;
         }
-        
-        return null;
+        else{
+            grassBorder = null;
+        }
+        return grassBorder;
+    
+       
     }
-    private void OnDrawGizmos() {
-        Gizmos.DrawRay(raycastPointB,Vector2.right);
-        Gizmos.DrawWireSphere(territoryPoints.pointA.position, 5f);
-        Gizmos.DrawWireSphere(territoryPoints.pointB.position, 5f);
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.DrawRay(raycastPointB, Vector2.right);
+    //     Gizmos.DrawWireSphere(territoryPoints.pointA.position, 5f);
+    //     Gizmos.DrawWireSphere(territoryPoints.pointB.position, 5f);
+    // }
 }

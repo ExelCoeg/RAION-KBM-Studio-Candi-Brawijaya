@@ -14,7 +14,7 @@ public class GrassRightBorderScript : GrassScript
         gameObject.GetComponent<Animator>().Play("GrassRightChangeEnd");
     }
     [ContextMenu("call Expand Teritory")]
-    public void CallEndAnim(){
+    public override void CallEndAnim(){
         gameObject.GetComponent<Animator>().Play("GrassRightBorderChange");
     }
     public void destroyBorder(){

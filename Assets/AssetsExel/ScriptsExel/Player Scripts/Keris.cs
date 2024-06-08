@@ -52,7 +52,7 @@ public class Keris : MonoBehaviour
     public void Expand(){
     
         
-        if(Input.GetKey(KeyCode.F)){
+        if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB)){
             // expand muncul bar untuk expand (WORLD SPACE UI)
                     
             expandBar.gameObject.SetActive(true);
