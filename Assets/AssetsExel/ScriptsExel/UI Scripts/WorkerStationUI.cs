@@ -9,8 +9,8 @@ public class WorkerStationUI : MonoBehaviour
     public TextMeshProUGUI knightAttackSpeedText;
     public TextMeshProUGUI knightDamageText;
     public TextMeshProUGUI villagerMiningTimeToCoinText;
+    
     public bool closeInput;
-
     private void Update() {
         archerAttackSpeedText.text = "ATKSPD " + NPCManager.instance.archerAttackSpeed.ToString();
         archerDamageText.text = "Damage " + NPCManager.instance.archerDamage.ToString();
@@ -24,16 +24,18 @@ public class WorkerStationUI : MonoBehaviour
     public void UpgradeKnight(){
         NPCManager.instance.knightAttackSpeed += 1.5f;
         NPCManager.instance.knightDamage += 1.5f;
-       
+        LevelManager.instance.knightLevel++;
     }
     public void UpgradeVillager(){
 
         NPCManager.instance.villagerMiningTimeToCoin -= 0.2f;
        
+        LevelManager.instance.villagerLevel++;
     }
     public void UpgradeArcher(){
         NPCManager.instance.archerAttackSpeed += 1.5f;
         NPCManager.instance.archerDamage += 1.5f;
+        LevelManager.instance.archerLevel++;
 
     }
 }
