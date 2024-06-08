@@ -5,14 +5,17 @@ using UnityEngine.Rendering;
 public class DayManager : MonoBehaviour
 {
     public static DayManager instance;
-    public GameObject globalVolume;
     [SerializeField] private int dayCount;
+    [Header("Reference")]
+    public GameObject globalVolume;
+    
     [Header("TIME")]
     [SerializeField] public float clock;
     [SerializeField] private int timeToDay;
     [SerializeField] public int dayTime;
     [SerializeField] private int timeToNight;
     [SerializeField] private int nightTime;
+    [Header("Condition")]
     public bool isNight;
     private bool isToNight;
     private bool isToDay;
