@@ -1,31 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class MoonScript : MonoBehaviour
 {
-    public Sprite[] moon;
-    public SpriteRenderer spriteRenderer;
+    public Sprite[] moonSprite;
+    public GameObject moon;
     public Transform moonTransform;
-    public bool canRotate;
+    [SerializeField] float moonStart;
+    [SerializeField] float moonEnd;
+    public bool canRotate = true;
+    public int moonCount = -1;
+    private void Start() {
+        moonCount = -1;
+    }
     void Update()
     {
-        if (!DayManager.instance.isNight)
+        moonTransform.rotation = Quaternion.Euler(0,0,0);
+        if (DayManager.instance.isNight && canRotate)
         {
-            
-        }else if(DayManager.instance.isNight){
-
+            StartCoroutine(RotateMoon(moonStart,moonEnd, DayManager.instance.nightTime));
+            canRotate = false;
+        }else if(!DayManager.instance.isNight && !canRotate){
+            canRotate = true;
+        }
+        ChangeMoon();
+    }
+    private void ChangeMoon(){
+        if (moonCount != DayManager.instance.dayCount && moonCount < moonSprite.Length-1)
+        {
+            Debug.Log("Changeeeeeee" + moonCount);
+            moonCount = DayManager.instance.dayCount;
+            moon.GetComponent<Light2D>().lightCookieSprite = moonSprite[moonCount];
         }
     }
-    private IEnumerator ChangeWeight(float startValue, float endValue, float duration)
+    private IEnumerator RotateMoon(float startValue, float endValue, float duration)
     {
+        Debug.Log("rotateee");
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             transform.rotation = Quaternion.Euler(0,0,Mathf.Lerp(startValue, endValue, elapsed / duration));
-            transform.rotation = Quaternion.Euler(0,0,Mathf.Lerp(endValue, startValue, elapsed / duration));
+            //moonTransform.rotation = Quaternion.Euler(0,0,Mathf.Lerp(startValue, endValue, elapsed / duration));
             yield return null;
         }
         transform.rotation = Quaternion.Euler(0,0,0);

@@ -5,7 +5,8 @@ using UnityEngine.Rendering;
 public class DayManager : MonoBehaviour
 {
     public static DayManager instance;
-    [SerializeField] private int dayCount;
+    [SerializeField] public int dayCount;
+    [SerializeField] public int totalDay;
     [Header("Reference")]
     public GameObject globalVolume;
     
@@ -14,11 +15,11 @@ public class DayManager : MonoBehaviour
     [SerializeField] private int timeToDay;
     [SerializeField] public int dayTime;
     [SerializeField] private int timeToNight;
-    [SerializeField] private int nightTime;
+    [SerializeField] public int nightTime;
     [Header("Condition")]
     public bool isNight;
-    private bool isToNight;
-    private bool isToDay;
+        [SerializeField] private bool isToNight;
+    [SerializeField] private bool isToDay;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class DayManager : MonoBehaviour
         // Transisi ke siang
         if (!isToDay && clock > (dayTime + nightTime - timeToDay/5) && isNight)
         {
+            Debug.Log("Called");
             isToDay = true;
             isToNight = false; // Reset isToNight flag
             StopAllCoroutines();
