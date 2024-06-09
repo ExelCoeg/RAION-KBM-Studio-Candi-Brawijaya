@@ -21,6 +21,9 @@ TagManager:
   - Grass
   - GrassBorder
   - Bow
+  - ArcherLevel
+  - KnightLevel
+  - VillagerLevel
   layers:
   - Default
   - TransparentFX
