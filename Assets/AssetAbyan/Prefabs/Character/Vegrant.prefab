@@ -291,3 +291,4 @@ MonoBehaviour:
   objectInRange: {fileID: 0}
   playerDetected: 0
   vagrantDetection: 0
+  offSideTimer: 0

@@ -8,9 +8,10 @@ public class EnemyHealth : MonoBehaviour, IDamagable{
     private void Start() {
         _maxHealth = maxHealth;
         currentHealth = _maxHealth;
-
     }
     private void Update() {
+        _maxHealth = maxHealth;
+        _health = currentHealth;
         if(currentHealth <= 0){
             print("Player dead");
             GetComponent<Enemy>().Destroy();

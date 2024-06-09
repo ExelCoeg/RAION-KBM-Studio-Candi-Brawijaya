@@ -9,6 +9,8 @@ public class NPCHealth : MonoBehaviour, IDamagable{
         currentHealth = _maxHealth;
     }
     private void Update() {
+        _maxHealth = maxHealth;
+        _health = currentHealth;
         if(currentHealth <= 0){
             print("Player dead");
             GetComponent<NPC>().ChangeStatus(Status.Vagrant);

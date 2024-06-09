@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4069895183660905929}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8717295573296828495}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &1978336561052309508
 Animator:
   serializedVersion: 5
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 4069895183660905929}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb2ec0e1f87b3804984881c7a065d9c7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 87f91a9aa812a7f4897b720298715c3b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -95,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8703caf37546c2c48b22fb47a3d83e9d, type: 3}
+  m_Sprite: {fileID: 8496426, guid: 6c84b1a745effc2418817c901f5cb463, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +151,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4607677558255780103}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -219,7 +219,7 @@ MonoBehaviour:
     enemyCount: 0
   damageAbleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2176
   objectDetected: {fileID: 0}
   objectInRange: {fileID: 0}
   rangeDetection: 0

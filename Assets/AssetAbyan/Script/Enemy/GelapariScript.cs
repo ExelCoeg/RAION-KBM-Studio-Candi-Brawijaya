@@ -20,7 +20,6 @@ public class GelaspariScript : Enemy
         SetPoint(enemyPoints.pointA);
         SetIdle(enemyManager.gelapariIdleSet);
         movSpeed = enemyManager.gelapariMovSpeed;
-        attackSpeed = enemyManager.gelapariAttackSpeed;
         damage = enemyManager.gelapariDamage;
 
         enemyPoints.enemyCount++;
@@ -54,6 +53,7 @@ public class GelaspariScript : Enemy
         SetIdle(enemyManager.gelapariIdleSet);
         rangeDetection = enemyManager.gelapariDetection;
         rangeAttack = enemyManager.gelapariRangeAttack;
+        attackSpeed = enemyManager.gelapariAttackSpeed;
 
         if (enemyHealth != null) {}
         {
@@ -63,7 +63,6 @@ public class GelaspariScript : Enemy
     //========================================================================================================================================================
     public override void Idle(Boolean isIdle) {
         if (isIdle){
-            Debug.Log("aoidfsujha;odsfkjjhna;osdihjf : " + isIdle);
             this.isIdle = true;
             movSpeed = 0;
         }
