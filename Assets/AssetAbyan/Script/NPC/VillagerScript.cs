@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -109,7 +110,7 @@ public class VillagerScript : NPC
     private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position, villagerDetection, playerLayer);
 
-        if (objectInRange != null && objectInRange.tag == "Player"){
+        if (objectInRange != null && npcManager.archerDamageAble.Contains(objectInRange.tag)){
             Idle(false);
             SetPoint(objectInRange.gameObject.transform);
             playerDetected = true;

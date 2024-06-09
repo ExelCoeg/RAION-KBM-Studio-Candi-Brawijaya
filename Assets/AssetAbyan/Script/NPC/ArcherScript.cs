@@ -94,13 +94,16 @@ public class ArcherScript : NPC
         timer += Time.deltaTime;
         if (timer > npcManager.archerAttackSpeed && enemyDetected)
         {
-            GameObject newArrow = Instantiate(arrow, shootPoint.position, Quaternion.Euler(0, 0, angle));
-            newArrow.GetComponent<ArrowScript>().vo = vo;
-            newArrow.GetComponent<ArrowScript>().damage = npcManager.archerDamage;
+            animator.Play("ArcherShoot");
             timer = 0;
         }else if(!enemyDetected){
             timer = 0;
         }
+    }
+    public override void Attack(){
+        GameObject newArrow = Instantiate(arrow, shootPoint.position, Quaternion.Euler(0, 0, angle));
+        newArrow.GetComponent<ArrowScript>().vo = vo;
+        newArrow.GetComponent<ArrowScript>().damage = npcManager.archerDamage;
     }
     public float CalculateAngle()
     {

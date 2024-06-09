@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4771541860741111957}
   - component: {fileID: 3043409807092018535}
   - component: {fileID: 3783604111409456169}
-  - component: {fileID: 1399576327551325582}
+  - component: {fileID: 4622194891244861238}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1399576327551325582
+--- !u!114 &4622194891244861238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,9 +117,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 315471837173678826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c862a49e9e24884ba9c668b52e36433, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fa1ee86e6874e447939d1a75b645497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  on: TorchToOn
+  off: TorchToOff
   isOn: 0
   delay: 3
 --- !u!1 &6906550699603390989
