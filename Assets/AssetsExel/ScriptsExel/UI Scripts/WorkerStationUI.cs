@@ -16,7 +16,7 @@ public class WorkerStationUI : MonoBehaviour
         archerDamageText.text = "Damage " + NPCManager.instance.archerDamage.ToString();
         knightAttackSpeedText.text = "ATKSPD " + NPCManager.instance.knightAttackSpeed.ToString();
         knightDamageText.text = "Damage " + NPCManager.instance.knightDamage.ToString();
-        villagerMiningTimeToCoinText.text = "Mine Time " +  System.String.Format("{0,0:D2}", NPCManager.instance.villagerMiningTimeToCoin);
+        villagerMiningTimeToCoinText.text = "Mine Time " +  $"{NPCManager.instance.villagerMiningTimeToCoin:F2}";
     }
     public void ExitUI(){
         gameObject.SetActive(false);
