@@ -9,5 +9,5 @@ public class Coin : MonoBehaviour{
     public void decreaseCoin(int amount){
         coinCount -= amount;
     }
-
+    
 }

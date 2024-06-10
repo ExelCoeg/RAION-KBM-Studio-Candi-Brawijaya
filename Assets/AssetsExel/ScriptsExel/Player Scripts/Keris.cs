@@ -13,7 +13,8 @@ public class Keris : MonoBehaviour
     [SerializeField] int petirCost = 5;
     private float petirCooldown;
     [SerializeField] float petirCooldownMax = 5f;
-    public float petirOffset = 2f;
+    public float petirOffsetX = 2f;
+    public float petirOffsetY = 2f;
     [Header("Expand Attributes")]
     [SerializeField] float holdTime = 0f;
 
@@ -35,7 +36,7 @@ public class Keris : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if(lifeEssence > maxLifeEssence){
             lifeEssence = maxLifeEssence;
         }
@@ -46,7 +47,7 @@ public class Keris : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) && petirAvailable){
             // panggil fungsi petir
-            Petir(new Vector3(mousePos.x + petirOffset, 0.5f));
+            Petir(new Vector3(mousePos.x + petirOffsetX, petirOffsetY));
             ResetPetirCooldown();
         }
         Expand();
@@ -65,6 +66,7 @@ public class Keris : MonoBehaviour
 
             if(holdTime >= requiredHoldTime){
                 TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
+                reduceLifeEssence(25);
                 expandBar.gameObject.SetActive(false);
             }
         }
@@ -72,7 +74,6 @@ public class Keris : MonoBehaviour
             holdTime = 0;
             expandBar.gameObject.SetActive(false);
         }
-        reduceLifeEssence(25);
     }
     
     public void Petir(Vector3 pos){ 

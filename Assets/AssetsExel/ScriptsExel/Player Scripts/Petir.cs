@@ -19,7 +19,7 @@ public class Petir : MonoBehaviour
         if(strike){
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(circlePos, petirRadius, enemyLayer);
             foreach(Collider2D enemy in hitEnemies){
-                enemy.GetComponent<IDamagable>().TakeDamage(25);
+                enemy.GetComponent<IDamagable>().TakeDamage(100);
             }
             strike = false;
         }

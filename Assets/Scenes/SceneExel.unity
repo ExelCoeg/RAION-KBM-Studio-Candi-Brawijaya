@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gelapari
       objectReference: {fileID: 0}
+    - target: {fileID: 7231333202436385386, guid: dfc9a6732d607304da45ab7d4ea2ee12, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2131,6 +2135,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9040670196935740923, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3252,6 +3260,14 @@ PrefabInstance:
       propertyPath: chooseJobUI
       value: 
       objectReference: {fileID: 1967991516}
+    - target: {fileID: 7291144658952899412, guid: 59113118f582b3546955537199beb89a, type: 3}
+      propertyPath: petirOffset
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291144658952899412, guid: 59113118f582b3546955537199beb89a, type: 3}
+      propertyPath: petirOffsetY
+      value: 3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
