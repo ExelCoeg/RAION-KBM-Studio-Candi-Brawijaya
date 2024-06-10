@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7291144658952899412}
   - component: {fileID: 2647202588585530522}
   - component: {fileID: 781730161296456724}
+  - component: {fileID: 4508755196180534750}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 120665357, guid: f3028cd5ba1936e44985892f8bdc29be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -207,12 +208,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6950d26304c56824dbd3ff85b6d17c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeEssence: 0
+  lifeEssence: 50
+  maxLifeEssence: 50
   petirCost: 10
+  petirChargeTime: 0
   petirCooldownMax: 2
-  petirOffset: 2
+  petirOffsetX: 2
+  petirOffsetY: 3.5
   holdTime: 0
-  requiredHoldTime: 3
+  requiredHoldTime: 2
   mousePos: {x: 0, y: 0, z: 0}
   petir: {fileID: 6318406272205261687, guid: 5809cdb7243b7344db09c1f7abbe256d, type: 3}
   expandBar: {fileID: 6564914112617597329}
@@ -245,6 +249,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCount: 50
+--- !u!95 &4508755196180534750
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420108414037255704}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6700ae3b68263d48a654d8091501bab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1959788281883414755
 GameObject:
   m_ObjectHideFlags: 0
