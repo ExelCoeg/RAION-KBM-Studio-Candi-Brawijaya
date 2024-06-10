@@ -177,7 +177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7231333202436385386, guid: dfc9a6732d607304da45ab7d4ea2ee12, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271012601166279422, guid: dfc9a6732d607304da45ab7d4ea2ee12, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -189,6 +193,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 420108414037255704, guid: 59113118f582b3546955537199beb89a, type: 3}
   m_PrefabInstance: {fileID: 9201131954195129876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &145610726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 356295915709451597, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
+  m_PrefabInstance: {fileID: 8511076721954228101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &145610730
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145610726}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccc3c6474f221154e98bedfa8c236301, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &150453891 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2386076437715150611, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
@@ -3098,13 +3128,17 @@ PrefabInstance:
       propertyPath: workerStationUI
       value: 
       objectReference: {fileID: 1874714561}
+    - target: {fileID: 2268537214411786617, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.91
+      objectReference: {fileID: 0}
     - target: {fileID: 9192293414319695856, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.36
       objectReference: {fileID: 0}
     - target: {fileID: 9192293414319695856, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.73
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 9192293414319695856, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3141,7 +3175,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 356295915709451597, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145610730}
   m_SourcePrefab: {fileID: 100100000, guid: af91e29a2425e5a49a30e11744b98866, type: 3}
 --- !u!1001 &8815386778014024435
 PrefabInstance:
@@ -3260,6 +3297,14 @@ PrefabInstance:
       propertyPath: chooseJobUI
       value: 
       objectReference: {fileID: 1967991516}
+    - target: {fileID: 5378998839515533976, guid: 59113118f582b3546955537199beb89a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291144658952899412, guid: 59113118f582b3546955537199beb89a, type: 3}
+      propertyPath: lifeEssence
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7291144658952899412, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: petirOffset
       value: 5
@@ -3290,6 +3335,7 @@ SceneRoots:
   - {fileID: 1787971522}
   - {fileID: 1035100989}
   - {fileID: 1166483093}
+  - {fileID: 35085568}
   - {fileID: 1184855611}
   - {fileID: 1847012365}
   - {fileID: 298367153}
@@ -3313,6 +3359,5 @@ SceneRoots:
   - {fileID: 1857956431}
   - {fileID: 454823240}
   - {fileID: 1577290716}
-  - {fileID: 35085568}
   - {fileID: 7077896466235119981}
   - {fileID: 7306221355667718836}
