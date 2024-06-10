@@ -83,4 +83,8 @@ public class DayManager : MonoBehaviour
 
         volume.weight = endValue;
     }
+
+    public int getTimeToDay(){
+        return timeToDay;
+    }
 }
