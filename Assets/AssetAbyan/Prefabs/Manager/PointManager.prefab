@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6575991060351601963}
   m_Layer: 0
-  m_Name: LeftEnemyB
+  m_Name: RightEnemyB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 2726178936898786309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.37, y: 0, z: 0}
+  m_LocalPosition: {x: 307, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -289,12 +289,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8942064002578267153}
   m_Layer: 0
-  m_Name: LeftDefaultEnemyA
+  m_Name: RightDefaultEnemyA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8942064002578267153
 Transform:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 4409822253546233080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.6, y: 0, z: 0}
+  m_LocalPosition: {x: 53.68, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -320,9 +320,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2990711241132347330}
   m_Layer: 0
-  m_Name: RightEnemyA
+  m_Name: LeftEnemyA
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -335,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 5046886833957729081}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.08, y: 0, z: 0}
+  m_LocalPosition: {x: -318.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -470,21 +470,21 @@ MonoBehaviour:
     pointB: {fileID: 4738743815909365066}
     NPCCount: 0
   enemyPoints:
-  - enemyPointNames: 1
+  - enemyPointNames: 0
     pointA: {fileID: 2990711241132347330}
     pointB: {fileID: 2460240492137120808}
     enemyCount: 0
-  - enemyPointNames: 0
+  - enemyPointNames: 1
     pointA: {fileID: 4994731787563559518}
     pointB: {fileID: 6575991060351601963}
     enemyCount: 0
-  - enemyPointNames: 0
-    pointA: {fileID: 4994731787563559518}
-    pointB: {fileID: 6575991060351601963}
+  - enemyPointNames: 2
+    pointA: {fileID: 8942064002578267153}
+    pointB: {fileID: 1214953775814494395}
     enemyCount: 0
-  - enemyPointNames: 0
-    pointA: {fileID: 4994731787563559518}
-    pointB: {fileID: 6575991060351601963}
+  - enemyPointNames: 3
+    pointA: {fileID: 1060311930131750626}
+    pointB: {fileID: 3408174604637283387}
     enemyCount: 0
 --- !u!1 &6218811058491304702
 GameObject:
@@ -496,9 +496,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2460240492137120808}
   m_Layer: 0
-  m_Name: RightEnemyB
+  m_Name: LeftEnemyB
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -511,7 +511,7 @@ Transform:
   m_GameObject: {fileID: 6218811058491304702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.13, y: 0, z: 0}
+  m_LocalPosition: {x: -62.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -527,12 +527,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1060311930131750626}
   m_Layer: 0
-  m_Name: RightDefaultEnemyA
+  m_Name: LeftDefaultEnemyA
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1060311930131750626
 Transform:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ Transform:
   m_GameObject: {fileID: 6535513309577301666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.08, y: 0, z: 0}
+  m_LocalPosition: {x: -319.9, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -651,12 +651,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3408174604637283387}
   m_Layer: 0
-  m_Name: RightDefaultEnemyB
+  m_Name: LeftDefaultEnemyB
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3408174604637283387
 Transform:
   m_ObjectHideFlags: 0
@@ -666,7 +666,7 @@ Transform:
   m_GameObject: {fileID: 7392449971685114939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.13, y: 0, z: 0}
+  m_LocalPosition: {x: -65.34, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -682,7 +682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4994731787563559518}
   m_Layer: 0
-  m_Name: LeftEnemyA
+  m_Name: RightEnemyA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,7 +697,7 @@ Transform:
   m_GameObject: {fileID: 7536477012765955295}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.6, y: 0, z: 0}
+  m_LocalPosition: {x: 50.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -744,12 +744,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1214953775814494395}
   m_Layer: 0
-  m_Name: LeftDefaultEnemyB
+  m_Name: RightDefaultEnemyB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1214953775814494395
 Transform:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ Transform:
   m_GameObject: {fileID: 8920143197494247143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.37, y: 0, z: 0}
+  m_LocalPosition: {x: 307.8, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -103,7 +103,7 @@ public class KngihtScript : NPC
     private void CheckEnemyInRange(){
         objectInRangeAttack = Physics2D.OverlapCircle(attackPoint.position, knightRangeAttack, enemyLayer);
         if (!(points.pointA.position.x < transform.position.x && points.pointB.position.x> transform.position.x)){
-            if (!enemyInRangeAttack){
+            if (enemyInRangeAttack){
                 offSideTimer += Time.deltaTime; 
             }
         }else if(offSideTimer > 2){

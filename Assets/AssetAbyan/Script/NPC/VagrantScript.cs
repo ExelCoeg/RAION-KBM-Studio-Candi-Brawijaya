@@ -60,8 +60,21 @@ public class VagrantScript : NPC
     }
     private void CheckEnemyInRange()
     {
-        objectInRange = Physics2D.OverlapCircle(transform.position, vagrantDetection, playerLayer);
-
+        // objectInRange = Physics2D.OverlapCircle(transform.position, vagrantDetection, playerLayer);
+        if (!(points.pointA.position.x < transform.position.x && points.pointB.position.x> transform.position.x)){
+        if (objectInRange){
+            offSideTimer += Time.deltaTime; 
+        }   
+        }else if(offSideTimer > 2){
+            offSideTimer = 0;
+        }
+        if (offSideTimer < 2)
+        {
+            objectInRange = Physics2D.OverlapCircle(transform.position,  vagrantDetection, playerLayer); 
+        }
+        else{
+            objectInRange = null;
+        }
         if (objectInRange != null && objectInRange.tag == "Player")
         {
             float distance = Mathf.Abs(objectInRange.transform.position.x - transform.position.x);

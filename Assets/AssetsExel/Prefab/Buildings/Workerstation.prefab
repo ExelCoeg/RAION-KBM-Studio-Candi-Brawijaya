@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9192293414319695856}
   - component: {fileID: 5026719842426974272}
   - component: {fileID: 1339691792573313171}
+  - component: {fileID: 1883284032739501115}
   m_Layer: 0
   m_Name: Workerstation
   m_TagString: Untagged
@@ -100,7 +101,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 2
   workerStationUI: {fileID: 0}
+  NPCCountsUI: {fileID: 0}
   EIcon: {fileID: 3653597356800130600}
+--- !u!95 &1883284032739501115
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356295915709451597}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccc3c6474f221154e98bedfa8c236301, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3653597356800130600
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 3653597356800130600}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13000011, y: -1.3199999, z: 0}
+  m_LocalPosition: {x: 0.13000011, y: 4.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

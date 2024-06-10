@@ -94,11 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0f9c15709198147bad18fe65dd70f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalVolume: {fileID: 1452835888289569064}
   dayCount: 0
+  totalDay: 0
+  globalVolume: {fileID: 1452835888289569064}
   clock: 0
-  timeToDay: 5
+  timeToDay: 10
   dayTime: 10
-  timeToNight: 5
+  timeToNight: 10
   nightTime: 10
   isNight: 0
+  isToNight: 0
+  isToDay: 0

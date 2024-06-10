@@ -71,8 +71,7 @@ public class PointManager : MonoBehaviour
             GetPoint(PointsNames.RightArcher).pointA.position = new Vector2(TerritoryManager.instance.pointBx - 10, 0);
             
             GetPoint(PointsNames.Villager).pointA.position = GetPoint(PointsNames.VillagerDefault).pointA.position;
-            GetPoint(PointsNames.Villager).pointB.position = GetPoint(PointsNames.VillagerDefault).pointB.position;
-        
+            GetPoint(PointsNames.Villager).pointB.position = GetPoint(PointsNames.VillagerDefault).pointB.position;  
             GetEnemyPoints(EnemyPointNames.Left).pointB.position = TerritoryManager.instance.territoryPoints.pointA.position;
             GetEnemyPoints(EnemyPointNames.Right).pointA.position = TerritoryManager.instance.territoryPoints.pointB.position;
 
