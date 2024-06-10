@@ -2,7 +2,11 @@
 using UnityEngine;
 public class Coin : MonoBehaviour{
     public int coinCount;
-    
+    public void Update(){
+        if(coinCount >= 9999){
+            coinCount  = 9999;
+        }
+    }
     public void increaseCoin(int amount){
         coinCount += amount;
     }
