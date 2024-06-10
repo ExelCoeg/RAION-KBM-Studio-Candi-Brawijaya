@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -345}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 425, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5992672750400598488
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1274,7 +1274,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 60.846, y: -119}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 425, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3457970503623177080
 CanvasRenderer:
@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1988,8 +1988,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 334, y: -7}
-  m_SizeDelta: {x: 136.0054, y: 853.3915}
+  m_AnchoredPosition: {x: 336, y: -40.625}
+  m_SizeDelta: {x: 79.2838, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7009006433738500421
 CanvasRenderer:
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2122,7 +2122,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -26, y: -56}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 425, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7785605730011827883
 CanvasRenderer:
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4068,7 +4068,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -345}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 425, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6623518895351081986
 CanvasRenderer:
@@ -4098,7 +4098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4451,7 +4451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22, y: -25}
+  m_AnchoredPosition: {x: -22, y: 164}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &918135578361226363
@@ -5111,7 +5111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &841998913955401897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5133,7 +5133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -14}
+  m_AnchoredPosition: {x: 42, y: 17}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4957578330439974724
@@ -5639,7 +5639,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -345}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 425, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3451389555505498362
 CanvasRenderer:
@@ -5669,7 +5669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5725,7 +5725,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3582513166843296729}
         m_TargetAssemblyTypeName: ChooseJobUI, Assembly-CSharp
-        m_MethodName: ChooseArcher
+        m_MethodName: ChooseVillager
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6658,7 +6658,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -13, y: -166}
-  m_SizeDelta: {x: 800, y: 800}
+  m_SizeDelta: {x: 425, y: 81.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &783429031027720759
 CanvasRenderer:
@@ -6688,7 +6688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
+  m_Sprite: {fileID: 1107266393, guid: 4817b8ce91b49a1449eadd436d549626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7473,7 +7473,7 @@ GameObject:
   - component: {fileID: 2386076437715150611}
   m_Layer: 5
   m_Name: LevelText
-  m_TagString: Untagged
+  m_TagString: VillagerLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8332,7 +8332,7 @@ GameObject:
   - component: {fileID: 3830453578521283469}
   m_Layer: 5
   m_Name: LevelText
-  m_TagString: Untagged
+  m_TagString: KnightLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8973,7 +8973,7 @@ GameObject:
   - component: {fileID: 4930802014761168710}
   m_Layer: 5
   m_Name: LevelText
-  m_TagString: Untagged
+  m_TagString: ArcherLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10051,7 +10051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7797943516343390360
 RectTransform:
   m_ObjectHideFlags: 0

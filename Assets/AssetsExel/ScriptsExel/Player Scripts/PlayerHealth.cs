@@ -11,11 +11,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
     }
     private void Update() {
         if(currentHealth <= 0){
-            print("Player dead");
+            print("Game Over");
         }
     }
     public void TakeDamage(int damage){
-        print("Player taking damage");
+        currentHealth -= damage;
     }
 
 }
