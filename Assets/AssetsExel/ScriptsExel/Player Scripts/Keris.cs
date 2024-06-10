@@ -64,7 +64,7 @@ public class Keris : MonoBehaviour
 
             holdTime += Time.deltaTime;
             expandBar.value = holdTime/requiredHoldTime;
-
+            
             GetComponent<Animator>().Play("player_expand");
             if(holdTime >= requiredHoldTime){
                 TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
