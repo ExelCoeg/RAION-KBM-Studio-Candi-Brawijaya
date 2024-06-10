@@ -7,7 +7,7 @@ public enum PointsNames
     LeftVagrant, RightVagrant, Villager, LeftArcher, RightArcher, Knight, VillagerDefault
 }
 public enum EnemyPointNames{
-    Left,Right
+    Left,Right, LeftDefault, RightDefault
 }
 [Serializable]
 public class Points
@@ -46,23 +46,37 @@ public class PointManager : MonoBehaviour
         GetPoint(PointsNames.Knight).pointA.position = new Vector3(player.transform.position.x - knightOffsidePoint, player.transform.position.y,player.transform.position.z);
         GetPoint(PointsNames.Knight).pointB.position = new Vector3(player.transform.position.x + knightOffsidePoint, player.transform.position.y,player.transform.position.z);
         if(!DayManager.instance.isNight){
+            //Left Archer
             GetPoint(PointsNames.LeftArcher).pointA.position = TerritoryManager.instance.territoryPoints.pointA.position;
             GetPoint(PointsNames.LeftArcher).pointB.position = Vector2.zero;
 
+
+            //Right Archer
             GetPoint(PointsNames.RightArcher).pointA.position = Vector2.zero;
             GetPoint(PointsNames.RightArcher).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position;
 
+
+            //Villager
             GetPoint(PointsNames.Villager).pointA.position = TerritoryManager.instance.territoryPoints.pointA.position;
             GetPoint(PointsNames.Villager).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position;
-        }
+        
+            //Enemy
+            GetEnemyPoints(EnemyPointNames.Left).pointB.position = Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Left).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
+            GetEnemyPoints(EnemyPointNames.Right).pointA.position =  Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Right).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
+
+        }       
         else{
+            
             GetPoint(PointsNames.LeftArcher).pointB.position = new Vector2(TerritoryManager.instance.pointAx + 10, 0);
             GetPoint(PointsNames.RightArcher).pointA.position = new Vector2(TerritoryManager.instance.pointBx - 10, 0);
             
             GetPoint(PointsNames.Villager).pointA.position = GetPoint(PointsNames.VillagerDefault).pointA.position;
             GetPoint(PointsNames.Villager).pointB.position = GetPoint(PointsNames.VillagerDefault).pointB.position;
-        }
         
+            GetEnemyPoints(EnemyPointNames.Left).pointB.position = TerritoryManager.instance.territoryPoints.pointA.position;
+            GetEnemyPoints(EnemyPointNames.Right).pointA.position = TerritoryManager.instance.territoryPoints.pointB.position;
+
+        }
     }
     public Points GetPoint(PointsNames targetPointName)
     {// search point that match with parameter
