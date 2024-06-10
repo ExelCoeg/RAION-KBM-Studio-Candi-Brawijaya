@@ -6,10 +6,11 @@ public class Keris : MonoBehaviour
 {
     [Header("Life Essence")]
     public int lifeEssence = 0;
+    [SerializeField] int maxLifeEssence = 50;
 
     [Header("Petir Attributes")]
     private bool petirAvailable = true;
-    [SerializeField] int petirCost = 10;
+    [SerializeField] int petirCost = 5;
     private float petirCooldown;
     [SerializeField] float petirCooldownMax = 5f;
     public float petirOffset = 2f;
@@ -34,10 +35,12 @@ public class Keris : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 
-        // print("B: " + (transform.position.x <= TerritoryManager.instance.pointBx));
-        // print("A: " + (transform.position.x >= TerritoryManager.instance.pointAx));
+        if(lifeEssence > maxLifeEssence){
+            lifeEssence = maxLifeEssence;
+        }
+
+        mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         petirCooldown -= Time.deltaTime;
         petirAvailable = lifeEssence >= petirCost && petirCooldown <= 0;
 
@@ -69,11 +72,18 @@ public class Keris : MonoBehaviour
             holdTime = 0;
             expandBar.gameObject.SetActive(false);
         }
+        reduceLifeEssence(25);
     }
     
     public void Petir(Vector3 pos){ 
         GameObject petirClone = Instantiate(petir, pos, Quaternion.identity);
-        
+        reduceLifeEssence(petirCost);
+    }
+    public void addLifeEssence(int amount){
+        lifeEssence += amount;
+    }
+    public void reduceLifeEssence(int amount){
+        lifeEssence -= amount;
     }
     public void ResetPetirCooldown(){
         petirCooldown = petirCooldownMax;
