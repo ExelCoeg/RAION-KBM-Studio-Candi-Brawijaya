@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float energy;
-    [SerializeField] float maxEnergy = 3f;
+    public float energy;
+    public float maxEnergy = 3f;
     
 
     [Header("Speed & Acceleration")]
@@ -47,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = true;
         }
        
+        else{
+            isSprinting = false;
+        }
         rb.velocity = move * speed * accelStart;
 
         
@@ -54,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
             onTired = true;
         }
         if(onTired){
-            isSprinting = false;
             onTiredTimer -= Time.deltaTime;
             if(onTiredTimer <= 0){
                 onTired = false;

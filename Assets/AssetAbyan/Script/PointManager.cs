@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PointsNames
 {
-    LeftVagrant, RightVagrant, Villager, LeftArcher, RightArcher, Knight, Territory
+    LeftVagrant, RightVagrant, Villager, LeftArcher, RightArcher, Knight, VillagerDefault
 }
 public enum EnemyPointNames{
     Left,Right
@@ -45,6 +45,24 @@ public class PointManager : MonoBehaviour
     private void Update() {
         GetPoint(PointsNames.Knight).pointA.position = new Vector3(player.transform.position.x - knightOffsidePoint, player.transform.position.y,player.transform.position.z);
         GetPoint(PointsNames.Knight).pointB.position = new Vector3(player.transform.position.x + knightOffsidePoint, player.transform.position.y,player.transform.position.z);
+        if(!DayManager.instance.isNight){
+            GetPoint(PointsNames.LeftArcher).pointA.position = TerritoryManager.instance.territoryPoints.pointA.position;
+            GetPoint(PointsNames.LeftArcher).pointB.position = Vector2.zero;
+
+            GetPoint(PointsNames.RightArcher).pointA.position = Vector2.zero;
+            GetPoint(PointsNames.RightArcher).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position;
+
+            GetPoint(PointsNames.Villager).pointA.position = TerritoryManager.instance.territoryPoints.pointA.position;
+            GetPoint(PointsNames.Villager).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position;
+        }
+        else{
+            GetPoint(PointsNames.LeftArcher).pointB.position = new Vector2(TerritoryManager.instance.pointAx + 10, 0);
+            GetPoint(PointsNames.RightArcher).pointA.position = new Vector2(TerritoryManager.instance.pointBx - 10, 0);
+            
+            GetPoint(PointsNames.Villager).pointA.position = GetPoint(PointsNames.VillagerDefault).pointA.position;
+            GetPoint(PointsNames.Villager).pointB.position = GetPoint(PointsNames.VillagerDefault).pointB.position;
+        }
+        
     }
     public Points GetPoint(PointsNames targetPointName)
     {// search point that match with parameter

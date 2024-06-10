@@ -6,7 +6,9 @@ public class WorkerStation : MonoBehaviour
     public int offset = 1;
     [SerializeField] GameObject workerStationUI;
 
+    [SerializeField] GameObject NPCCountsUI;
     [SerializeField] GameObject EIcon;
+
     void Update()
     {
         
@@ -15,6 +17,7 @@ public class WorkerStation : MonoBehaviour
             EIcon.SetActive(true);
             if(Input.GetKeyDown(KeyCode.F)){
                 workerStationUI.gameObject.SetActive(true);
+                NPCCountsUI.gameObject.SetActive(false);
                 workerStationUI.GetComponent<WorkerStationUI>().closeInput = false;
             }
         }
@@ -23,6 +26,7 @@ public class WorkerStation : MonoBehaviour
             EIcon.SetActive(false);
             workerStationUI.gameObject.SetActive(false);
         }
+        if(!workerStationUI.activeSelf) NPCCountsUI.gameObject.SetActive(true); 
     }
 
     private void OnDrawGizmos() {
