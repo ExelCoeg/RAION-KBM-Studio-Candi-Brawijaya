@@ -15,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
     float onTiredTimer = 1f;
     Rigidbody2D rb;
     Vector2 move;
+    Animator anim;
     bool isSprinting, onTired, isFacingRight = true;
     
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     private void Start() {
         speed = defaultSpeed;
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
 
         move.x = Input.GetAxis("Horizontal");
+        anim.SetBool("isWalking",move.x != 0);
+        anim.SetBool("isRunning",isSprinting);
         if(move.x < 0 && isFacingRight){
             transform.eulerAngles = Vector2.up * 180;
             isFacingRight = false;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: adc26c350525a8f4491ce76761e9f06a
+guid: e54e97db1148a9e42a81a121f7235654
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,85 +97,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Joko_lightning_0
+      name: Joko_idle_0
       rect:
         serializedVersion: 2
-        x: 111
+        x: 100
         y: 0
-        width: 387
-        height: 468
+        width: 64
+        height: 176
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 656dea73fe093e44ca93888003ec18e3
-      internalID: -759686611
+      spriteID: 5c5d84cb9aae09f4687d1db1bce8e577
+      internalID: -738330627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joko_lightning_1
+      name: Joko_idle_1
       rect:
         serializedVersion: 2
-        x: 742
+        x: 356
         y: 0
-        width: 466
-        height: 468
+        width: 64
+        height: 172
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c1e3dda51e49d144ba7b427711cefcf
-      internalID: -538581000
+      spriteID: 8639928250630df40ac97f2fc94503c7
+      internalID: 1715011625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Joko_lightning_3
+      name: Joko_idle_2
       rect:
         serializedVersion: 2
-        x: 1371
+        x: 612
         y: 0
-        width: 465
-        height: 468
+        width: 64
+        height: 172
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9b0555a4d81d4f49af9a6fade5b97b3
-      internalID: 1820441040
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Joko_lightning_5
-      rect:
-        serializedVersion: 2
-        x: 2062
-        y: 0
-        width: 387
-        height: 468
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48b7ed4d4f6d10043a6e777ae397faac
-      internalID: 83553081
+      spriteID: e0d100a1c57a07d4fbd4680655530c97
+      internalID: 1587294060
       vertices: []
       indices: 
       edges: []
@@ -191,12 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Joko_lightning_0: -759686611
-      Joko_lightning_1: -538581000
-      Joko_lightning_2: -1396206383
-      Joko_lightning_3: 1820441040
-      Joko_lightning_4: -224945649
-      Joko_lightning_5: 83553081
+      Joko_idle_0: -738330627
+      Joko_idle_1: 1715011625
+      Joko_idle_2: 1587294060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

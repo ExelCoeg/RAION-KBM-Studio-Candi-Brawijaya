@@ -12,6 +12,8 @@ public class Keris : MonoBehaviour
     private bool petirAvailable = true;
     [SerializeField] int petirCost = 5;
     private float petirCooldown;
+    public float petirChargeTime;
+    float petirChargeTimer;
     [SerializeField] float petirCooldownMax = 5f;
     public float petirOffsetX = 2f;
     public float petirOffsetY = 2f;
@@ -43,11 +45,10 @@ public class Keris : MonoBehaviour
 
         mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         petirCooldown -= Time.deltaTime;
-        petirAvailable = lifeEssence >= petirCost && petirCooldown <= 0;
 
         if(Input.GetKeyDown(KeyCode.Space) && petirAvailable){
             // panggil fungsi petir
-            Petir(new Vector3(mousePos.x + petirOffsetX, petirOffsetY));
+            GetComponent<Animator>().Play("player_strike");
             ResetPetirCooldown();
         }
         Expand();
@@ -64,14 +65,18 @@ public class Keris : MonoBehaviour
             holdTime += Time.deltaTime;
             expandBar.value = holdTime/requiredHoldTime;
 
+            GetComponent<Animator>().Play("player_expand");
             if(holdTime >= requiredHoldTime){
                 TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
                 reduceLifeEssence(25);
                 expandBar.gameObject.SetActive(false);
+                GetComponent<Animator>().Play("player_idle");
             }
         }
         else{
             holdTime = 0;
+            
+            GetComponent<Animator>().SetBool("isCasting",false);
             expandBar.gameObject.SetActive(false);
         }
     }
@@ -89,7 +94,11 @@ public class Keris : MonoBehaviour
     public void ResetPetirCooldown(){
         petirCooldown = petirCooldownMax;
     }
-
-
+    public float getMousePosX(){
+        return mousePos.x;
+    }
+    public Slider getExpandBar(){
+        return expandBar;
+    }
 }
 

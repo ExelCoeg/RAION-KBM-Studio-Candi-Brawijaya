@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: lightning
+  m_Name: player_idle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -759686611, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
-    - time: 0.15
-      value: {fileID: -538581000, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
-    - time: 0.28333333
-      value: {fileID: 1820441040, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
-    - time: 0.43333334
-      value: {fileID: 83553081, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
+      value: {fileID: -738330627, guid: e54e97db1148a9e42a81a121f7235654, type: 3}
+    - time: 0.33333334
+      value: {fileID: 1715011625, guid: e54e97db1148a9e42a81a121f7235654, type: 3}
+    - time: 0.68333334
+      value: {fileID: 1587294060, guid: e54e97db1148a9e42a81a121f7235654, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -759686611, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
-    - {fileID: -538581000, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
-    - {fileID: 1820441040, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
-    - {fileID: 83553081, guid: adc26c350525a8f4491ce76761e9f06a, type: 3}
+    - {fileID: -738330627, guid: e54e97db1148a9e42a81a121f7235654, type: 3}
+    - {fileID: 1715011625, guid: e54e97db1148a9e42a81a121f7235654, type: 3}
+    - {fileID: 1587294060, guid: e54e97db1148a9e42a81a121f7235654, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.45000002
+    m_StopTime: 0.7
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
