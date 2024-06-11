@@ -56,12 +56,11 @@ public abstract class Enemy : MonoBehaviour
     }
     public EnemyPoints SetPlace(EnemyPointNames left, EnemyPointNames right)
     {
-        print("test13213211231321");
         if(transform.position.x <= 0 ){
-            return pointManager.GetEnemyPoints(left);
+            return pointManager.GetEnemyPoints(right);
         }
         else{
-            return pointManager.GetEnemyPoints(right);
+            return pointManager.GetEnemyPoints(left);
         }
         // if (pointManager.GetEnemyPoints(left).enemyCount <= pointManager.GetEnemyPoints(right).enemyCount)
         // {
