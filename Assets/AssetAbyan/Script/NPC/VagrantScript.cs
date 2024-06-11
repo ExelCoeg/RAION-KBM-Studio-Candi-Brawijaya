@@ -1,7 +1,5 @@
 using System;
-using UnityEditor.Search;
 using UnityEngine;
-
 public class VagrantScript : NPC
 {
     [SerializeField] LayerMask playerLayer;
@@ -38,11 +36,19 @@ public class VagrantScript : NPC
         CheckEnemyInRange();
         RandomIdle();
         setAnimationParameter();
+        // RandomSpawn();
+
     }
     private void FixedUpdate()
     {
         NPCMovement();
     }
+
+    // public void RandomSpawn(){
+    //     if(RandomNumGen(0,2) == 2){
+    //         NPCManager.instance.InstanceNPC(Status.Vagrant, new Vector2(RandomNumGen(TerritoryManager.instance.pointAx, TerritoryManager.instance.pointBx), transform.position.y));
+    //     }
+    // }
     private void SetNPCAtribut()
     {
         SetIdle(npcManager.vagrantIdleSet);
@@ -58,6 +64,8 @@ public class VagrantScript : NPC
             movSpeed = npcManager.vagrantMovSpeed;
         }
     }
+
+    
     private void CheckEnemyInRange()
     {
         // objectInRange = Physics2D.OverlapCircle(transform.position, vagrantDetection, playerLayer);
