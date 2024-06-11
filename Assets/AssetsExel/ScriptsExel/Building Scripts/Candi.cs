@@ -8,6 +8,7 @@ public class Candi : MonoBehaviour, IDamagable
     public int maxHealth = 100;
     public int currentHealth;
 
+    [SerializeField] GameObject gameOverUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,15 +16,11 @@ public class Candi : MonoBehaviour, IDamagable
         currentHealth = _maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void TakeDamage(int amount){
         currentHealth -= amount;
         if(currentHealth <= 0){
             //animasi
+            gameOverUI.SetActive(true);
         }
     }
 }

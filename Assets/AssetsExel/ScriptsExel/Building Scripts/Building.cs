@@ -30,7 +30,6 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
         Interact();
         ChangeBuildingSprite();
         if(!canBuild && !built){
-            print("test");
             if(transform.position.x >= TerritoryManager.instance.pointAx && transform.position.x <= TerritoryManager.instance.pointBx){
                 canBuild = true;
             }
@@ -58,8 +57,10 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
             if(built) buildingInfo.SetActive(true);
             else buildingInfo.SetActive(false);
         }
-        else FIcon.SetActive(false);
-        
+        else {
+            FIcon.SetActive(false);
+            buildingInfo.SetActive(false);
+        }
         if(canBuild && !built){
             if(player!= null){
                 if(Input.GetKeyDown(KeyCode.F)) Build();

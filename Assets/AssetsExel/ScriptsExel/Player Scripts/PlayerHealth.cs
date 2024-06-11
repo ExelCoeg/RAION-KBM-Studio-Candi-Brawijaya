@@ -5,13 +5,15 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
     public int _maxHealth {get;set;}
 
     public int currentHealth;
+
+    [SerializeField] GameObject gameOverUI;
     private void Start() {
         _maxHealth = maxHealth;
         currentHealth = _maxHealth;
     }
     private void Update() {
         if(currentHealth <= 0){
-            print("Game Over");
+            gameOverUI.SetActive(true);
         }
     }
     public void TakeDamage(int damage){

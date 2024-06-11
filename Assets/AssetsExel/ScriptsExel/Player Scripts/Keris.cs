@@ -10,7 +10,7 @@ public class Keris : MonoBehaviour
 
     [Header("Petir Attributes")]
     private bool petirAvailable = true;
-    [SerializeField] int petirCost = 5;
+    [SerializeField] int petirCost = 20;
     private float petirCooldown;
     public float petirChargeTime;
     float petirChargeTimer;
@@ -21,6 +21,7 @@ public class Keris : MonoBehaviour
     [SerializeField] float holdTime = 0f;
 
     [SerializeField] float requiredHoldTime = 3f;
+    [SerializeField] int expandCost = 100;
 
     [SerializeField] Vector3 mousePos;
 
@@ -46,7 +47,7 @@ public class Keris : MonoBehaviour
         mousePos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         petirCooldown -= Time.deltaTime;
 
-        if(Input.GetKeyDown(KeyCode.Space) && petirAvailable){
+        if(Input.GetKeyDown(KeyCode.Space) && petirAvailable && lifeEssence >=  petirCost){
             // panggil fungsi petir
             GetComponent<Animator>().Play("player_strike");
             ResetPetirCooldown();
@@ -57,7 +58,7 @@ public class Keris : MonoBehaviour
     public void Expand(){
     
         
-        if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB)){
+        if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB) ){
             // expand muncul bar untuk expand (WORLD SPACE UI)
                     
             expandBar.gameObject.SetActive(true);
@@ -67,10 +68,12 @@ public class Keris : MonoBehaviour
             
             GetComponent<Animator>().Play("player_expand");
             if(holdTime >= requiredHoldTime){
-                TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
-                reduceLifeEssence(25);
-                expandBar.gameObject.SetActive(false);
-                GetComponent<Animator>().Play("player_idle");
+                if(lifeEssence >= expandCost){
+                    TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
+                    reduceLifeEssence(25);
+                }
+                    expandBar.gameObject.SetActive(false);
+                    GetComponent<Animator>().Play("player_idle");
             }
         }
         else{

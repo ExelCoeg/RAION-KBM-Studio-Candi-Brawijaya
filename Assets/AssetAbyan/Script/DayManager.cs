@@ -21,6 +21,7 @@ public class DayManager : MonoBehaviour
         [SerializeField] private bool isToNight;
     [SerializeField] private bool isToDay;
 
+    [SerializeField] GameObject victoryUI;
     private void Awake()
     {
         if (instance == null)
@@ -64,6 +65,10 @@ public class DayManager : MonoBehaviour
         }
 
         setNight();
+
+        if(dayCount >= totalDay){
+            victoryUI.SetActive(true);
+        }
     }
 
     private void setNight()
