@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7891656782417366415}
   - component: {fileID: 1069238635286235868}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Candi_dinding_2_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -344942641, guid: f43d6536039a8eb468b7518fb9d9395c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8780984561840737315}
   - component: {fileID: 6445843886939869117}
   - component: {fileID: 1007940648054942949}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArthamertaLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 9767cc390000000053a546e2
+  m_ApplyToSortingLayers: 9767cc390000000053a546e2a1100cdce3638c88
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -217,9 +217,11 @@ GameObject:
   - component: {fileID: 7081592864945753810}
   - component: {fileID: 5319095228157873208}
   - component: {fileID: 8410674948746712790}
-  m_Layer: 0
+  - component: {fileID: 2492521463732372811}
+  - component: {fileID: 1475647720985671080}
+  m_Layer: 11
   m_Name: Candi_full
-  m_TagString: Untagged
+  m_TagString: Arthamerta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -379,6 +381,65 @@ MonoBehaviour:
   soundType: 8
   volume: 1
   distance: 20
+--- !u!114 &2492521463732372811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862181529917646624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5986467b4d0c563448d5474089db2ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+--- !u!61 &1475647720985671080
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862181529917646624}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.7074213, y: 8.647314}
+  m_EdgeRadius: 0
 --- !u!1 &2415420617664591557
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3082396434433739025}
   - component: {fileID: 6392350045944794866}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Candi_dinding_1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,9 +510,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 2040144890, guid: 48381cebccf0c344a8d81bf4ce029f08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -473,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4127290074371677565}
   - component: {fileID: 1400193401356323063}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cand_back_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,9 +594,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 10813adff00c05a469f01bdfab2c32d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -557,7 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6527718715463254632}
   - component: {fileID: 6870358104925384414}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Candi_dinding_1_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,9 +678,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 2040144890, guid: 48381cebccf0c344a8d81bf4ce029f08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -641,7 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814171104618311847}
   - component: {fileID: 2881129555669918333}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Candi_dinding_2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,9 +762,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -344942641, guid: f43d6536039a8eb468b7518fb9d9395c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -725,7 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6119629406718564319}
   - component: {fileID: 9170939891211353571}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cand_back_2png
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,8 +846,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5d0d5d1f5b14b3e4eb3ed4964e9d5ed2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -809,7 +870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3016039658168374555}
   - component: {fileID: 1849971830515408630}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Candi_main_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,9 +930,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 716520383, guid: eecd22e878436784baa98a41119ab35a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -893,7 +954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848600966791841717}
   - component: {fileID: 2382704608860481821}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Candi_api_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,9 +1015,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -603189087
+  m_SortingLayer: -1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 669354795, guid: be57bf8b737de8c478fe08816e1f045e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

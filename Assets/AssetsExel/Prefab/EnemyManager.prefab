@@ -57,6 +57,7 @@ MonoBehaviour:
   - Archer
   - Knight
   - Villager
+  - Arthamerta
   lemulutIdleSet:
   - 4
   - 5
@@ -87,9 +88,9 @@ MonoBehaviour:
   widaraAttackSpeed: 0.5
   widaraHealth: 100
   widaraDetection: 4
-  widaraRangeAttack: 4
+  widaraRangeAttack: 1
   widaraDamageAble:
-  - Athamerta
+  - Arthamerta
   widaraIdleSet:
   - 5
   - 5

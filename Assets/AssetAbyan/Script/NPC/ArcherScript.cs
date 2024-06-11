@@ -56,6 +56,7 @@ public class ArcherScript : NPC
         angle = CalculateAngle();
         bowTransform.rotation = Quaternion.Euler(0, 0, angle);
         bowTransform.localScale = new Vector3(direction,bowTransform.localScale.y,bowTransform.localScale.z);// nanti ketika ada animasi shootpoint akan diatur secara manual
+
     }
     private void FixedUpdate() {
         NPCMovement();
@@ -109,7 +110,7 @@ public class ArcherScript : NPC
     {
         if (objectInRange && enemy != null)
         {
-            Vector2 direction = enemy.position - transform.position;
+            Vector2 direction = (enemy.position + new Vector3(0,-1.5f,0)) - transform.position;
             float sinRadianAngle = (10f * arrowRb.gravityScale) * direction.x / (vo * vo);
             float radianAngle2 = Mathf.Asin(sinRadianAngle);
             float angleJustX = (radianAngle2 * Mathf.Rad2Deg) / 2;
@@ -134,7 +135,6 @@ public class ArcherScript : NPC
     //=======================================================================================================================
     private void CheckEnemyInRange(){
         objectInRange = Physics2D.OverlapCircle(transform.position, archerDetection, enemyLayer);
-        Debug.Log(objectInRange);
 
         if (objectInRange != null && npcManager.archerDamageAble.Contains(objectInRange.tag)){
             Idle(true);

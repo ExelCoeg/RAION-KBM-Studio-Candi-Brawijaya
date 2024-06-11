@@ -14,7 +14,7 @@ public class MoonScript : MonoBehaviour
     public bool canRotate = true;
     public int moonCount = -1;
     private void Start() {
-        moonCount = -1;
+        moonCount = -1; 
     }
     void Update()
     {

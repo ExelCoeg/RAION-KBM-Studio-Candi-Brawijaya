@@ -82,6 +82,7 @@ public class WidaraScript : Enemy
         if(damageAbleInRange){
             if (attackTimer > enemyManager.widaraAttackSpeed)
             {
+                Debug.Log("Widara Attack");
                 animator.Play("WidaraAttack");
                 attackTimer = 0;
             }

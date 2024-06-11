@@ -45,10 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98eb749df5bc1e5478c4b3cb53b19cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moon: []
-  spriteRenderer: {fileID: 0}
-  moonTransform: {fileID: 0}
+  moonSprite:
+  - {fileID: 460801344, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: -1480876748, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: 1834274428, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: -480443579, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: 1060372351, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: -1732570817, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: 1284352780, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: 1160191426, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  - {fileID: 823907803, guid: c08fe8b8fc6911f4486f525cbeb7fed5, type: 3}
+  moon: {fileID: 1914402618827386800}
+  moonTransform: {fileID: 1171790892934858290}
+  moonStart: -23
+  moonEnd: -155
   canRotate: 0
+  moonCount: 0
 --- !u!1 &1914402618827386800
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,17 +101,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914402618827386800}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_LightType: 3
+  m_LightType: 2
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 25
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 57ad8592
@@ -116,8 +128,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
@@ -171,9 +183,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1836733097
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 3
-  m_Sprite: {fileID: -147723158, guid: edbc0c5d7aa238449bd0e8e21d169c27, type: 3}
+  m_Sprite: {fileID: 246421219, guid: eae91ccd9e0cce34abd9708bb2e8eaf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

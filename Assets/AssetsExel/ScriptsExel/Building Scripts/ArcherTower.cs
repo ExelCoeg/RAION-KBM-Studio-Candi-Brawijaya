@@ -1,4 +1,5 @@
 
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class ArcherTower : Building
@@ -12,22 +13,27 @@ public class ArcherTower : Building
     {
         base.Update();
         FillTowerWithArcher();
-        
     }
     
     public void FillTowerWithArcher(){
         if(currentHealth == maxHealth && !filled){
-            if(NPCManager.instance.archerCount > 0){
-                archer = GameObject.FindGameObjectWithTag("Archer");
-                archer.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                archer.tag = "Untagged";
-                archer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            archer = GameObject.FindGameObjectWithTag("Archer");
+            //if(NPCManager.instance.archerCount > 0){
+            if(archer != null){  
+                Invoke("SetUpArcher",1);
                 filled = true;
             }
             else{
                 print("No archer available");
             }
         }
+    }
+    public void SetUpArcher(){
+        archer.tag = "Untagged";
+        archer.transform.position = new Vector2(transform.position.x, transform.position.y + 2);
+        archer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        archer.GetComponent<ArcherScript>().SetPoint(transform);
+        archer.GetComponent<ArcherScript>().Idle(true);
     }
     public override void ChangeBuildingSprite(){
         if(currentHealth <= 0){
