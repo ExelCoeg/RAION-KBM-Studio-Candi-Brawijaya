@@ -121,6 +121,8 @@ MonoBehaviour:
   lemulutSpawnTime: 0
   gelapariSpawnTime: 0
   widaraSpawnTime: 0
+  vagrantSpawnTime: 10
   tempLemulutSpawnTime: 0
   tempGelapariSpawnTime: 0
   tempWidaraSpawnTime: 0
+  tempVagrantSpawnTime: 0
