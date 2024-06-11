@@ -18,6 +18,7 @@ public class ArcherTower : Building
     public void FillTowerWithArcher(){
         if(currentHealth == maxHealth && !filled){
             archer = GameObject.FindGameObjectWithTag("Archer");
+            archer.GetComponent<ArcherScript>().inTower = true;
             //if(NPCManager.instance.archerCount > 0){
             if(archer != null){  
                 Invoke("SetUpArcher",1);
@@ -27,6 +28,7 @@ public class ArcherTower : Building
                 print("No archer available");
             }
         }
+        
     }
     public void SetUpArcher(){
         archer.tag = "Untagged";
@@ -43,6 +45,7 @@ public class ArcherTower : Building
             if(archer != null ){
                 archer.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 archer.tag = "Archer";
+                archer.GetComponent<ArcherScript>().inTower = false;
             }
             filled = false;
 

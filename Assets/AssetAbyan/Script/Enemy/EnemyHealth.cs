@@ -13,19 +13,25 @@ public class EnemyHealth : MonoBehaviour, IDamagable{
         _maxHealth = maxHealth;
         _health = currentHealth;
         if(currentHealth <= 0){
-            if(gameObject.tag == "Gelapari"){
+            print(gameObject.tag);
+            if(gameObject.tag.Equals("Gelapari") || gameObject.tag == "Gelapari"){
+                print("Gelapari dead");
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Keris>().addLifeEssence(3);
+                player.GetComponent<Keris>().lifeEssence += 50;
+                GetComponent<Enemy>().Destroy();
             }
-            if(gameObject.tag == "Widara"){
+            else if(gameObject.tag.Equals("Widara") || gameObject.tag == "Widara"){
+                print("Widara dead");
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Keris>().addLifeEssence(2);
+                player.GetComponent<Keris>().lifeEssence += 25;
+                GetComponent<Enemy>().Destroy();
             }
-            if(gameObject.tag == "Lelumut"){
+            else if(gameObject.tag.Equals("Lelumut") || gameObject.tag == "Lemulut"){
+                print("Lemulut dead");
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Keris>().addLifeEssence(1);
+                player.GetComponent<Keris>().lifeEssence += 15;
+                GetComponent<Enemy>().Destroy();
             }
-            GetComponent<Enemy>().Destroy();
         }
     }
     public void heal(){
