@@ -26,10 +26,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] int lemulutSpawnTime;
     [SerializeField] int gelapariSpawnTime;
     [SerializeField] int widaraSpawnTime;
+    [SerializeField] int vagrantSpawnTime;
 
     [SerializeField] int tempLemulutSpawnTime;
     [SerializeField] int tempGelapariSpawnTime;
     [SerializeField] int tempWidaraSpawnTime;
+    [SerializeField] float tempVagrantSpawnTime;
     private void Awake()
     {
         if (instance == null)
@@ -46,6 +48,7 @@ public class SpawnManager : MonoBehaviour
     private void Update()
     {
         enemySpawn();
+        SpawnVagrant();
     }
 
     public Boolean isEnemyLeft()
@@ -58,6 +61,8 @@ public class SpawnManager : MonoBehaviour
         tempLemulutSpawnTime = 0;
         tempGelapariSpawnTime = 0;
         tempWidaraSpawnTime = 0;
+        tempVagrantSpawnTime = 0;
+
         print("SETWAVE " + waveCount);
         if (lemulutWaveData.Length - 1>= waveCount)
         {
@@ -132,6 +137,23 @@ public class SpawnManager : MonoBehaviour
             tempWidaraSpawnTime += widaraSpawnTime;
             SpawnWidara();
             widaraCount--;
+        }
+    }
+
+    public void SpawnVagrant()
+    {
+        tempVagrantSpawnTime += Time.deltaTime;
+        if (tempVagrantSpawnTime >= vagrantSpawnTime)
+        {
+            if (PointManager.instance.GetPoint(PointsNames.LeftVagrant).NPCCount < 5)
+            {
+                NPCManager.instance.InstanceNPC(Status.Vagrant, PointManager.instance.GetPoint(PointsNames.LeftVagrant).pointA.position);
+            }
+            else if (PointManager.instance.GetPoint(PointsNames.RightVagrant).NPCCount < 5)
+            {
+                NPCManager.instance.InstanceNPC(Status.Vagrant, PointManager.instance.GetPoint(PointsNames.RightVagrant).pointB.position);
+            }
+            tempVagrantSpawnTime = 0;
         }
     }
     public void SpawnLemulut()

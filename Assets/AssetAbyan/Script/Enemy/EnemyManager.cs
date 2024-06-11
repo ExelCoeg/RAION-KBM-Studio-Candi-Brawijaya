@@ -51,6 +51,7 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start(){
         //InstanceNPC(Status.Vegrant, transform.position);
+        
     }
     
     public void InstanceEnemy(EnemyStatus enemyStatus,Vector3 position){
