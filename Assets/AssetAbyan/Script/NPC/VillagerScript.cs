@@ -92,7 +92,8 @@ public class VillagerScript : NPC
         }
         if (miningTimer >= npcManager.villagerMiningTimeToCoin)
         {
-            coin++;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Coin>().increaseCoin(10);
             miningTimer = 0;
         }
     }

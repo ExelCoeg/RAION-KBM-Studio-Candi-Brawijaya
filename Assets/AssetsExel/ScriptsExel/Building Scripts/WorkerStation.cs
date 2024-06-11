@@ -20,7 +20,7 @@ public class WorkerStation : MonoBehaviour, IInteractable
             if(!locked){
                 if(Input.GetKeyDown(KeyCode.F)){
                     workerStationUI.gameObject.SetActive(true);
-                    NPCCountsUI.gameObject.SetActive(false);
+                    // NPCCountsUI.gameObject.SetActive(false);
                     workerStationUI.GetComponent<WorkerStationUI>().closeInput = false;
                 }
             }
@@ -37,7 +37,7 @@ public class WorkerStation : MonoBehaviour, IInteractable
             EIcon.SetActive(false);
             workerStationUI.gameObject.SetActive(false);
         }
-        if(!workerStationUI.activeSelf) NPCCountsUI.gameObject.SetActive(true); 
+        // if(!workerStationUI.activeSelf) NPCCountsUI.gameObject.SetActive(true); 
     }
 
     

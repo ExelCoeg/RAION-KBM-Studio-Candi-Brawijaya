@@ -234,7 +234,7 @@ MonoBehaviour:
   maxLevel: 10
   currentHealth: 0
   currentLevel: 1
-  buildingCost: 5
+  buildingCost: 15
   upgradeCostMultiplier: 2
   upgradeCost: 1
   recoverBuildingCost: 1

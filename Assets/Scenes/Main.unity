@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 781730161296456724, guid: 59113118f582b3546955537199beb89a, type: 3}
+      propertyPath: coinCount
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 2647202588585530522, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: chooseJobUI
       value: 
@@ -4901,14 +4905,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3517527570552911489, guid: 0467c43e2aaade14696ce1917d74d5fd, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3517527570552911489, guid: 0467c43e2aaade14696ce1917d74d5fd, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -603189087
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7225,6 +7221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2708135041097193090, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
+      propertyPath: villagerMiningTimeToCoin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3175840033643870225, guid: 42e4314e9bad25d4395df3fe24f58807, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.7
@@ -12387,14 +12387,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Wall (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4843871112838103937, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4843871112838103937, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -603189087
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12609,6 +12601,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7435226879056960805, guid: 25178d2710b7f274fba05346f087e647, type: 3}
+      propertyPath: widaraWaveData.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435226879056960805, guid: 25178d2710b7f274fba05346f087e647, type: 3}
+      propertyPath: widaraWaveData.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435226879056960805, guid: 25178d2710b7f274fba05346f087e647, type: 3}
       propertyPath: widaraWaveData.Array.data[4]
       value: 2
       objectReference: {fileID: 0}
@@ -12666,11 +12666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7435226879056960805, guid: 25178d2710b7f274fba05346f087e647, type: 3}
       propertyPath: gelapariWaveData.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435226879056960805, guid: 25178d2710b7f274fba05346f087e647, type: 3}
       propertyPath: gelapariWaveData.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435226879056960805, guid: 25178d2710b7f274fba05346f087e647, type: 3}
       propertyPath: gelapariWaveData.Array.data[3]
