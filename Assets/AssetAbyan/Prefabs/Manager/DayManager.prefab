@@ -98,10 +98,10 @@ MonoBehaviour:
   totalDay: 0
   globalVolume: {fileID: 1452835888289569064}
   clock: 0
-  timeToDay: 10
-  dayTime: 10
-  timeToNight: 10
-  nightTime: 10
+  timeToDay: 15
+  dayTime: 30
+  timeToNight: 15
+  nightTime: 30
   isNight: 0
   isToNight: 0
   isToDay: 0

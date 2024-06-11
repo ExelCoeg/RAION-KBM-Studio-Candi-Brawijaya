@@ -925,12 +925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807e3ec2665b67944a0849e87d215526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 0
-  objectInRange: {fileID: 0}
-  detection: 4.04
-  NPCLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!4 &715762178
 Transform:
   m_ObjectHideFlags: 0

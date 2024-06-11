@@ -10,13 +10,17 @@ public class LightSwitch : MonoBehaviour
     [SerializeField]private float delay;
     void Update()
     {
-        if (DayManager.instance.isNight && !isOn)
+        if (TerritoryManager.instance.territoryPoints.pointA.position.x < transform.position.x && TerritoryManager.instance.territoryPoints.pointB.position.x> transform.position.x)
         {
-            Invoke("On", delay);
-            isOn = true;
-        }else if(!DayManager.instance.isNight && isOn){
-            Off();
+            if (DayManager.instance.isNight && !isOn)
+            {
+                Invoke("On", delay);
+                isOn = true;
+            }else if(!DayManager.instance.isNight && isOn){
+                Off();
+            }
         }
+
     }
     void On(){
         gameObject.GetComponent<Animator>().Play(on);

@@ -346,7 +346,7 @@ MonoBehaviour:
     enemyCount: 0
   damageAbleLayer:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 3200
   objectDetected: {fileID: 0}
   objectInRange: {fileID: 0}
   rangeDetection: 0

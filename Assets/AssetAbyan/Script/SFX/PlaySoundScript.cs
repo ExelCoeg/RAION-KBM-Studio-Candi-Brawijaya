@@ -26,6 +26,7 @@ public class PlaySoundScript : MonoBehaviour
     [ContextMenu("Play")]
     public void PlaySound(int index = 0)
     {
+        //Debug.Log("Memainkan " + SoundManager.getClip(soundType,index).name);
         // Debug.LogWarning(SoundManager.PlaySound(soundType, volume, index).name);
         audioSource.PlayOneShot(SoundManager.getClip(soundType, index),volume);
     }

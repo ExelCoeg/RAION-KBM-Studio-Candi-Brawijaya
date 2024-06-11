@@ -44,36 +44,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5584b76f8ae67d4e8fcea159749c597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vegrantCount: 0
-  vegrantDetection: 115.4
-  vegrantIdleSet:
-  - 5
-  - 6
-  - 1
-  - 2
+  vagrant: {fileID: 0}
+  vagrantCount: 0
+  vagrantMovSpeed: 3
+  vagrantHealth: 0
+  vagrantDetection: 0
+  vagrantDamageAble: []
+  vagrantIdleSet:
+  - 0
+  - 0
+  - 0
+  - 0
+  villager: {fileID: 0}
   villagerCount: 0
+  villagerMovSpeed: 3
+  villagerHealth: 0
   villagerDetection: 0
+  villagerMiningTimeToCoin: 0
+  villagerDamageAble: []
   villagerIdleSet:
   - 1
   - 2
   - 5
   - 6
-  villagerMiningTimeToCoin: 0
+  archer: {fileID: 0}
   archerCount: 0
-  archerDetection: 0
+  ArcherMovSpeed: 3
+  archerHealth: 0
+  archerDetection: 15
+  archerDamage: 10
+  archerDamageAble:
+  - Widara
+  - Gepari
+  - Lemulut
+  archerAttackSpeed: 1
   archerIdleSet:
   - 5
   - 6
   - 1
   - 2
-  archerDamage: 0
-  archerShootFrequency: 0
+  knight: {fileID: 0}
   knightCount: 0
+  kngihtMovSpeed: 3
+  knightHealth: 0
   knightDetection: 0
-  knigtIdleSet:
-  - 5
-  - 6
-  - 1
-  - 2
+  knightRangeAttack: 0
+  knightOffSiteRange: 0
   knightDamage: 0
-  KnightAttackFrequency: 0
+  knightAttackSpeed: 0
+  knightDamageAble:
+  - Lemulut
+  - Gelapari
+  knightIdleSet:
+  - 0
+  - 0
+  - 0
+  - 0

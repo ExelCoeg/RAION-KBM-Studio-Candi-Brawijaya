@@ -144,11 +144,18 @@ MonoBehaviour:
   soundList:
   - name: Player
     volume: 1
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: eb65fa6b177f85a4ea8c68a0578873e4, type: 3}
+    - {fileID: 8300000, guid: 98dad96c9a1d19048959243643878a01, type: 3}
+    - {fileID: 8300000, guid: 9e6cdc1e2510d154dba1f157c6d47868, type: 3}
+    - {fileID: 8300000, guid: e24a3513c399d9146ae835a990406574, type: 3}
   - name: Vegrant
     volume: 1
     sounds:
     - {fileID: 8300000, guid: eb65fa6b177f85a4ea8c68a0578873e4, type: 3}
+    - {fileID: 8300000, guid: 98dad96c9a1d19048959243643878a01, type: 3}
+    - {fileID: 8300000, guid: 9e6cdc1e2510d154dba1f157c6d47868, type: 3}
+    - {fileID: 8300000, guid: e24a3513c399d9146ae835a990406574, type: 3}
   - name: Villager
     volume: 1
     sounds:

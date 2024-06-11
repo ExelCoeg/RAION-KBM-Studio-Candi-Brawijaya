@@ -30,7 +30,6 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
         Interact();
         ChangeBuildingSprite();
         if(!canBuild && !built){
-            print("test");
             if(transform.position.x >= TerritoryManager.instance.pointAx && transform.position.x <= TerritoryManager.instance.pointBx){
                 canBuild = true;
             }
