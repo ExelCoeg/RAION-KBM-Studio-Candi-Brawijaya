@@ -1,7 +1,5 @@
 using System;
 using System.Linq;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class VillagerScript : NPC

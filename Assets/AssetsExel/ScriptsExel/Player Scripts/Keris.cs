@@ -6,7 +6,7 @@ public class Keris : MonoBehaviour
 {
     [Header("Life Essence")]
     public int lifeEssence = 0;
-    [SerializeField] int maxLifeEssence = 50;
+    [SerializeField] int maxLifeEssence = 100;
 
     [Header("Petir Attributes")]
     private bool petirAvailable = true;
@@ -33,6 +33,7 @@ public class Keris : MonoBehaviour
     void Start()
     {
         ResetPetirCooldown();
+        lifeEssence = maxLifeEssence;
     }
    
 
@@ -60,30 +61,25 @@ public class Keris : MonoBehaviour
         
         if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB) ){
             // expand muncul bar untuk expand (WORLD SPACE UI)
-                    
 
-            
+            holdTime += Time.deltaTime;
+            expandBar.value = holdTime/requiredHoldTime;
             GetComponent<Animator>().Play("player_expand");
-            if(lifeEssence <= expandCost){
-                expandBar.gameObject.SetActive(false);
-                GetComponent<Animator>().Play("player_idle");
-                return;
-            }
-            else{
-                holdTime += Time.deltaTime;
-                expandBar.value = holdTime/requiredHoldTime;
-                expandBar.gameObject.SetActive(true);
-            }
+            expandBar.gameObject.SetActive(true);
+            
+            
             if(holdTime >= requiredHoldTime){
                 if(lifeEssence >= expandCost){
                     TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
-                    reduceLifeEssence(25);
+                    reduceLifeEssence(maxLifeEssence);
+                    
                 }
                 else{
                     expandBar.gameObject.SetActive(false);
                     GetComponent<Animator>().Play("player_idle");
                     return;
                 }
+                holdTime = 0;
             }
         }
         else{

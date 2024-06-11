@@ -235,11 +235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7291144658952899412, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: lifeEssence
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7291144658952899412, guid: 59113118f582b3546955537199beb89a, type: 3}
       propertyPath: maxLifeEssence
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
