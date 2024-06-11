@@ -61,19 +61,29 @@ public class Keris : MonoBehaviour
         if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB) ){
             // expand muncul bar untuk expand (WORLD SPACE UI)
                     
-            expandBar.gameObject.SetActive(true);
 
-            holdTime += Time.deltaTime;
-            expandBar.value = holdTime/requiredHoldTime;
             
             GetComponent<Animator>().Play("player_expand");
+            if(lifeEssence <= expandCost){
+                expandBar.gameObject.SetActive(false);
+                GetComponent<Animator>().Play("player_idle");
+                return;
+            }
+            else{
+                holdTime += Time.deltaTime;
+                expandBar.value = holdTime/requiredHoldTime;
+                expandBar.gameObject.SetActive(true);
+            }
             if(holdTime >= requiredHoldTime){
                 if(lifeEssence >= expandCost){
                     TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
                     reduceLifeEssence(25);
                 }
+                else{
                     expandBar.gameObject.SetActive(false);
                     GetComponent<Animator>().Play("player_idle");
+                    return;
+                }
             }
         }
         else{
