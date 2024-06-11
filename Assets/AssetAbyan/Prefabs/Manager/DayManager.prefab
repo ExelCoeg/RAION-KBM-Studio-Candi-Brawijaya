@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayCount: 0
-  totalDay: 0
+  totalDay: 10
   globalVolume: {fileID: 1452835888289569064}
   clock: 0
   timeToDay: 15
@@ -105,3 +105,4 @@ MonoBehaviour:
   isNight: 0
   isToNight: 0
   isToDay: 0
+  victoryUI: {fileID: 0}

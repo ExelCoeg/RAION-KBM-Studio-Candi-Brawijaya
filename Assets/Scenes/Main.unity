@@ -1796,6 +1796,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2083270033342152981, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
   m_PrefabInstance: {fileID: 1301925724}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &194536549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9176791139720267266, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
+  m_PrefabInstance: {fileID: 1301925724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &194983203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4365744181333284962, guid: 3f158e0be5266d34eaec9c91ebae2fbc, type: 3}
@@ -2619,6 +2624,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8302370038444718457, guid: 47a6a29037a7ac8429b6bb0c323ab45d, type: 3}
+      propertyPath: victoryUI
+      value: 
+      objectReference: {fileID: 194536549}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8314,6 +8323,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8333596763384890624, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176791139720267266, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
