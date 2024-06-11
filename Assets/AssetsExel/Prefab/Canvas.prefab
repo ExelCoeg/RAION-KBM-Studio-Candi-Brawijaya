@@ -10935,6 +10935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4396994457038462732, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4396994457038462735, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11014,6 +11018,30 @@ PrefabInstance:
     - target: {fileID: 4396994457038462735, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396994457407550212, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7835889955507280356}
+    - target: {fileID: 4396994457407550212, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396994457407550212, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396994457672351641, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7835889955507280356}
+    - target: {fileID: 4396994457672351641, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Retry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396994457672351641, guid: 54f3fa608efff5c49a7300e6ebfb91fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverUI, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11121,6 +11149,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6810585337409809377, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7699893
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810585337409809377, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7699893
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810585337409809377, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8113208
+      objectReference: {fileID: 0}
     - target: {fileID: 6810585337409809378, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11132,6 +11172,18 @@ PrefabInstance:
     - target: {fileID: 6810585337409809378, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameOverUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810585337438642672, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810585337438642672, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810585337438642672, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7735849
       objectReference: {fileID: 0}
     - target: {fileID: 6810585337438642673, guid: 1008e7ecda11fb54dba9d8fd41ec8d8d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
