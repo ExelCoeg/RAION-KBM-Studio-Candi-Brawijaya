@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Net.Security;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -55,14 +56,21 @@ public abstract class Enemy : MonoBehaviour
     }
     public EnemyPoints SetPlace(EnemyPointNames left, EnemyPointNames right)
     {
-        if (pointManager.GetEnemyPoints(left).enemyCount <= pointManager.GetEnemyPoints(right).enemyCount)
-        {
-            return pointManager.GetEnemyPoints(left);// nanti rencananya ada pembagian left sama rightnya
+        print("test13213211231321");
+        if(transform.position.x <= 0 ){
+            return pointManager.GetEnemyPoints(left);
         }
-        else
-        {
+        else{
             return pointManager.GetEnemyPoints(right);
-        } 
+        }
+        // if (pointManager.GetEnemyPoints(left).enemyCount <= pointManager.GetEnemyPoints(right).enemyCount)
+        // {
+        //     return pointManager.GetEnemyPoints(left);// nanti rencananya ada pembagian left sama rightnya
+        // }
+        // else
+        // {
+        //     return pointManager.GetEnemyPoints(right);
+        // } 
     }
     public EnemyPoints SetPlace(EnemyPointNames enemyPointsint)
     {

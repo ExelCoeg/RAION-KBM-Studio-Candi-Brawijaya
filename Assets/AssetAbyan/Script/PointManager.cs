@@ -61,9 +61,15 @@ public class PointManager : MonoBehaviour
             GetPoint(PointsNames.Villager).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position;
         
             //Enemy
-            GetEnemyPoints(EnemyPointNames.Left).pointB.position = Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Left).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
-            GetEnemyPoints(EnemyPointNames.Right).pointA.position =  Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Right).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
+            // GetEnemyPoints(EnemyPointNames.Left).pointB.position = Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Left).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
+            // GetEnemyPoints(EnemyPointNames.Right).pointA.position =  Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Right).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
 
+
+            GetEnemyPoints(EnemyPointNames.Left).pointB.position = new Vector3(TerritoryManager.instance.pointAx - 10,GetEnemyPoints(EnemyPointNames.Left).pointB.position.y );
+            GetEnemyPoints(EnemyPointNames.Left).pointA.position = GetEnemyPoints(EnemyPointNames.Left).pointB.position - new Vector3(25,0,0);
+
+            GetEnemyPoints(EnemyPointNames.Right).pointA.position =  new Vector3(TerritoryManager.instance.pointBx + 10, GetEnemyPoints(EnemyPointNames.Right).pointA.position.y );
+            GetEnemyPoints(EnemyPointNames.Right).pointB.position =  GetEnemyPoints(EnemyPointNames.Right).pointA.position + new Vector3(25,0,0);
         }       
         else{
             
@@ -72,8 +78,10 @@ public class PointManager : MonoBehaviour
             
             GetPoint(PointsNames.Villager).pointA.position = GetPoint(PointsNames.VillagerDefault).pointA.position;
             GetPoint(PointsNames.Villager).pointB.position = GetPoint(PointsNames.VillagerDefault).pointB.position;  
-            GetEnemyPoints(EnemyPointNames.Left).pointB.position = TerritoryManager.instance.territoryPoints.pointA.position;
-            GetEnemyPoints(EnemyPointNames.Right).pointA.position = TerritoryManager.instance.territoryPoints.pointB.position;
+            GetEnemyPoints(EnemyPointNames.Left).pointB.position = Vector2.zero;
+            GetEnemyPoints(EnemyPointNames.Right).pointA.position = Vector2.zero;
+            GetEnemyPoints(EnemyPointNames.Left).pointA.position = Vector2.zero;
+            GetEnemyPoints(EnemyPointNames.Right).pointB.position = Vector2.zero;
 
         }
     }

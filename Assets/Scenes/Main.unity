@@ -2644,9 +2644,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8302370038444718457, guid: 47a6a29037a7ac8429b6bb0c323ab45d, type: 3}
+      propertyPath: dayTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302370038444718457, guid: 47a6a29037a7ac8429b6bb0c323ab45d, type: 3}
+      propertyPath: nightTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302370038444718457, guid: 47a6a29037a7ac8429b6bb0c323ab45d, type: 3}
+      propertyPath: timeToDay
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302370038444718457, guid: 47a6a29037a7ac8429b6bb0c323ab45d, type: 3}
       propertyPath: victoryUI
       value: 
       objectReference: {fileID: 194536549}
+    - target: {fileID: 8302370038444718457, guid: 47a6a29037a7ac8429b6bb0c323ab45d, type: 3}
+      propertyPath: timeToNight
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
