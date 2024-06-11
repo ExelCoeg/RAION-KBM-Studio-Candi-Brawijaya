@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lemulut: {fileID: 3907496666736175511, guid: 2d5986caf85402849abc0e83a316cbf9, type: 3}
   lemulutCount: 0
-  lemulutMovSpeed: 3
-  lemulutDamage: 3
+  lemulutMovSpeed: 5
+  lemulutDamage: 5
   lemulutAttackSpeed: 2
-  lemulutHealth: 100
+  lemulutHealth: 50
   lemulutDetection: 4
   lemulutRangeAttack: 0.2
   lelumutDamageAble:
@@ -67,7 +67,7 @@ MonoBehaviour:
   gelapariCount: 0
   gelapariMovSpeed: 1
   gelapariDamage: 50
-  gelapariAttackSpeed: 2
+  gelapariAttackSpeed: 3
   gelapariHealth: 500
   gelapariDetection: 4
   gelapariRangeAttack: 0.2
@@ -84,9 +84,9 @@ MonoBehaviour:
   widara: {fileID: 4607677558255780103, guid: da4ab1a713978354d80059e2f217a565, type: 3}
   widaraCount: 0
   widaraMovSpeed: 2
-  widaraDamage: 2
+  widaraDamage: 10
   widaraAttackSpeed: 0.5
-  widaraHealth: 100
+  widaraHealth: 80
   widaraDetection: 4
   widaraRangeAttack: 1
   widaraDamageAble:

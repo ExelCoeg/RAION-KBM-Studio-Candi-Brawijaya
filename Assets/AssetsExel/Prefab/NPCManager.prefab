@@ -44,33 +44,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5584b76f8ae67d4e8fcea159749c597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vagrant: {fileID: 0}
+  vagrant: {fileID: 6631533174165759714, guid: 9cf8bc27689b8114fafaa98ed504bedb, type: 3}
   vagrantCount: 0
   vagrantMovSpeed: 3
   vagrantHealth: 0
-  vagrantDetection: 0
-  vagrantDamageAble: []
+  vagrantDetection: 4
+  vagrantDamageAble:
+  - Player
   vagrantIdleSet:
   - 0
   - 0
   - 0
   - 0
-  villager: {fileID: 0}
+  villager: {fileID: 1370986650272124093, guid: d796e09801897f74b98ccbc974ef9a54, type: 3}
   villagerCount: 0
   villagerMovSpeed: 3
-  villagerHealth: 0
+  villagerHealth: 100
   villagerDetection: 0
-  villagerMiningTimeToCoin: 0
+  villagerMiningTimeToCoin: 5
   villagerDamageAble: []
   villagerIdleSet:
   - 1
   - 2
   - 5
   - 6
-  archer: {fileID: 0}
+  archer: {fileID: 6569092053781098253, guid: 23fbfabde552a184b9bd3ccd9a720be5, type: 3}
   archerCount: 0
   ArcherMovSpeed: 3
-  archerHealth: 0
+  archerHealth: 150
   archerDetection: 15
   archerDamage: 10
   archerDamageAble:
@@ -83,15 +84,15 @@ MonoBehaviour:
   - 6
   - 1
   - 2
-  knight: {fileID: 0}
+  knight: {fileID: 9004437589879368943, guid: 41958e2a9f522aa4ca886dc71ddc483a, type: 3}
   knightCount: 0
   kngihtMovSpeed: 3
-  knightHealth: 0
-  knightDetection: 0
-  knightRangeAttack: 0
-  knightOffSiteRange: 0
-  knightDamage: 0
-  knightAttackSpeed: 0
+  knightHealth: 300
+  knightDetection: 10
+  knightRangeAttack: 0.2
+  knightOffSiteRange: 1
+  knightDamage: 20
+  knightAttackSpeed: 2
   knightDamageAble:
   - Lemulut
   - Gelapari
