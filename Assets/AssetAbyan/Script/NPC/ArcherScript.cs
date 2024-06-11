@@ -20,6 +20,8 @@ public class ArcherScript : NPC
     [SerializeField]private float angle;
     [SerializeField]private float vo;
 
+    public bool inTower;
+    
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -45,6 +47,7 @@ public class ArcherScript : NPC
     // Update is called once per frame
     void Update()
     {
+        if(inTower)Idle(true);
         SetNPCAtribut();
         NPCDirection();
         ChangePoint();
