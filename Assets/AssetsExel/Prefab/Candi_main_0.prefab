@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 155412317346884326}
   - component: {fileID: 3629735475518513419}
   - component: {fileID: 5120836209461638447}
+  - component: {fileID: 3596804690045401680}
   m_Layer: 11
   m_Name: Candi_main_0
   m_TagString: Untagged
@@ -102,3 +103,24 @@ MonoBehaviour:
   - {fileID: 569254186, guid: eecd22e878436784baa98a41119ab35a, type: 3}
   - {fileID: -1189685151, guid: eecd22e878436784baa98a41119ab35a, type: 3}
   - {fileID: -957833337, guid: eecd22e878436784baa98a41119ab35a, type: 3}
+--- !u!95 &3596804690045401680
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5476506238937433898}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 737ec15b956de284ca40faedb73cd8f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
