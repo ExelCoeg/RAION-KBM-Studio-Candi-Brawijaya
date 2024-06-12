@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayCount: 0
-  totalDay: 10
+  totalDay: 9
   globalVolume: {fileID: 1452835888289569064}
   clock: 0
   timeToDay: 15
-  dayTime: 30
+  dayTime: 60
   timeToNight: 15
-  nightTime: 30
+  nightTime: 60
   isNight: 0
   isToNight: 0
   isToDay: 0

@@ -19,6 +19,20 @@ public class NPCHealth : MonoBehaviour, IDamagable{
     public void TakeDamage(int damage){
         currentHealth -= damage;
         print(this.name + " taking damage");
+        DamageVisualied();
+    }
+    public SpriteRenderer[] spriteRenderers;
+    public void DamageVisualied(){
+        foreach(SpriteRenderer item in spriteRenderers){
+            item.color = Color.red;
+            Debug.Log("Kontol memek asu");
+        }
+        Invoke("backToWhite",0.1f);
+    }
+    public void backToWhite(){
+        foreach(SpriteRenderer item in spriteRenderers){
+            item.color = Color.white;
+        }
     }
 
 }

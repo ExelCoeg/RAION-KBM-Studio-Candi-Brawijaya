@@ -471,3 +471,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 400
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 8271012601166279422}

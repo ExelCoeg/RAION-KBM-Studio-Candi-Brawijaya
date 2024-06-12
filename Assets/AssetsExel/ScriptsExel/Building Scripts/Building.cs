@@ -37,6 +37,7 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
     }
     public void TakeDamage(int damage){
         currentHealth -= damage;
+        DamageVisualied();
     }
     public void Build(){
         if(Input.GetKeyDown(KeyCode.F)){
@@ -96,5 +97,18 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
     }
     
     public abstract void ChangeBuildingSprite();
+    public SpriteRenderer[] spriteRenderers;
+    public void DamageVisualied(){
+        foreach(SpriteRenderer item in spriteRenderers){
+            item.color = Color.red;
+            Debug.Log("Kontol memek asu");
+        }
+        Invoke("backToWhite",0.1f);
+    }
+    public void backToWhite(){
+        foreach(SpriteRenderer item in spriteRenderers){
+            item.color = Color.white;
+        }
+    }
 
 }

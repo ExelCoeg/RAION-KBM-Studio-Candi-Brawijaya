@@ -545,7 +545,6 @@ MonoBehaviour:
   timer: 0
   angle: 0
   vo: 0
-  inTower: 0
 --- !u!114 &7505650613355195278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,3 +559,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 5597703632773681921}

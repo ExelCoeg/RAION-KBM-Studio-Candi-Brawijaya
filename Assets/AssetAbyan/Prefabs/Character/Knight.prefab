@@ -471,4 +471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
-  currentHealth: 0
+  currentHealth: 1
+  spriteRenderers:
+  - {fileID: 7707826497887209446}

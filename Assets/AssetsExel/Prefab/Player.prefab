@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 5378998839515533976}
+  gameOverUI: {fileID: 0}
 --- !u!114 &4931806142768951128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6950d26304c56824dbd3ff85b6d17c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeEssence: 50
-  maxLifeEssence: 50
+  lifeEssence: 0
+  maxLifeEssence: 100
   petirCost: 10
   petirChargeTime: 0
   petirCooldownMax: 2
@@ -176,6 +179,7 @@ MonoBehaviour:
   petirOffsetY: 5.5
   holdTime: 0
   requiredHoldTime: 2
+  expandCost: 100
   mousePos: {x: 0, y: 0, z: 0}
   petir: {fileID: 6318406272205261687, guid: 5809cdb7243b7344db09c1f7abbe256d, type: 3}
   expandBar: {fileID: 6564914112617597329}
@@ -228,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143628f95e4edd343a63c7d737e9137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCount: 9999
+  coinCount: 500
 --- !u!95 &4508755196180534750
 Animator:
   serializedVersion: 5

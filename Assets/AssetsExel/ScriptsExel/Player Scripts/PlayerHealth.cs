@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
 
     public int currentHealth;
 
+    public SpriteRenderer[] spriteRenderers;
+
     [SerializeField] GameObject gameOverUI;
     private void Start() {
         _maxHealth = maxHealth;
@@ -18,6 +20,19 @@ public class PlayerHealth : MonoBehaviour, IDamagable{
     }
     public void TakeDamage(int damage){
         currentHealth -= damage;
+        DamageVisualied();
+    }
+    public void DamageVisualied(){
+        foreach(SpriteRenderer item in spriteRenderers){
+            item.color = Color.red;
+            Debug.Log("Kontol memek asu");
+        }
+        Invoke("backToWhite",0.1f);
+    }
+    public void backToWhite(){
+        foreach(SpriteRenderer item in spriteRenderers){
+            item.color = Color.white;
+        }
     }
 
 }
