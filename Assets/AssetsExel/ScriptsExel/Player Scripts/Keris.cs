@@ -27,7 +27,7 @@ public class Keris : MonoBehaviour
 
     [SerializeField] GameObject petir;
     [SerializeField] Slider expandBar;
-    
+    bool expanding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,40 +53,27 @@ public class Keris : MonoBehaviour
             GetComponent<Animator>().Play("player_strike");
             ResetPetirCooldown();
         }
-        Expand();
-    }
-
-    public void Expand(){
-    
-        
-        if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB) ){
-            // expand muncul bar untuk expand (WORLD SPACE UI)
-
+        if(Input.GetKey(KeyCode.F) && (TerritoryManager.instance.onPointA || TerritoryManager.instance.onPointB)){
             holdTime += Time.deltaTime;
-            expandBar.value = holdTime/requiredHoldTime;
-            GetComponent<Animator>().Play("player_expand");
             expandBar.gameObject.SetActive(true);
-            
-            
+            GetComponent<Animator>().Play("player_expand");
+            expandBar.value = holdTime/requiredHoldTime;
             if(holdTime >= requiredHoldTime){
-                if(lifeEssence >= expandCost){
-                    TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
-                    reduceLifeEssence(maxLifeEssence);
-                    
-                }
-                else{
-                    expandBar.gameObject.SetActive(false);
-                    GetComponent<Animator>().Play("player_idle");
-                    return;
-                }
-                holdTime = 0;
+                Expand();
             }
         }
         else{
             holdTime = 0;
-            
-            GetComponent<Animator>().SetBool("isCasting",false);
             expandBar.gameObject.SetActive(false);
+        }
+
+    }
+
+    public void Expand(){
+            // expand muncul bar untuk expand (WORLD SPACE UI)
+        if(lifeEssence >= expandCost){
+            TerritoryManager.instance.territoryPoints.pointA.gameObject.GetComponent<ExpandTerritory>().Expand();
+            reduceLifeEssence(maxLifeEssence);
         }
     }
     

@@ -78,8 +78,10 @@ public class PointManager : MonoBehaviour
             
             GetPoint(PointsNames.Villager).pointA.position = GetPoint(PointsNames.VillagerDefault).pointA.position;
             GetPoint(PointsNames.Villager).pointB.position = GetPoint(PointsNames.VillagerDefault).pointB.position;  
+
             GetEnemyPoints(EnemyPointNames.Left).pointB.position = Vector2.zero;
             GetEnemyPoints(EnemyPointNames.Right).pointA.position = Vector2.zero;
+            
             GetEnemyPoints(EnemyPointNames.Left).pointA.position = Vector2.zero;
             GetEnemyPoints(EnemyPointNames.Right).pointB.position = Vector2.zero;
 
