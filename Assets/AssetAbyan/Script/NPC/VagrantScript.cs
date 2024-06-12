@@ -49,6 +49,13 @@ public class VagrantScript : NPC
     //         NPCManager.instance.InstanceNPC(Status.Vagrant, new Vector2(RandomNumGen(TerritoryManager.instance.pointAx, TerritoryManager.instance.pointBx), transform.position.y));
     //     }
     // }
+    public override Points SetPlace(PointsNames left, PointsNames right){
+        if (transform.position.x <= 0){
+            return pointManager.GetPoint(left);
+        }else{
+            return pointManager.GetPoint(right);
+        }
+    }
     private void SetNPCAtribut()
     {
         SetIdle(npcManager.vagrantIdleSet);

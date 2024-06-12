@@ -35,7 +35,7 @@ public abstract class NPC : MonoBehaviour
             SetPoint(points.pointA);
         }
     }
-    public Points SetPlace(PointsNames left, PointsNames right){
+    public virtual Points SetPlace(PointsNames left, PointsNames right){
         if (pointManager.GetPoint(left).NPCCount <= pointManager.GetPoint(right).NPCCount){
             return pointManager.GetPoint(left);// nanti rencananya ada pembagian left sama rightnya
         }else{

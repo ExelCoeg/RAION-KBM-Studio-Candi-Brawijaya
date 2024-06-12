@@ -59,6 +59,13 @@ public class PointManager : MonoBehaviour
             //Villager
             GetPoint(PointsNames.Villager).pointA.position = TerritoryManager.instance.territoryPoints.pointA.position;
             GetPoint(PointsNames.Villager).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position;
+
+            GetPoint(PointsNames.RightVagrant).pointA.position = TerritoryManager.instance.territoryPoints.pointB.position;
+            GetPoint(PointsNames.RightVagrant).pointB.position = TerritoryManager.instance.territoryPoints.pointB.position + new Vector3(15,0,0);
+
+            GetPoint(PointsNames.LeftVagrant).pointA.position = TerritoryManager.instance.territoryPoints.pointA.position - new Vector3(15,0,0);
+            GetPoint(PointsNames.LeftVagrant).pointB.position = TerritoryManager.instance.territoryPoints.pointA.position;
+            
         
             //Enemy
             // GetEnemyPoints(EnemyPointNames.Left).pointB.position = Vector3.Lerp(GetEnemyPoints(EnemyPointNames.Left).pointB.position, Vector2.zero,DayManager.instance.getTimeToDay());
