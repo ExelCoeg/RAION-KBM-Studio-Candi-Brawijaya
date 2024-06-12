@@ -76,7 +76,7 @@ MonoBehaviour:
   archerDamage: 10
   archerDamageAble:
   - Widara
-  - Gepari
+  - Gelapari
   - Lemulut
   archerAttackSpeed: 1
   archerIdleSet:

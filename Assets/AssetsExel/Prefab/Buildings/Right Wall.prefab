@@ -161,6 +161,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c72b01d6deeab2740aa6d9ab3d17d427, type: 3}
   FIcon: {fileID: 8622966848003400830}
   buildingInfo: {fileID: 7862530122250310954}
+  spriteRenderers:
+  - {fileID: 3517527570552911489}
 --- !u!1 &8622966848003400830
 GameObject:
   m_ObjectHideFlags: 0

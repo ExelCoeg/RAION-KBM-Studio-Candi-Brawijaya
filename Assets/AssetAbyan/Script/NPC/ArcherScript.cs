@@ -132,7 +132,7 @@ public class ArcherScript : NPC
         return 0;
     }
     public void InTower(){
-        if (enemyDetected){
+        if (!enemyDetected){
             Idle(true);
         }
     }

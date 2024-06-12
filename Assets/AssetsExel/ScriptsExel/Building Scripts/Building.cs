@@ -80,7 +80,7 @@ public abstract class Building : MonoBehaviour, IDamagable, IInteractable, IUpgr
     public void RecoverBuilding()
     {
         if(currentHealth < maxHealth && GameObject.FindGameObjectWithTag("Player").GetComponent<Coin>().coinCount >= recoverBuildingCost){
-            currentHealth = 20;
+            currentHealth += 20;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Coin>().coinCount -= recoverBuildingCost;
         }
     }

@@ -91,6 +91,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: movSpeed
     m_EventTreshold: 0.01
+  - m_ConditionMode: 2
+    m_ConditionEvent: enemyDetected
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8062665284839265833}
   m_Solo: 0

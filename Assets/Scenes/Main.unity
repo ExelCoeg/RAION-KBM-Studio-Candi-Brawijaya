@@ -5771,16 +5771,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
+      propertyPath: gelapariDetection
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
       propertyPath: gelapariRangeAttack
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
+      propertyPath: lelumutDamageAble.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
       propertyPath: gelapariDamageAble.Array.size
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
+      propertyPath: lelumutDamageAble.Array.data[5]
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
+      propertyPath: lelumutDamageAble.Array.data[6]
+      value: ArcherTower
       objectReference: {fileID: 0}
     - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
       propertyPath: gelapariDamageAble.Array.data[4]
       value: Arthamerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
+      propertyPath: gelapariDamageAble.Array.data[5]
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124121089453864512, guid: ea6fab6afb330394281da229b46f8661, type: 3}
+      propertyPath: gelapariDamageAble.Array.data[6]
+      value: ArcherTower
       objectReference: {fileID: 0}
     - target: {fileID: 2705062403887835523, guid: ea6fab6afb330394281da229b46f8661, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8471,17 +8495,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4338999731577520389, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6824071766846491126, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6851560860947606370, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7885570102498196711, guid: 321c85d4d29fbf74d8bcd6133c0a7d42, type: 3}
       propertyPath: m_Pivot.x
@@ -11163,6 +11179,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6717451720631520241, guid: e343498ace6a56f4f9182bc29866b908, type: 3}
   m_PrefabInstance: {fileID: 176036992}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1494439807 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4843871112838103937, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
+  m_PrefabInstance: {fileID: 1593504338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1497782788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4365744181333284962, guid: 3f158e0be5266d34eaec9c91ebae2fbc, type: 3}
@@ -11364,10 +11385,6 @@ PrefabInstance:
     - target: {fileID: 6569092053781098253, guid: 23fbfabde552a184b9bd3ccd9a720be5, type: 3}
       propertyPath: m_Name
       value: Acher
-      objectReference: {fileID: 0}
-    - target: {fileID: 6569092053781098253, guid: 23fbfabde552a184b9bd3ccd9a720be5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7588771953212349885, guid: 23fbfabde552a184b9bd3ccd9a720be5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12040,17 +12057,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2727574333549442198, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
+      propertyPath: spriteRenderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727574333549442198, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
+      propertyPath: spriteRenderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1494439807}
     - target: {fileID: 4690454865361347630, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
       propertyPath: m_Name
       value: Left Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 4843871112838103937, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4843871112838103937, guid: 090abeb8d1ef9924a90eb8c26605bbc8, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -603189087
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
