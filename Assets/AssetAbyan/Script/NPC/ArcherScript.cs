@@ -131,6 +131,11 @@ public class ArcherScript : NPC
         }
         return 0;
     }
+    public void InTower(){
+        if (enemyDetected){
+            Idle(true);
+        }
+    }
     public float CalculatePower(float distance){
         return Mathf.Sqrt(archerDetection * 10f * arrowRb.gravityScale);
     }

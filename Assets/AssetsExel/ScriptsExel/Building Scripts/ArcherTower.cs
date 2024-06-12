@@ -15,7 +15,8 @@ public class ArcherTower : Building
         FillTowerWithArcher();
         if (archer != null)
         {
-            archer.GetComponent<ArcherScript>().Idle(true);
+
+            archer.GetComponent<ArcherScript>().InTower();
         }
     }
     
