@@ -145,14 +145,19 @@ public class SpawnManager : MonoBehaviour
         tempVagrantSpawnTime += Time.deltaTime;
         if (tempVagrantSpawnTime >= vagrantSpawnTime)
         {
-            if (PointManager.instance.GetPoint(PointsNames.LeftVagrant).NPCCount < 5)
+            if (NPCManager.instance.vagrantCount <= 3)
             {
-                NPCManager.instance.InstanceNPC(Status.Vagrant, PointManager.instance.GetPoint(PointsNames.LeftVagrant).pointA.position + new Vector3(0,5,0));
+                NPCManager.instance.InstanceNPC(Status.Vagrant, leftSpawnPoint.position);
+                NPCManager.instance.InstanceNPC(Status.Vagrant, rightSpawnPoint.position);
             }
-            else if (PointManager.instance.GetPoint(PointsNames.RightVagrant).NPCCount < 5)
-            {
-                NPCManager.instance.InstanceNPC(Status.Vagrant, PointManager.instance.GetPoint(PointsNames.RightVagrant).pointB.position + new Vector3(0,5,0));
-            }
+            // if (PointManager.instance.GetPoint(PointsNames.LeftVagrant).NPCCount < 5)
+            // {
+            //     NPCManager.instance.InstanceNPC(Status.Vagrant, leftSpawnPoint.position);
+            // }
+            // else if (PointManager.instance.GetPoint(PointsNames.RightVagrant).NPCCount < 5)
+            // {
+            //     NPCManager.instance.InstanceNPC(Status.Vagrant, PointManager.instance.GetPoint(PointsNames.RightVagrant).pointB.position + new Vector3(0,5,0));
+            // }
             tempVagrantSpawnTime = 0;
         }
     }
